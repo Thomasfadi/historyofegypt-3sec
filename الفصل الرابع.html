@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مصر بعد الحرب العالمية الأولى - الفصل الرابع</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070F;
+    --card: #111827;
+    --card2: #0d1520;
+    --gold: #C9A84C;
+    --gold2: #e8c97a;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #1e2d3d;
+    --red: #e74c3c;
+    --blue: #3b82f6;
+    --green: #10b981;
+    --purple: #8b5cf6;
+    --orange: #f97316;
+    --teal: #06b6d4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    min-height: 100vh;
+  }
+  h1,h2,h3,h4 { font-family: 'Amiri', serif; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a0a1a 0%, #111827 50%, #0a0f1e 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 50px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(201,168,76,0.4);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 700px;
+    margin: 0 auto 25px;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+  }
+  .stat {
+    text-align: center;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 12px 24px;
+  }
+  .stat-num { font-size: 28px; font-weight: 900; color: var(--gold); }
+  .stat-label { font-size: 12px; color: var(--muted); }
+
+  /* TABS */
+  .tab-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7,7,15,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--gold2); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* PANELS */
+  .panel { display: none; padding: 30px 20px; max-width: 1300px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+  .panel.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  /* SECTION TITLE */
+  .section-title {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .section-title h2 {
+    font-size: clamp(24px, 4vw, 38px);
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title p { color: var(--muted); font-size: 14px; }
+  .gold-line { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 12px auto; }
+
+  /* SUMMARY CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 0 16px 16px 0;
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .card-icon { font-size: 28px; }
+  .card-title { font-size: 18px; font-weight: 700; }
+  .card ul { list-style: none; }
+  .card ul li {
+    padding: 7px 0;
+    font-size: 13.5px;
+    line-height: 1.7;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: #cbd5e1;
+  }
+  .card ul li:last-child { border-bottom: none; }
+  .card ul li::before { content: '◆ '; color: var(--gold); font-size: 10px; }
+
+  .card-gold::before { background: var(--gold); }
+  .card-gold .card-title { color: var(--gold); }
+  .card-red::before { background: var(--red); }
+  .card-red .card-title { color: var(--red); }
+  .card-blue::before { background: var(--blue); }
+  .card-blue .card-title { color: var(--blue); }
+  .card-green::before { background: var(--green); }
+  .card-green .card-title { color: var(--green); }
+  .card-purple::before { background: var(--purple); }
+  .card-purple .card-title { color: var(--purple); }
+  .card-orange::before { background: var(--orange); }
+  .card-orange .card-title { color: var(--orange); }
+  .card-teal::before { background: var(--teal); }
+  .card-teal .card-title { color: var(--teal); }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    margin: 3px 2px;
+  }
+  .tag-cause { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  .tag-result { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+  .tag-date { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+  .tag-person { background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.3); }
+
+  /* MIND MAP */
+  .mindmap-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  .mindmap {
+    position: relative;
+    min-width: 900px;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mm-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #C9A84C, #e8c97a);
+    color: #07070F;
+    font-weight: 900;
+    font-family: 'Amiri', serif;
+    font-size: 16px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 0 40px rgba(201,168,76,0.5);
+    padding: 10px;
+    line-height: 1.3;
+  }
+  .mm-branch {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .mm-branch:hover { transform: scale(1.05); }
+  .mm-node {
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    min-width: 120px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 5;
+    position: relative;
+  }
+  .mm-subnodes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+    align-items: center;
+  }
+  .mm-sub {
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    text-align: center;
+    max-width: 160px;
+    opacity: 0.9;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* SVG line */
+  .mm-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+  /* Responsive Mindmap */
+  .mm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+  .mm-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    border: 2px solid;
+    transition: transform 0.3s;
+  }
+  .mm-card:hover { transform: scale(1.02); }
+  .mm-card-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mm-card ul { list-style: none; }
+  .mm-card ul li {
+    font-size: 12.5px;
+    padding: 5px 0;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    line-height: 1.5;
+  }
+  .mm-card ul li::before { content: '← '; }
+  .mm-center-card {
+    grid-column: 2;
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+  .mm-center-card h3 { color: var(--gold); font-size: 20px; margin-bottom: 8px; }
+  .mm-center-card p { color: var(--muted); font-size: 13px; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-right: 50px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 20px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 30px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .tl-item:hover { transform: translateX(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    right: -39px;
+    top: 22px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 15px rgba(201,168,76,0.6);
+    border: 3px solid var(--bg);
+  }
+  .tl-year {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .tl-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .tl-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .tl-tags { margin-top: 8px; }
+
+  /* TREATIES */
+  .treaty-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 22px;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--gold);
+    transition: transform 0.3s;
+  }
+  .treaty-card:hover { transform: translateX(-5px); }
+  .treaty-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .treaty-date {
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .treaty-info { flex: 1; }
+  .treaty-name { font-size: 19px; font-weight: 800; color: var(--gold); margin-bottom: 6px; }
+  .treaty-parties { font-size: 13px; color: var(--muted); }
+  .treaty-body { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .treaty-section h4 { font-size: 14px; color: var(--gold2); margin-bottom: 8px; }
+  .treaty-section ul { list-style: none; }
+  .treaty-section ul li {
+    font-size: 13px;
+    color: #cbd5e1;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.6;
+  }
+  .treaty-section ul li::before { content: '▸ '; color: var(--gold); }
+
+  /* FIGURES */
+  .figures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 22px;
+  }
+  .figure-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .figure-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    border-radius: 0 16px 0 0;
+    opacity: 0.1;
+  }
+  .figure-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .figure-avatar {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    margin-bottom: 14px;
+    border: 2px solid;
+  }
+  .figure-name { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .figure-role { font-size: 12px; margin-bottom: 14px; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+  .figure-timeline {
+    margin-top: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .figure-action {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+  .figure-action .action-date { color: var(--gold); font-weight: 700; font-size: 12px; }
+  .figure-action .action-why { color: #94a3b8; font-size: 12px; margin-top: 2px; }
+  .figure-action .action-result { color: #86efac; font-size: 12px; margin-top: 2px; }
+  .figure-action:last-child { border-bottom: none; }
+
+  /* COMPARISONS */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 13px;
+  }
+  .comp-table th {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    padding: 12px 16px;
+    text-align: right;
+    font-family: 'Amiri', serif;
+    font-size: 14px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .comp-table td {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    color: #cbd5e1;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .comp-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .comp-table tr:hover td { background: rgba(201,168,76,0.04); }
+  .comp-section { margin-bottom: 40px; }
+  .comp-section h3 {
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-right: 14px;
+    border-right: 3px solid var(--gold);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .figures-grid { grid-template-columns: 1fr; }
+    .treaty-body { grid-template-columns: 1fr; }
+    .mm-grid { grid-template-columns: 1fr; }
+    .mm-center-card { grid-column: 1; }
+    .tab-btn { padding: 12px 14px; font-size: 12px; }
+  }
+
+  /* Cause-Effect Box */
+  .ce-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+  .ce-cause, .ce-arrow, .ce-effect {
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .ce-cause { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; flex: 1; }
+  .ce-arrow { display: flex; align-items: center; color: var(--gold); font-size: 22px; }
+  .ce-effect { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; flex: 1; }
+
+  .sub-section-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--gold2);
+    margin: 25px 0 14px;
+    padding-right: 12px;
+    border-right: 3px solid var(--gold2);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📚 تاريخ مصر الحديث | الفصل الرابع</div>
+  <h1>مصر بعد الحرب العالمية الأولى<br><span style="font-size:0.65em;color:#e8c97a;">1914 – 1952</span></h1>
+  <p>ملخص شامل وتفصيلي للفصل الرابع: من ثورة 1919 إلى ثورة يوليو 1952، يشمل جميع الشخصيات والمعاهدات والأحداث والتواريخ</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">35+</div><div class="stat-label">تاريخاً مهماً</div></div>
+    <div class="stat"><div class="stat-num">15+</div><div class="stat-label">شخصية تاريخية</div></div>
+    <div class="stat"><div class="stat-num">8+</div><div class="stat-label">معاهدات واتفاقيات</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">تبويبات تفاعلية</div></div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('summary')">📋 ملخص تفصيلي</button>
+  <button class="tab-btn" onclick="showTab('mindmap')">🧠 خريطة ذهنية</button>
+  <button class="tab-btn" onclick="showTab('timeline')">📅 الخط الزمني</button>
+  <button class="tab-btn" onclick="showTab('treaties')">📜 المعاهدات والاتفاقيات</button>
+  <button class="tab-btn" onclick="showTab('figures')">👤 الشخصيات</button>
+  <button class="tab-btn" onclick="showTab('compare')">⚖️ المقارنات</button>
+</div>
+
+<!-- =================== TAB 1: SUMMARY =================== -->
+<div id="summary" class="panel active">
+  <div class="section-title">
+    <h2>📋 الملخص التفصيلي</h2>
+    <div class="gold-line"></div>
+    <p>شامل لجميع الأحداث والأسباب والنتائج والشخصيات والتواريخ</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- Card 1 -->
+    <div class="card card-gold">
+      <div class="card-header">
+        <span class="card-icon">🌍</span>
+        <div class="card-title">مصر قبل ثورة 1919 — الوضع العام</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">1914م</span>
+        <span class="tag tag-date">1918م</span>
+      </div>
+      <ul>
+        <li>كانت مصر تحت السيادة العثمانية الاسمية، وخاضعة للاحتلال البريطاني منذ 1882</li>
+        <li>الشعب المصري لم يفكر في الاستقلال التام — فقط الفصل عن السيادة العثمانية</li>
+        <li>3 أسباب لعدم التفكير بالاستقلال: الولاء للسلطان العثماني، فكرة الجامعة الإسلامية، الخوف من التفتت</li>
+        <li>انضمت الدولة العثمانية للحرب 1914 إلى جانب ألمانيا والنمسا ضد إنجلترا</li>
+        <li>إنجلترا ألغت السيادة العثمانية على مصر وأعلنت الحماية البريطانية عليها عام 1914</li>
+        <li>عُزل عباس حلمي الثاني وعُيّن حسين كامل سلطاناً (1914)</li>
+        <li>وفاة حسين كامل 1917 وتعيين أخيه الفؤاد الأول مكانه (فؤاد الأول)</li>
+      </ul>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card-blue">
+      <div class="card-header">
+        <span class="card-icon">✊</span>
+        <div class="card-title">الحركة الوطنية قبل وبعد الحرب العالمية</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">1914م</span>
+        <span class="tag tag-date">1918م</span>
+      </div>
+      <ul>
+        <li><b>قبل الحرب</b> — أهداف الحركة الوطنية: تحرير مصر من الاحتلال الإنجليزي، الارتباط بالدولة العثمانية</li>
+        <li><b>بعد الحرب</b> — أهداف جديدة: إنهاء الاحتلال الإنجليزي + إعلان مصر دولة مستقلة ذات سيادة</li>
+        <li>قادة الحركة قبل الحرب: مصطفى كامل، محمد فريد</li>
+        <li>قادة بعد الحرب: سعد زغلول (الوفد المصري)</li>
+        <li>مبادئ ويلسون (رئيس أمريكا): حق تقرير المصير — أملت الشعوب المستعمَرة في التحرر</li>
+        <li>فكرة القومية المصرية: المصريون شعب واحد مستقل بصرف النظر عن الدين أو الجنسية</li>
+        <li>سقوط فكرة الجامعة الإسلامية بسقوط الدولة العثمانية في الحرب</li>
+      </ul>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-red">
+      <div class="card-header">
+        <span class="card-icon">🔥</span>
+        <div class="card-title">ثورة 1919 — الأسباب والأحداث</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-cause">سبب</span>
+        <span class="tag tag-date">نوفمبر 1918م</span>
+        <span class="tag tag-date">مارس 1919م</span>
+      </div>
+      <ul>
+        <li>نوفمبر 1918: ذهب سعد زغلول مع عبد العزيز فهمي وعلي شعراوي لمقابلة المعتمد البريطاني لطلب السفر إلى باريس لعرض قضية الاستقلال</li>
+        <li>إنجلترا رفضت السماح لهم بالسفر → الوفد ألّف وثيقة توكيلات من الأمة</li>
+        <li>أقبلت جميع طوائف الشعب على توقيع التوكيلات بحماس</li>
+        <li>الوفد المصري أصبح الوكيل الرسمي للأمة المصرية ووكيل الاستقلال</li>
+        <li>إنجلترا نفت سعد زغلول وصحبه إلى مالطة (مارس 1919)</li>
+        <li>النفي أشعل الشعب: اندلعت ثورة 1919 فوراً</li>
+        <li>انتشرت الثورة: القاهرة + المدن + الريف + الأقاليم — جميع فئات الشعب</li>
+        <li>قطع الفلاحون خطوط السكك الحديدية والتلغراف والتليفونات</li>
+        <li>ظهرت لجان للنضال ضد الإنجليز في المدن والقرى</li>
+      </ul>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card card-green">
+      <div class="card-header">
+        <span class="card-icon">🌹</span>
+        <div class="card-title">ثورة 1919 — المميزات والأهمية</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-result">نتيجة</span>
+      </div>
+      <ul>
+        <li>أول ثورة قومية حديثة في تاريخ مصر المعاصر</li>
+        <li>وحدت الأمة: مسلمون ومسيحيون تحت راية واحدة (الهلال والصليب)</li>
+        <li>ظهور دور المرأة المصرية: 300 امرأة شاركن في المظاهرات النسائية</li>
+        <li>المشايخ خطبوا في المساجد والكنائس معاً — وحدة دينية نادرة</li>
+        <li>المرأة بنت المتاريس أمام القوات البريطانية</li>
+        <li>أسست مفهوم الهوية الوطنية القائمة على القومية لا الدين</li>
+        <li>أثبتت أن مصر أمة واحدة تستحق الاستقلال</li>
+      </ul>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card card-purple">
+      <div class="card-header">
+        <span class="card-icon">🏛️</span>
+        <div class="card-title">تصريح 28 فبراير 1922 — الاستقلال الصوري</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">28 فبراير 1922م</span>
+        <span class="tag tag-result">نتيجة تفاوض</span>
+      </div>
+      <ul>
+        <li>بعد فشل مفاوضات سعد مع ملنر ثم مع ماكدونالد، أصدرت إنجلترا التصريح من جانب واحد</li>
+        <li>نص التصريح: إلغاء الحماية البريطانية، إعلان مصر دولة مستقلة ذات سيادة</li>
+        <li><b>التحفظات الأربعة (العيوب):</b> بقاء الجيش الإنجليزي، لا يحق لمصر جيش وطني قوي، حماية الأجانب والأقليات، الإبقاء على احتلال السودان</li>
+        <li>الاستقلال كان صورياً لأن التحفظات الأربعة تلغي معناه</li>
+        <li>النتائج الإيجابية: الملك الفؤاد الأول (من سلطان إلى ملك)، صدور الدستور 1923، دخول مصر مرحلة الحياة الليبرالية</li>
+      </ul>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card card-orange">
+      <div class="card-header">
+        <span class="card-icon">📜</span>
+        <div class="card-title">دستور 1923 — الحياة الليبرالية والديمقراطية</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">أبريل 1923م</span>
+      </div>
+      <ul>
+        <li>ألّفت لجنة لوضع الدستور في أبريل 1923 (بعد التصريح)</li>
+        <li><b>الحريات:</b> إبداء الرأي، التقاضي، الصحافة (بدون رقابة إلا لمنع الهدام)، الاجتماع وتكوين الأحزاب</li>
+        <li><b>المساواة:</b> المصريون جميعاً سواء أمام القانون في الحقوق والواجبات</li>
+        <li><b>الحرمات:</b> حرمة المنازل وحرمة الملكية الخاصة</li>
+        <li><b>السلطات الثلاث:</b> التشريعية (البرلمان)، التنفيذية (الملك+الوزارة)، القضائية</li>
+        <li><b>عيوب الدستور:</b> أتاح للملك صلاحيات واسعة للتدخل في الحياة النيابية + مادة 23 (الملك مصدر السلطات) تناقض فكرة الأمة مصدر السلطات</li>
+        <li>أُجريت انتخابات → فاز الوفد بنسبة 90% → وزارة سعد زغلول يناير 1924</li>
+      </ul>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card card-teal">
+      <div class="card-header">
+        <span class="card-icon">⚡</span>
+        <div class="card-title">أزمات الحكم الدستوري — اختلال ميزان القوى</div>
+      </div>
+      <ul>
+        <li><b>وزارة محمد محمود "القبضة الحديدية":</b> تعطيل الحياة النيابية، حكم ديكتاتوري، تعطيل الحريات الشخصية</li>
+        <li><b>وزارة إسماعيل صدقي (يونيو 1930):</b> حكم ديكتاتوري، حل البرلمان الوفدي، إلغاء دستور 1923 وإصدار دستور 1930 الذي منح الملك سلطات واسعة جداً</li>
+        <li><b>وزارة توفيق نسيم 1934:</b> صدر تصريح سموئيل هور (وزير خارجية بريطانيا) نوفمبر 1935 — سبّب غضباً شعبياً وطالب الوفد بالتفاوض</li>
+        <li>نتيجة تصريح هور: اضطرت إنجلترا لإعادة دستور 1923 والتفاوض مع الوفد</li>
+        <li>الملك فاروق استغل حادثة 4 فبراير 1942 لإقالة وزارة الوفد وتعيين حكومات الأقلية</li>
+      </ul>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card card-gold">
+      <div class="card-header">
+        <span class="card-icon">🤝</span>
+        <div class="card-title">معاهدة 1936 — البنود والنتائج</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">26 أغسطس 1936م</span>
+      </div>
+      <ul>
+        <li>وقّعها مصطفى النحاس مع بريطانيا بعد مفاوضات طويلة</li>
+        <li><b>المميزات:</b> إنهاء الاحتلال العسكري اسمياً، إلغاء الامتيازات الأجنبية، انضمام مصر لعصبة الأمم كدولة مستقلة</li>
+        <li>بقاء قوات إنجليزية في قناة السويس، عودة الجيش المصري بالإدارة المشتركة للسودان</li>
+        <li>خروج الموظفين الأجانب، إنجلترا تتحمل مسؤولية الدفاع عن الأقليات</li>
+        <li><b>عيوبها:</b> لم تحقق الجلاء الكامل، مدة 20 سنة طويلة، لم تحل قضية السودان بالكامل</li>
+        <li>الوفد قبلها لأن الأوضاع الدولية (تهديد إيطاليا لإثيوبيا) جعلتها ضرورة</li>
+      </ul>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card card-red">
+      <div class="card-header">
+        <span class="card-icon">💣</span>
+        <div class="card-title">حادثة 4 فبراير 1942 — الإهانة الكبرى</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">4 فبراير 1942م</span>
+        <span class="tag tag-cause">سبب حقد</span>
+      </div>
+      <ul>
+        <li><b>السبب:</b> حسين سري رئيس الوزراء رفض إعلان الحرب على دول المحور — بريطانيا تضغط عليه</li>
+        <li>قوات المحور اقتربت من حدود مصر (حتى العلمين) — الجيش البريطاني يتراجع أمام روميل</li>
+        <li>مظاهرات في القاهرة تهتف "رومل يا روميل" — يوم 2 فبراير 1942</li>
+        <li>بريطانيا قدّمت إنذاراً للملك فاروق: عيّن مصطفى النحاس رئيساً للوزراء أو نتدخل</li>
+        <li>فاروق رفض، فأحاطت الدبابات البريطانية قصر عابدين في 4 فبراير 1942</li>
+        <li>الملك استسلم في اللحظة الأخيرة وعيّن النحاس</li>
+        <li><b>النتائج:</b> الإهانة أشعلت الوطنية المصرية، وكانت شرارة تنظيم الضباط الأحرار</li>
+        <li>بريطانيا سمحت بإقالة الوفد 1944 → عودة حكومات الأقلية</li>
+      </ul>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card card-purple">
+      <div class="card-header">
+        <span class="card-icon">⚔️</span>
+        <div class="card-title">ثورة 23 يوليو 1952 — الأسباب والأحداث</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="tag tag-date">23 يوليو 1952م</span>
+      </div>
+      <ul>
+        <li><b>الأسباب الرئيسية:</b> هزيمة فلسطين 1948 (وكشفت فساد الملك وحماشيه)، فساد الحكم وديكتاتورية الملك، الأوضاع الاجتماعية السيئة، الإقطاع، حادثة 4 فبراير، قضية الأسلحة الفاسدة، حريق القاهرة 26 يناير 1952</li>
+        <li>يوم 16 يونيو 1952: أخطر اجتماع للضباط منذ الثورة العرابية في حديقة نادي الضباط بالزمالك</li>
+        <li>الجيش كله انضم إلى الضباط الأحرار</li>
+        <li>الملك فاروق غادر مصر إلى إيطاليا بعد إجباره على التنازل عن العرش لابنه أحمد فؤاد الثاني</li>
+        <li>فاروق تنازل عن العرش، ولحق بالساحل الشمالي ثم إلى الإسكندرية ثم إلى إيطاليا</li>
+        <li>محمد نجيب أول رئيس وزراء قبل الثورة ثم أول رئيس جمهورية</li>
+      </ul>
+    </div>
+
+    <!-- Card 11 -->
+    <div class="card card-blue">
+      <div class="card-header">
+        <span class="card-icon">🎯</span>
+        <div class="card-title">أهداف ثورة 1952 وإنجازاتها</div>
+      </div>
+      <ul>
+        <li><b>الأهداف السبعة:</b> القضاء على الاستعمار، محو الإقطاع، إنهاء سيطرة الرأسمالية، إقامة عدالة اجتماعية، جيش وطني قوي، حياة ديمقراطية سليمة، تحرير مصر</li>
+        <li><b>السياسي:</b> إلغاء دستور 1923، حل الأحزاب (يناير 1953)، إلغاء الملكية وإعلان الجمهورية 18 يونيو 1953</li>
+        <li><b>الاجتماعي:</b> قانون الإصلاح الزراعي (يبطل الإقطاع)، إصدار قانون تحديد ساعات العمل، تعميم التعليم المجاني</li>
+        <li><b>الاقتصادي:</b> تأميم قناة السويس 26 يوليو 1956، بناء السد العالي، تأسيس الصناعات الكبرى</li>
+        <li><b>الجلاء:</b> توقيع اتفاقية الجلاء أكتوبر 1954، رحيل القوات البريطانية 18 يونيو 1956 (بعد 74 سنة احتلال)</li>
+        <li>جمال عبد الناصر خلّف محمد نجيب بعد صراع داخلي</li>
+      </ul>
+    </div>
+
+    <!-- Card 12 -->
+    <div class="card card-green">
+      <div class="card-header">
+        <span class="card-icon">🌍</span>
+        <div class="card-title">مصر وأفريقيا — دور مصر في التحرر الأفريقي</div>
+      </div>
+      <ul>
+        <li>عبد الناصر رأى أن مصر في صميم القارة الأفريقية وأن دورها تحرير أفريقيا من الاستعمار الأوروبي</li>
+        <li>دعم حركات الاستقلال في أفريقيا: الصومال، كينيا، أوغندا، غانا، نيجيريا، الكونغو</li>
+        <li>فتحت مصر مكاتب حركات التحرر في القاهرة وأذاعت بعدة لغات أفريقية</li>
+        <li>رفضت الانضمام لأي حلف عسكري أجنبي (مبدأ عدم الانحياز)</li>
+        <li>مؤتمر باندونج أبريل 1955 (29 دولة) — مصر كانت صاحبة دور بارز</li>
+        <li>مؤتمر أكرا 1958: أول مؤتمر للقارة الأفريقية رُفع فيه شعار "أفريقيا للأفارقة"</li>
+        <li>مؤتمر أديس أبابا مايو 1963: قيام منظمة الوحدة الأفريقية</li>
+        <li>مصر تولّت رئاسة المنظمة 1964 ومرة أخرى ثم في 2019</li>
+        <li>دور الأزهر: إرسال المبعوثين والدعاة لأفريقيا ونشر التعليم والثقافة الإسلامية</li>
+      </ul>
+    </div>
+
+  </div><!-- end cards-grid -->
+</div>
+
+<!-- =================== TAB 2: MIND MAP =================== -->
+<div id="mindmap" class="panel">
+  <div class="section-title">
+    <h2>🧠 الخريطة الذهنية</h2>
+    <div class="gold-line"></div>
+    <p>نظرة شاملة على المحاور الرئيسية للفصل الرابع</p>
+  </div>
+
+  <div style="text-align:center;margin-bottom:25px;">
+    <div class="mm-center-card" style="display:inline-block;max-width:400px;border-radius:50px;padding:20px 40px;">
+      <h3>🏺 مصر 1919–1952</h3>
+      <p>من ثورة 1919 إلى ثورة يوليو — أكثر من 33 سنة من النضال الوطني</p>
+    </div>
+  </div>
+
+  <div class="mm-grid">
+
+    <div class="mm-card" style="border-color:#e74c3c;">
+      <div class="mm-card-title" style="color:#e74c3c;">🔥 ثورة 1919</div>
+      <ul>
+        <li>سبب: نفي سعد زغلول إلى مالطة مارس 1919</li>
+        <li>شاركت فيها كل فئات الشعب بلا استثناء</li>
+        <li>وحدت المسلمين والمسيحيين (الهلال والصليب)</li>
+        <li>المرأة المصرية شاركت للمرة الأولى (300 امرأة)</li>
+        <li>أول ثورة قومية حديثة في مصر المعاصرة</li>
+      </ul>
+    </div>
+
+    <div class="mm-card" style="border-color:#C9A84C;">
+      <div class="mm-card-title" style="color:#C9A84C;">📜 الوفد المصري</div>
+      <ul>
+        <li>تأسس نوفمبر 1918 بقيادة سعد زغلول</li>
+        <li>الوكيل الوحيد عن الأمة المصرية</li>
+        <li>توكيلات الأمة: وقّعت كل فئات الشعب</li>
+        <li>فاز بانتخابات 1924 بنسبة 90%</li>
+        <li>يمثل المطالبة بالاستقلال التام</li>
+      </ul>
+    </div>
+
+    <div class="mm-card" style="border-color:#3b82f6;">
+      <div class="mm-card-title" style="color:#3b82f6;">🏛️ المعاهدات والتصاريح</div>
+      <ul>
+        <li>تصريح 28 فبراير 1922: استقلال صوري بـ4 تحفظات</li>
+        <li>دستور 1923: حريات ليبرالية مع عيوب</li>
+        <li>معاهدة 1936: إنهاء الاحتلال الرسمي (مع قيود)</li>
+        <li>اتفاقية الجلاء 1954: الانسحاب الفعلي</li>
+        <li>تأميم قناة السويس 1956</li>
+      </ul>
+    </div>
+
+    <div class="mm-card" style="border-color:#8b5cf6;">
+      <div class="mm-card-title" style="color:#8b5cf6;">👑 الملوك والحكام</div>
+      <ul>
+        <li>حسين كامل: سلطان 1914–1917</li>
+        <li>الفؤاد الأول: سلطان ثم ملك 1917–1936</li>
+        <li>الملك فاروق: 1936–1952 (خرج مع ثورة يوليو)</li>
+        <li>أحمد فؤاد الثاني: آخر ملك (رضيع تحت الوصاية)</li>
+        <li>محمد نجيب: أول رئيس جمهورية 1952</li>
+      </ul>
+    </div>
+
+    <div class="mm-card" style="border-color:#10b981;">
+      <div class="mm-card-title" style="color:#10b981;">⚖️ الحياة الليبرالية والأحزاب</div>
+      <ul>
+        <li>حزب الوفد: الحزب الوطني الأكبر (سعد زغلول ثم النحاس)</li>
+        <li>الإخوان المسلمون: قوة جديدة ظهرت بعد 1936</li>
+        <li>مصر الفتاة: تميل نحو المحور (ألمانيا وإيطاليا)</li>
+        <li>حكومات الأقلية: ائتلافات الملك ضد الوفد</li>
+        <li>الصراع: الملك vs الوفد vs الإنجليز</li>
+      </ul>
+    </div>
+
+    <div class="mm-card" style="border-color:#f97316;">
+      <div class="mm-card-title" style="color:#f97316;">🚀 ثورة يوليو 1952</div>
+      <ul>
+        <li>نظّمها الضباط الأحرار بقيادة جمال عبد الناصر ونجيب</li>
+        <li>أسباب: فساد، إقطاع، هزيمة فلسطين، حادثة 4 فبراير</li>
+        <li>نجحت بلا مقاومة 23 يوليو 1952</li>
+        <li>أنجزت: جلاء، تأميم، إصلاح زراعي، جمهورية</li>
+        <li>انتهت الملكية وبدأت الجمهورية 18 يونيو 1953</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================== TAB 3: TIMELINE =================== -->
+<div id="timeline" class="panel">
+  <div class="section-title">
+    <h2>📅 الخط الزمني الكامل</h2>
+    <div class="gold-line"></div>
+    <p>جميع التواريخ المهمة مرتبة من الأقدم إلى الأحدث</p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-year">1914م</div>
+      <div class="tl-title">إنجلترا تُلغي السيادة العثمانية وتُعلن الحماية على مصر</div>
+      <div class="tl-desc">لمّا انضمت الدولة العثمانية للحرب إلى جانب ألمانيا ضد إنجلترا، أعلنت بريطانيا الحماية الرسمية على مصر وعزلت الخديوي عباس حلمي الثاني وعيّنت حسين كامل سلطاناً.</div>
+      <div class="tl-tags"><span class="tag tag-date">سبتمبر 1914</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1917م</div>
+      <div class="tl-title">وفاة السلطان حسين كامل وتولي الفؤاد الأول</div>
+      <div class="tl-desc">توفي حسين كامل وتولى أخوه فؤاد الأول السلطنة، ثم أصبح ملكاً بعد تصريح 1922. كان الفؤاد يميل للحكم المطلق ويرفض الديمقراطية.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">نوفمبر 1918م</div>
+      <div class="tl-title">تشكيل الوفد المصري وبداية النضال</div>
+      <div class="tl-desc">ذهب سعد زغلول وعبد العزيز فهمي وعلي شعراوي للمعتمد البريطاني طلباً للسفر لباريس لعرض قضية استقلال مصر في مؤتمر الصلح. رُفض طلبهم فجمعوا توكيلات الأمة وأعلنوا عن الوفد المصري وكيلاً للشعب.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">مارس 1919م</div>
+      <div class="tl-title">نفي سعد زغلول وصحبه إلى مالطة ← اندلاع ثورة 1919</div>
+      <div class="tl-desc">قررت إنجلترا نفي سعد زغلول وصحبه إلى جزيرة مالطة معتقدةً أن هذا سيوقف الحركة الوطنية. لكن العكس حدث تماماً؛ اشتعلت ثورة 1919 فور الإعلان عن النفي وعمّت جميع المحافظات.</div>
+      <div class="tl-tags"><span class="tag tag-cause">سبب مباشر للثورة</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1919م — الثورة</div>
+      <div class="tl-title">ثورة 1919 — أول ثورة قومية حديثة لمصر</div>
+      <div class="tl-desc">شملت الثورة جميع المدن والقرى: قطع الفلاحون خطوط السكك الحديدية وهاجموا مراكز البوليس، وشارك الطلاب والعمال والأفندية. المرأة المصرية شاركت للمرة الأولى في التاريخ (300 سيدة في مظاهرات نسائية). وحّدت المسلمين والمسيحيين تحت راية الهلال والصليب.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1919م — الإجراءات البريطانية</div>
+      <div class="tl-title">إنجلترا تتراجع وتُفرج عن الوفد</div>
+      <div class="tl-desc">أدركت بريطانيا أنها أمام ثورة شعبية لن ينفع معها العنف، فأفرجت عن سعد زغلول وصحبه وسمحت لهم بالسفر إلى باريس لعرض القضية المصرية أمام مؤتمر الصلح.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1920م — مفاوضات ملنر</div>
+      <div class="tl-title">مفاوضات سعد مع لجنة ملنر في باريس</div>
+      <div class="tl-desc">أوفدت إنجلترا لجنة ملنر للتحقيق في أسباب ثورة 1919، وقاطعها الشعب المصري بالكامل. فاوض سعد زغلول ملنر في باريس بهدف إلغاء الحماية البريطانية والاستقلال التام داخلياً وخارجياً. فشلت المفاوضات لأن إنجلترا رفضت الاستقلال الحقيقي.</div>
+      <div class="tl-tags"><span class="tag tag-result">فشل المفاوضات → مقاومة الشعب للجنة ملنر</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">ديسمبر 1921م</div>
+      <div class="tl-title">اعتقال سعد زغلول ونفيه إلى جزيرة سيشيل الهندية</div>
+      <div class="tl-desc">بعد فشل مفاوضات ملنر، لجأت إنجلترا مجدداً للقوة وأعادت اعتقال سعد زغلول ونفته إلى سيشيل في المحيط الهندي بعيداً عن المنطقة.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">28 فبراير 1922م</div>
+      <div class="tl-title">تصريح 28 فبراير — الاستقلال الصوري</div>
+      <div class="tl-desc">أصدرت إنجلترا من جانب واحد تصريحاً بإلغاء الحماية وإعلان مصر دولة مستقلة ذات سيادة — لكن مع 4 تحفظات أبطلت معنى الاستقلال: بقاء الجيش الإنجليزي، حظر جيش مصري قوي، حماية الأجانب، والإبقاء على احتلال السودان.</div>
+      <div class="tl-tags"><span class="tag tag-result">استقلال صوري منقوص</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">أبريل 1923م</div>
+      <div class="tl-title">صدور دستور 1923 — الحياة الليبرالية</div>
+      <div class="tl-desc">أُلِّفت لجنة من 30 عضواً لوضع الدستور. تضمّن الحريات الليبرالية وفصل السلطات، لكنه احتوى على مادة 23 التي جعلت الملك مصدر السلطات وأتاحت له التدخل في الحياة النيابية، مما أوجد تناقضاً بنيوياً في الحياة السياسية.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">يناير 1924م</div>
+      <div class="tl-title">وزارة سعد زغلول "وزارة الشعب" — أول وزارة دستورية شعبية</div>
+      <div class="tl-desc">فاز الوفد بنسبة 90% في انتخابات 1923 فشكّل سعد زغلول أول وزارة دستورية شعبية في تاريخ مصر. حققت إنجازات في التعليم (إلزامية التعليم للبنين والبنات)، ووقفت ضد السيطرة الأجنبية، وبدأت فصل العملة المصرية عن الإسترليني.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">نوفمبر 1924م</div>
+      <div class="tl-title">اغتيال السير لي ستاك وسقوط وزارة سعد زغلول</div>
+      <div class="tl-desc">اغتال مصريون سرالي ستاك السردار (قائد الجيش المصري). استغلت إنجلترا الحادثة وقدّمت إنذاراً شديداً للغاية: دفع 500 ألف جنيه تعويض، سحب الجيش المصري من السودان، وفصل السودان عن مصر. رفض سعد زغلول الجزء الأخير فاستقال من الوزارة.</div>
+      <div class="tl-tags"><span class="tag tag-result">سقوط أول وزارة شعبية منتخبة</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">يونيو 1930م</div>
+      <div class="tl-title">وزارة إسماعيل صدقي — ديكتاتورية وإلغاء دستور 1923</div>
+      <div class="tl-desc">شكّل إسماعيل صدقي وزارة بعد المراسيم الملكية وحكم حكماً ديكتاتورياً: حل البرلمان الوفدي وألغى دستور 1923 وأصدر دستور 1930 الذي منح الملك صلاحيات واسعة جداً على حساب الشعب والبرلمان.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">نوفمبر 1935م</div>
+      <div class="tl-title">تصريح هور — الغضب الشعبي وعودة دستور 1923</div>
+      <div class="tl-desc">أعلن سموئيل هور وزير خارجية بريطانيا أن إنجلترا لن تقدم تنازلات لمصر. اشتعلت ثورة شعبية وعمّت الإضرابات. اضطرت بريطانيا لإعادة دستور 1923 والموافقة على التفاوض مع الوفد.</div>
+      <div class="tl-tags"><span class="tag tag-result">استعادة دستور 1923</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">26 أغسطس 1936م</div>
+      <div class="tl-title">معاهدة 1936 — تحوّل في العلاقات المصرية البريطانية</div>
+      <div class="tl-desc">وقّع مصطفى النحاس المعاهدة مع بريطانيا. أنهت الاحتلال الرسمي وألغت الامتيازات الأجنبية وسمحت لمصر بالانضمام لعصبة الأمم. لكنها أبقت على قوات بريطانية في قناة السويس وربطت السودان بالإدارة المشتركة. مدتها 20 عاماً.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1936م — الملك فاروق</div>
+      <div class="tl-title">وفاة الملك فؤاد وتولي فاروق العرش</div>
+      <div class="tl-desc">مات الملك فؤاد الأول وخلفه ابنه الشاب الملك فاروق الأول الذي كانت له ميول محورية (ألمانيا وإيطاليا) وأفاد منه تيار الإخوان المسلمين في مواجهة الوفد.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">4 فبراير 1942م</div>
+      <div class="tl-title">حادثة 4 فبراير — الدبابات تُحيط بقصر عابدين</div>
+      <div class="tl-desc">أحاطت الدبابات البريطانية بقصر عابدين وأُلزم الملك فاروق بتعيين مصطفى النحاس رئيساً للوزراء تحت التهديد المباشر. الحادثة أهانت كرامة مصر وأشعلت وطنية الضباط الشباب وكانت عاملاً مباشراً في تكوين الضباط الأحرار.</div>
+      <div class="tl-tags"><span class="tag tag-cause">شرارة تنظيم الضباط الأحرار</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1948م</div>
+      <div class="tl-title">حرب فلسطين — الهزيمة والأسلحة الفاسدة</div>
+      <div class="tl-desc">اشتركت مصر في حرب فلسطين 1948 دون تنسيق مع الجيوش العربية الأخرى ودون استعدادات كافية. أثبت التحقيق الجنائي أن بعض رجال الحاشية الملكية كانوا يتاجرون بالأسلحة الفاسدة. أشعل هذا غضب الضباط الشباب وكشف حجم الفساد في النظام.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">1949م</div>
+      <div class="tl-title">تأسيس تنظيم الضباط الأحرار بقيادة جمال عبد الناصر</div>
+      <div class="tl-desc">أسس جمال عبد الناصر تنظيم الضباط الأحرار سراً سنة 1949. كانت أهدافه الأساسية تحرير مصر من الاحتلال البريطاني وإنهاء الفساد وإصلاح الأوضاع الاجتماعية. عمل التنظيم سراً بسبب قوانين الجيش التي تحظر الانتماء السياسي.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">يناير 1950م</div>
+      <div class="tl-title">وزارة النحاس الأخيرة — إلغاء معاهدة 1936</div>
+      <div class="tl-desc">فاز الوفد بالانتخابات وعاد النحاس للسلطة. دخل في مفاوضات مع بريطانيا لتعديل معاهدة 1936 لكنها فشلت، فأعلن من جانب واحد إلغاء المعاهدة في أكتوبر 1951 وأطلق حرية الكفاح المسلح للفدائيين ضد القوات البريطانية في قناة السويس.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">25 يناير 1952م</div>
+      <div class="tl-title">معركة الإسماعيلية — شهداء البوليس المصري</div>
+      <div class="tl-desc">هاجمت القوات البريطانية مقر البوليس المصري في الإسماعيلية وطالبته بتسليم السلاح. رفض رجال البوليس وقاوموا ببسالة حتى استشهد عدد كبير منهم. وصلت الأخبار إلى القاهرة فاشتعل البلد.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">26 يناير 1952م</div>
+      <div class="tl-title">حريق القاهرة — السبت الأسود</div>
+      <div class="tl-desc">خرجت مظاهرات عارمة في القاهرة في اليوم التالي لمجزرة الإسماعيلية وأحرقت عدداً كبيراً من المحلات والمطاعم والفنادق والمرافق التي ترمز للوجود الأجنبي. كشف الحريق أن الدولة فقدت السيطرة على الشارع.</div>
+      <div class="tl-tags"><span class="tag tag-cause">دفع لتعجيل موعد الثورة</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">16 يونيو 1952م</div>
+      <div class="tl-title">أخطر اجتماع للضباط في حديقة نادي الضباط بالزمالك</div>
+      <div class="tl-desc">عقد الضباط الأحرار اجتماعاً تاريخياً في حديقة نادي الضباط بالزمالك كان "أخطر اجتماع عسكري منذ الثورة العرابية". أثبت الاجتماع أن الجيش فقد ولاءه للملك وأن الضباط يسيطرون على السلاح.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">23 يوليو 1952م</div>
+      <div class="tl-title">ثورة 23 يوليو — بداية عصر جديد</div>
+      <div class="tl-desc">في فجر 23 يوليو 1952 أذاع محمد أنور السادات البيان الأول باسم اللواء محمد نجيب (القائد العام للقوات المسلحة). انضمت جميع الوحدات العسكرية للثورة. تحرك نجيب في الساعة التاسعة صباحاً في دبابة والجنود والدراجات من خلفه في شوارع القاهرة.</div>
+      <div class="tl-tags"><span class="tag tag-result">بداية الجمهورية المصرية</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">ديسمبر 1952م</div>
+      <div class="tl-title">إلغاء دستور 1923</div>
+      <div class="tl-desc">ألغى مجلس قيادة الثورة دستور 1923 كأول خطوة لبناء النظام الجديد.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">يناير 1953م</div>
+      <div class="tl-title">حل الأحزاب السياسية ومصادرة أموالها</div>
+      <div class="tl-desc">أُعلن حل جميع الأحزاب السياسية ومصادرة أموالها لصالح الشعب، وذلك لإنهاء منظومة الفساد الحزبي التي عاشت عليها الأقلية.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">18 يونيو 1953م</div>
+      <div class="tl-title">إلغاء الملكية وإعلان الجمهورية — محمد نجيب أول رئيس</div>
+      <div class="tl-desc">أُعلن رسمياً إلغاء النظام الملكي وقيام الجمهورية المصرية مع تعيين محمد نجيب أول رئيس لها. انتهى بذلك 132 عاماً من حكم أسرة محمد علي.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">أكتوبر 1954م</div>
+      <div class="tl-title">اتفاقية الجلاء — خروج الإنجليز بعد 72 سنة</div>
+      <div class="tl-desc">وقّعت مصر اتفاقية الجلاء التي نصّت على انسحاب القوات البريطانية خلال 20 شهراً من مصر بالكامل.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">18 يونيو 1956م</div>
+      <div class="tl-title">رحيل آخر جندي بريطاني من مصر — نهاية الاحتلال</div>
+      <div class="tl-desc">في هذا اليوم التاريخي رحل آخر جندي بريطاني من الأراضي المصرية بعد 74 عاماً من الاحتلال الذي بدأ عام 1882.</div>
+      <div class="tl-tags"><span class="tag tag-result">نهاية الاحتلال البريطاني</span></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">26 يوليو 1956م</div>
+      <div class="tl-title">تأميم قناة السويس — الانتصار الأكبر</div>
+      <div class="tl-desc">أعلن عبد الناصر تأميم شركة قناة السويس ونقل ملكيتها إلى الدولة المصرية مع كل ما عليها من أموال وحقوق والتزامات. كان ذلك في الذكرى الرابعة لثورة يوليو.</div>
+      <div class="tl-tags"><span class="tag tag-result">استعادة السيادة الكاملة على القناة</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================== TAB 4: TREATIES =================== -->
+<div id="treaties" class="panel">
+  <div class="section-title">
+    <h2>📜 المعاهدات والاتفاقيات</h2>
+    <div class="gold-line"></div>
+    <p>كل معاهدة واتفاقية وتصريح مع أطرافه وبنوده ونتائجه</p>
+  </div>
+
+  <!-- Treaty 1 -->
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <div class="treaty-date">1914م</div>
+      <div class="treaty-info">
+        <div class="treaty-name">🏴 إعلان الحماية البريطانية على مصر</div>
+        <div class="treaty-parties">الأطراف: بريطانيا العظمى ← مصر (قرار أحادي بريطاني)</div>
+      </div>
+    </div>
+    <div class="treaty-body">
+      <div class="treaty-section">
+        <h4>📋 البنود الرئيسية</h4>
+        <ul>
+          <li>إلغاء السيادة العثمانية الاسمية على مصر</li>
+          <li>إعلان الحماية البريطانية الرسمية على مصر</li>
+          <li>عزل الخديوي عباس حلمي الثاني</li>
+          <li>تعيين حسين كامل سلطاناً بدلاً من خديوي</li>
+        </ul>
+      </div>
+      <div class="treaty-section">
+        <h4>⚡ النتائج والآثار</h4>
+        <ul>
+          <li>أصبحت مصر رسمياً تحت الحماية البريطانية</li>
+          <li>جنّد الإنجليز المصريين قسراً للحرب</li>
+          <li>استولى الإنجليز على الغلال والمواد الغذائية بأبخس الأسعار</li>
+          <li>تدهور اقتصادي حاد أثّر على المصريين</li>
+          <li>شعر الشعب أنه محروم من حقوقه الدستورية والنيابية</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treaty 2 -->
+  <div class="treaty-card" style="border-right-color:#3b82f6;">
+    <div class="treaty-header">
+      <div class="treaty-date" style="border-color:#3b82f6;color:#3b82f6;">28 فبراير 1922م</div>
+      <div class="treaty-info">
+        <div class="treaty-name" style="color:#3b82f6;">📋 تصريح 28 فبراير — "الاستقلال الصوري"</div>
+        <div class="treaty-parties">الأطراف: بريطانيا (من جانب واحد) | سياق: فشل مفاوضات سعد–ملنر وسعد–ماكدونالد</div>
+      </div>
+    </div>
+    <div class="treaty-body">
+      <div class="treaty-section">
+        <h4>📋 ما نص عليه التصريح</h4>
+        <ul>
+          <li>إلغاء الحماية البريطانية على مصر</li>
+          <li>إعلان مصر دولة مستقلة ذات سيادة</li>
+          <li>رفع بقل حاكم مصر من سلطان إلى ملك (فؤاد الأول)</li>
+          <li>الاعتراف بمصر دولة ذات سيادة اسمياً</li>
+        </ul>
+      </div>
+      <div class="treaty-section">
+        <h4>⚠️ التحفظات الأربعة (العيوب)</h4>
+        <ul>
+          <li>بقاء الجيش الإنجليزي في مصر لأمن المواصلات</li>
+          <li>حظر تكوين جيش مصري وطني قوي</li>
+          <li>حق بريطانيا في حماية الأجانب والأقليات</li>
+          <li>الإبقاء على الاحتلال البريطاني للسودان</li>
+          <li>→ جعلت الاستقلال صورياً وغير حقيقي</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treaty 3 -->
+  <div class="treaty-card" style="border-right-color:#10b981;">
+    <div class="treaty-header">
+      <div class="treaty-date" style="border-color:#10b981;color:#10b981;">أبريل 1923م</div>
+      <div class="treaty-info">
+        <div class="treaty-name" style="color:#10b981;">📰 دستور 1923 — الحياة الليبرالية الديمقراطية</div>
+        <div class="treaty-parties">وثيقة مصرية داخلية | لجنة من 30 عضواً</div>
+      </div>
+    </div>
+    <div class="treaty-body">
+      <div class="treaty-section">
+        <h4>✅ الإيجابيات (الحريات الليبرالية)</h4>
+        <ul>
+          <li>حرية إبداء الرأي وحرية الصحافة</li>
+          <li>حرية التقاضي والاجتماع وتكوين الأحزاب</li>
+          <li>المساواة أمام القانون في الحقوق والواجبات</li>
+          <li>حرمة المنازل والملكية الخاصة</li>
+          <li>فصل السلطات: التشريعية، التنفيذية، القضائية</li>
+        </ul>
+      </div>
+      <div class="treaty-section">
+        <h4>⚠️ العيوب والسلبيات</h4>
+        <ul>
+          <li>المادة 23: الملك مصدر السلطات (تعارض مع الديمقراطية)</li>
+          <li>حق الملك في حل البرلمان بدون شرط</li>
+          <li>الوزارة مسؤولة أمام الملك وأمام البرلمان معاً</li>
+          <li>تسبّب في تناقض بنيوي (دستور متناقض)</li>
+          <li>استغله الملك للانقلاب على الوفد أكثر من مرة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treaty 4 -->
+  <div class="treaty-card" style="border-right-color:#f97316;">
+    <div class="treaty-header">
+      <div class="treaty-date" style="border-color:#f97316;color:#f97316;">26 أغسطس 1936م</div>
+      <div class="treaty-info">
+        <div class="treaty-name" style="color:#f97316;">🤝 معاهدة 1936 — تحوّل في العلاقة المصرية البريطانية</div>
+        <div class="treaty-parties">الأطراف: مصر (مصطفى النحاس) ↔ بريطانيا | أسباب: تصريح هور ورادار الحرب العالمية الثانية</div>
+      </div>
+    </div>
+    <div class="treaty-body">
+      <div class="treaty-section">
+        <h4>✅ مزايا المعاهدة</h4>
+        <ul>
+          <li>إنهاء الاحتلال العسكري الرسمي وسحب الجيش (مع استثناءات)</li>
+          <li>إلغاء الامتيازات الأجنبية (مساواة الأجانب بالمصريين)</li>
+          <li>انضمام مصر لعصبة الأمم كدولة مستقلة ذات سيادة</li>
+          <li>سحب الموظفين الإنجليز من مصر والسودان</li>
+          <li>حق مصر في إبرام المعاهدات الخارجية مع الدول الأخرى</li>
+          <li>عودة الجيش المصري للسودان بالإدارة المشتركة</li>
+          <li>خروج الأوروبيين من مصر تدريجياً</li>
+          <li>تقليص صلاحيات المحاكم المختلطة</li>
+          <li>إنجلترا تدافع عن مصر إذا استطاعت الوصول لقناة السويس</li>
+        </ul>
+      </div>
+      <div class="treaty-section">
+        <h4>⚠️ عيوب المعاهدة</h4>
+        <ul>
+          <li>بقاء قوات بريطانية في منطقة قناة السويس</li>
+          <li>مدتها 20 سنة طويلة جداً</li>
+          <li>لم تحل قضية السودان بالكامل</li>
+          <li>لم تُحقق الاستقلال الداخلي والخارجي الكامل</li>
+          <li>ربطت مصر بتحالف مع بريطانيا في حالة الحرب</li>
+          <li>→ تحوّلت العلاقة من احتلال إلى تحالف</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treaty 5 -->
+  <div class="treaty-card" style="border-right-color:#8b5cf6;">
+    <div class="treaty-header">
+      <div class="treaty-date" style="border-color:#8b5cf6;color:#8b5cf6;">أكتوبر 1954م</div>
+      <div class="treaty-info">
+        <div class="treaty-name" style="color:#8b5cf6;">🕊️ اتفاقية الجلاء 1954 — نهاية الاحتلال البريطاني</div>
+        <div class="treaty-parties">الأطراف: مصر (الثورة) ↔ بريطانيا | بعد 20 شهراً من التفاوض</div>
+      </div>
+    </div>
+    <div class="treaty-body">
+      <div class="treaty-section">
+        <h4>📋 البنود الرئيسية</h4>
+        <ul>
+          <li>انسحاب القوات البريطانية من الأراضي المصرية خلال 20 شهراً</li>
+          <li>إنهاء الوجود العسكري الأجنبي في مصر تماماً</li>
+          <li>نقل إدارة القواعد البريطانية إلى الجانب المصري</li>
+        </ul>
+      </div>
+      <div class="treaty-section">
+        <h4>⚡ النتائج</h4>
+        <ul>
+          <li>18 يونيو 1956: رحيل آخر جندي بريطاني بعد 74 عاماً</li>
+          <li>تحقّق الجلاء الكامل الذي طالبت به الحركة الوطنية منذ 1882</li>
+          <li>فتح الطريق لتأميم قناة السويس يوليو 1956</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treaty 6: Canal -->
+  <div class="treaty-card" style="border-right-color:#e8c97a;">
+    <div class="treaty-header">
+      <div class="treaty-date" style="border-color:#e8c97a;color:#e8c97a;">26 يوليو 1956م</div>
+      <div class="treaty-info">
+        <div class="treaty-name" style="color:#e8c97a;">🚢 تأميم قناة السويس — ذروة الاستقلال الوطني</div>
+        <div class="treaty-parties">قرار مصري أحادي بإعلان عبد الناصر في ذكرى ثورة يوليو</div>
+      </div>
+    </div>
+    <div class="treaty-body">
+      <div class="treaty-section">
+        <h4>📋 ما حدث</h4>
+        <ul>
+          <li>أعلن عبد الناصر تأميم شركة قناة السويس وانتقال ملكيتها للدولة</li>
+          <li>كانت الشركة مملوكة لبريطانيا وفرنسا وأسهم أخرى</li>
+          <li>قرار جاء بعد رفض الغرب تمويل بناء السد العالي</li>
+        </ul>
+      </div>
+      <div class="treaty-section">
+        <h4>⚡ النتائج</h4>
+        <ul>
+          <li>العدوان الثلاثي 1956 (بريطانيا + فرنسا + إسرائيل)</li>
+          <li>مصر رفضت الاستسلام ونجحت في الدفاع</li>
+          <li>انتهى العدوان بانسحاب القوات الأجنبية تحت ضغط أمريكي وسوفيتي</li>
+          <li>مصر احتفظت بالقناة — انتصار دبلوماسي وسياسي</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- =================== TAB 5: FIGURES =================== -->
+<div id="figures" class="panel">
+  <div class="section-title">
+    <h2>👤 الشخصيات التاريخية</h2>
+    <div class="gold-line"></div>
+    <p>كل شخصية: دورها، متى عملت، ماذا فعلت، لماذا، وما النتائج</p>
+  </div>
+  <div class="figures-grid">
+
+    <!-- سعد زغلول -->
+    <div class="figure-card" style="border-color:rgba(201,168,76,0.3);">
+      <div class="figure-avatar" style="background:rgba(201,168,76,0.1);border-color:var(--gold);">🦁</div>
+      <div class="figure-name" style="color:var(--gold);">سعد زغلول</div>
+      <div class="figure-role" style="background:rgba(201,168,76,0.15);color:var(--gold);">زعيم الأمة • رئيس الوفد المصري</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">نوفمبر 1918</div>
+          <div>طلب السفر إلى باريس لعرض قضية الاستقلال المصري أمام مؤتمر السلام</div>
+          <div class="action-why">← لماذا: لاستغلال مبادئ ويلسون ومؤتمر فرساي</div>
+          <div class="action-result">← النتيجة: إنجلترا رفضت فتشكّل الوفد المصري وجُمعت التوكيلات</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">مارس 1919</div>
+          <div>نُفي إلى جزيرة مالطة مع صحبه</div>
+          <div class="action-why">← لماذا: لإجهاض الحركة الوطنية</div>
+          <div class="action-result">← النتيجة: اندلاع ثورة 1919 على الفور — عكس ما أرادت بريطانيا</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1920 — باريس</div>
+          <div>فاوض لجنة ملنر البريطانية في باريس لإلغاء الحماية</div>
+          <div class="action-result">← المفاوضات فشلت لأن إنجلترا رفضت الاستقلال الحقيقي</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">ديسمبر 1921</div>
+          <div>نُفي ثانية إلى جزيرة سيشيل في المحيط الهندي</div>
+          <div class="action-result">← عاد بعد إصدار تصريح 1922</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">يناير 1924</div>
+          <div>شكّل أول وزارة دستورية شعبية بعد فوز الوفد بـ90%</div>
+          <div class="action-result">← إنجازات: التعليم الإلزامي، الإصلاح الاقتصادي، الإدارة المصرية</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">نوفمبر 1924</div>
+          <div>استقال بعد إنذار بريطاني إثر اغتيال السير لي ستاك</div>
+          <div class="action-result">← سقوط أول وزارة شعبية منتخبة في تاريخ مصر</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1927</div>
+          <div>وفاة سعد زغلول — الزعيم الوطني الأول</div>
+          <div class="action-result">← تولّى مصطفى النحاس زعامة الوفد بعده</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- مصطفى النحاس -->
+    <div class="figure-card" style="border-color:rgba(59,130,246,0.3);">
+      <div class="figure-avatar" style="background:rgba(59,130,246,0.1);border-color:#3b82f6;">⚖️</div>
+      <div class="figure-name" style="color:#3b82f6;">مصطفى النحاس</div>
+      <div class="figure-role" style="background:rgba(59,130,246,0.15);color:#3b82f6;">زعيم الوفد بعد زغلول • رئيس وزراء متعدد المرات</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">1927</div>
+          <div>خلف سعد زغلول في قيادة الوفد بعد وفاته</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">26 أغسطس 1936</div>
+          <div>وقّع معاهدة 1936 مع بريطانيا</div>
+          <div class="action-why">← لماذا: تهديد إيطاليا للمنطقة وحتمية الحل الدبلوماسي</div>
+          <div class="action-result">← النتيجة: إنهاء رسمي للاحتلال مع قيود، انضمام مصر لعصبة الأمم</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">4 فبراير 1942</div>
+          <div>عُيّن رئيساً للوزراء تحت تهديد الدبابات البريطانية</div>
+          <div class="action-why">← بريطانيا أرادته لأنه يُطيع أوامرها في تلك اللحظة</div>
+          <div class="action-result">← تعاون مع بريطانيا طوال الحرب، ثم أُقيل 1944</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">يناير 1950</div>
+          <div>عاد للحكم بعد فوز الوفد في الانتخابات</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">أكتوبر 1951</div>
+          <div>أعلن إلغاء معاهدة 1936 من جانب واحد وأطلق الكفاح المسلح</div>
+          <div class="action-result">← الفدائيون يهاجمون القواعد البريطانية في قناة السويس</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الملك فؤاد الأول -->
+    <div class="figure-card" style="border-color:rgba(239,68,68,0.3);">
+      <div class="figure-avatar" style="background:rgba(239,68,68,0.1);border-color:#e74c3c;">👑</div>
+      <div class="figure-name" style="color:#e74c3c;">الملك فؤاد الأول</div>
+      <div class="figure-role" style="background:rgba(239,68,68,0.15);color:#e74c3c;">سلطان 1917 ← ملك مصر الأول مارس 1922 — 1936</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">1917</div>
+          <div>تولى السلطنة بعد وفاة أخيه حسين كامل</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">مارس 1922</div>
+          <div>أصبح أول ملك لمصر بعد تصريح 28 فبراير</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1923 — 1936</div>
+          <div>كان يتدخل باستمرار في الحياة النيابية ويلجأ للحكومات الديكتاتورية</div>
+          <div class="action-why">← كان مؤمناً بالحكم المطلق ويكره الديمقراطية</div>
+          <div class="action-result">← أضعف الحياة الدستورية وأشعل الصراع مع الوفد</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1930</div>
+          <div>دعم وزارة إسماعيل صدقي التي ألغت دستور 1923 وأصدرت دستور 1930</div>
+          <div class="action-result">← اشتعل الغضب الشعبي والتيارات الحزبية ضد الحكم الديكتاتوري</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الملك فاروق -->
+    <div class="figure-card" style="border-color:rgba(249,115,22,0.3);">
+      <div class="figure-avatar" style="background:rgba(249,115,22,0.1);border-color:#f97316;">🎭</div>
+      <div class="figure-name" style="color:#f97316;">الملك فاروق الأول</div>
+      <div class="figure-role" style="background:rgba(249,115,22,0.15);color:#f97316;">ملك مصر 1936 — 1952 (آخر ملوك مصر)</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">1936</div>
+          <div>تولى العرش بعد وفاة والده فؤاد الأول وهو شاب</div>
+          <div class="action-why">← كانت له ميول نحو دول المحور (ألمانيا وإيطاليا)</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">4 فبراير 1942</div>
+          <div>أحاطت الدبابات البريطانية بقصره وأُجبر على تعيين النحاس</div>
+          <div class="action-result">← شكّل حقداً عميقاً على الإنجليز لكنه عجز عن الفعل</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1944 فصاعداً</div>
+          <div>أقال وزارة الوفد واستعان بحكومات الأقلية والإخوان ضد الوفد</div>
+          <div class="action-result">← زاد الفساد وأضعف الحياة السياسية</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1948</div>
+          <div>أرسل الجيش لحرب فلسطين دون استعداد كافٍ وبأسلحة فاسدة</div>
+          <div class="action-result">← هزيمة كارثية + كشف فساد الحاشية + غضب الضباط</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">23 يوليو 1952</div>
+          <div>أُجبر على التنازل عن العرش لابنه الرضيع أحمد فؤاد الثاني</div>
+          <div class="action-result">← غادر مصر إلى الإسكندرية ثم إلى إيطاليا — انتهاء الملكية</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- محمد نجيب -->
+    <div class="figure-card" style="border-color:rgba(16,185,129,0.3);">
+      <div class="figure-avatar" style="background:rgba(16,185,129,0.1);border-color:#10b981;">🎖️</div>
+      <div class="figure-name" style="color:#10b981;">محمد نجيب</div>
+      <div class="figure-role" style="background:rgba(16,185,129,0.15);color:#10b981;">أول رئيس وزراء للثورة • أول رئيس جمهورية مصرية</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">ديسمبر 1951 — يناير 1952</div>
+          <div>فاز بانتخابات رئاسة نادي الضباط بأغلبية ساحقة</div>
+          <div class="action-why">← الضباط الأحرار وضعوه في قائمتهم ليكون الواجهة المناسبة لقيادة الثورة</div>
+          <div class="action-result">← أول انتصار سياسي للضباط الأحرار في بداية 1952</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">23 يوليو 1952</div>
+          <div>قاد الثورة علنياً وأذاع أنور السادات البيان الأول باسمه</div>
+          <div class="action-result">← الجيش كله انضم للثورة، الملك فاروق غادر مصر</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">18 يونيو 1953</div>
+          <div>أول رئيس للجمهورية المصرية بعد إلغاء الملكية</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1954</div>
+          <div>صراع مع عبد الناصر على السلطة وتُنحّى من منصبه</div>
+          <div class="action-result">← جمال عبد الناصر يتولى الرئاسة الفعلية</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- جمال عبد الناصر -->
+    <div class="figure-card" style="border-color:rgba(139,92,246,0.3);">
+      <div class="figure-avatar" style="background:rgba(139,92,246,0.1);border-color:#8b5cf6;">🌟</div>
+      <div class="figure-name" style="color:#8b5cf6;">جمال عبد الناصر</div>
+      <div class="figure-role" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">مؤسس تنظيم الضباط الأحرار • رئيس مصر 1954–1970</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">1949</div>
+          <div>أسّس تنظيم الضباط الأحرار سراً</div>
+          <div class="action-why">← لتحرير مصر من الاحتلال وإصلاح الأوضاع بعد هزيمة فلسطين وحادثة 1942</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">23 يوليو 1952</div>
+          <div>أدار الثورة من الخلف بينما نجيب كان الواجهة</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">أكتوبر 1954</div>
+          <div>وقّع اتفاقية الجلاء مع بريطانيا</div>
+          <div class="action-result">← رحيل القوات البريطانية 18 يونيو 1956 بعد 74 سنة</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">26 يوليو 1956</div>
+          <div>أمّم قناة السويس في ذكرى ثورة يوليو الرابعة</div>
+          <div class="action-result">← العدوان الثلاثي + انتصار مصر دبلوماسياً + رمز للقومية العربية</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1952–1970</div>
+          <div>قاد مصر نحو أفريقيا والعالم العربي — مبدأ عدم الانحياز</div>
+          <div class="action-result">← مؤتمر باندونج 1955، منظمة الوحدة الأفريقية 1963</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- إسماعيل صدقي -->
+    <div class="figure-card" style="border-color:rgba(239,68,68,0.2);">
+      <div class="figure-avatar" style="background:rgba(239,68,68,0.1);border-color:#e74c3c;">⛓️</div>
+      <div class="figure-name" style="color:#e74c3c;">إسماعيل صدقي</div>
+      <div class="figure-role" style="background:rgba(239,68,68,0.15);color:#e74c3c;">رئيس الوزراء الديكتاتوري | 1930</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">يونيو 1930</div>
+          <div>شكّل وزارة بدعم من الملك فؤاد وحكم حكماً ديكتاتورياً</div>
+          <div class="action-why">← لأن الملك يريد التخلص من الوفد وسلطة البرلمان</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1930</div>
+          <div>ألغى دستور 1923 وأصدر دستور 1930 الذي أعطى الملك صلاحيات واسعة جداً</div>
+          <div class="action-result">← اشتعال غضب الشعب والأحزاب ضد الحكم الديكتاتوري</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- أنور السادات -->
+    <div class="figure-card" style="border-color:rgba(6,182,212,0.3);">
+      <div class="figure-avatar" style="background:rgba(6,182,212,0.1);border-color:#06b6d4;">📻</div>
+      <div class="figure-name" style="color:#06b6d4;">محمد أنور السادات</div>
+      <div class="figure-role" style="background:rgba(6,182,212,0.15);color:#06b6d4;">من الضباط الأحرار • أذاع البيان الأول • رئيس لاحق</div>
+      <div class="figure-timeline">
+        <div class="figure-action">
+          <div class="action-date">صباح 23 يوليو 1952</div>
+          <div>أذاع من دار الإذاعة المصرية البيان الأول للثورة باسم اللواء محمد نجيب</div>
+          <div class="action-result">← الثورة أُعلنت رسمياً للشعب وللجيش</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1970</div>
+          <div>تولى الرئاسة بعد وفاة جمال عبد الناصر</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1971</div>
+          <div>أصدر الدستور الدائم لمصر</div>
+        </div>
+        <div class="figure-action">
+          <div class="action-date">1973</div>
+          <div>أصدر قرار خوض حرب أكتوبر (حرب العبور) ضد إسرائيل</div>
+          <div class="action-result">← استعادة سيناء وعزة المحارب المصري</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================== TAB 6: COMPARISONS =================== -->
+<div id="compare" class="panel">
+  <div class="section-title">
+    <h2>⚖️ المقارنات والتحليل</h2>
+    <div class="gold-line"></div>
+    <p>مقارنات بين الشخصيات والعصور والسياسات وعلاقات السبب والنتيجة</p>
+  </div>
+
+  <div class="comp-section">
+    <h3>📊 مقارنة أهداف الحركة الوطنية قبل وبعد الحرب العالمية الأولى</h3>
+    <table class="comp-table">
+      <tr>
+        <th>وجه المقارنة</th>
+        <th>قبل الحرب العالمية الأولى (مصطفى كامل، محمد فريد)</th>
+        <th>بعد الحرب العالمية الأولى (سعد زغلول، الوفد)</th>
+      </tr>
+      <tr>
+        <td><strong>الهدف الرئيسي</strong></td>
+        <td>تحرير مصر من الاحتلال الإنجليزي مع الاستمرار في ارتباط بالدولة العثمانية</td>
+        <td>إنهاء الاحتلال الإنجليزي وإعلان مصر دولة مستقلة ذات سيادة كاملة</td>
+      </tr>
+      <tr>
+        <td><strong>الموقف من الخلافة العثمانية</strong></td>
+        <td>تأييد قوي للسلطان العثماني والانتماء لفكرة الجامعة الإسلامية</td>
+        <td>سقطت فكرة الجامعة الإسلامية مع هزيمة الدولة العثمانية — الأمة المصرية فوق أي ولاء آخر</td>
+      </tr>
+      <tr>
+        <td><strong>طبيعة الهوية الوطنية</strong></td>
+        <td>ارتبطت بالدين وبالانتماء الإسلامي</td>
+        <td>هوية وطنية قومية: المصريون أمة واحدة بصرف النظر عن الدين (مسلمون + مسيحيون)</td>
+      </tr>
+      <tr>
+        <td><strong>أسلوب العمل</strong></td>
+        <td>الخطابة، الصحافة، الضغط السياسي</td>
+        <td>التوكيلات الشعبية، التفاوض الدولي، الثورة الشعبية إذا لزم</td>
+      </tr>
+      <tr>
+        <td><strong>الدعم الشعبي</strong></td>
+        <td>محدود نسبياً — بين الطبقات المتعلمة والمدن الكبرى</td>
+        <td>شامل لجميع الطبقات: فلاحون، عمال، أفندية، نساء، مسلمون، مسيحيون</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>📊 مقارنة تصريح 1922 ومعاهدة 1936</h3>
+    <table class="comp-table">
+      <tr>
+        <th>وجه المقارنة</th>
+        <th>تصريح 28 فبراير 1922</th>
+        <th>معاهدة 1936</th>
+      </tr>
+      <tr>
+        <td><strong>كيف صدر</strong></td>
+        <td>قرار بريطاني أحادي — فُرض على مصر</td>
+        <td>اتفاق تفاوضي بين الطرفين (مصر ببريطانيا)</td>
+      </tr>
+      <tr>
+        <td><strong>الطرف المصري</strong></td>
+        <td>لا أحد — قرار من إنجلترا وحدها</td>
+        <td>مصطفى النحاس رئيس الوفد</td>
+      </tr>
+      <tr>
+        <td><strong>ما أُلغي</strong></td>
+        <td>الحماية البريطانية رسمياً</td>
+        <td>الاحتلال الرسمي والامتيازات الأجنبية</td>
+      </tr>
+      <tr>
+        <td><strong>ما بقي</strong></td>
+        <td>التحفظات الأربعة (جيش إنجليزي + سودان + حماية أجانب)</td>
+        <td>قوات في قناة السويس، السودان بإدارة مشتركة، مدة 20 سنة</td>
+      </tr>
+      <tr>
+        <td><strong>درجة الاستقلال</strong></td>
+        <td>استقلال صوري غير حقيقي</td>
+        <td>استقلال أكبر لكن لا زال منقوصاً</td>
+      </tr>
+      <tr>
+        <td><strong>المكاسب المصرية</strong></td>
+        <td>الملكية + الدستور + الانتخابات</td>
+        <td>عضوية عصبة الأمم + إلغاء الامتيازات + عودة الجيش</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>📊 مقارنة الملك فؤاد الأول والملك فاروق</h3>
+    <table class="comp-table">
+      <tr>
+        <th>وجه المقارنة</th>
+        <th>الملك فؤاد الأول (1917–1936)</th>
+        <th>الملك فاروق (1936–1952)</th>
+      </tr>
+      <tr>
+        <td><strong>الموقف من الديمقراطية</strong></td>
+        <td>يكره الديمقراطية ويميل للحكم المطلق — ألغى دستور 1923 (بدعم صدقي) وأصدر 1930</td>
+        <td>يتحايل على الدستور ويستعين بحكومات الأقلية ضد الوفد المنتخب</td>
+      </tr>
+      <tr>
+        <td><strong>الموقف من بريطانيا</strong></td>
+        <td>يحتاجها لتدعيم حكمه ضد الوفد</td>
+        <td>له ميول محورية لكنه خضع للإرادة البريطانية (حادثة 4 فبراير)</td>
+      </tr>
+      <tr>
+        <td><strong>الصراع مع الوفد</strong></td>
+        <td>استمر طوال عهده — أقال الوزارات الوفدية باستمرار</td>
+        <td>استمر الصراع — أقال وزارة الوفد 1944 بعد أن انتهت الحرب</td>
+      </tr>
+      <tr>
+        <td><strong>النهاية</strong></td>
+        <td>مات ملكاً عام 1936</td>
+        <td>أُطيح به في ثورة يوليو 1952 وغادر مصر للأبد</td>
+      </tr>
+      <tr>
+        <td><strong>الأثر على الدولة</strong></td>
+        <td>أضعف الحياة النيابية وعمّق التناقض الدستوري</td>
+        <td>فساده وإخفاقاته كانت من أهم أسباب ثورة يوليو</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>🔗 علاقات السبب والنتيجة الأساسية</h3>
+
+    <div class="ce-box">
+      <div class="ce-cause">نفي سعد زغلول إلى مالطة (مارس 1919)</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">اندلاع ثورة 1919 — عكس ما أرادته بريطانيا تماماً</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">فشل مفاوضات ملنر وماكدونالد (1920–1921)</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">إصدار تصريح 28 فبراير 1922 من جانب واحد كحل وسط</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">اغتيال السير لي ستاك 1924</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">إنذار بريطاني شديد + سقوط أول وزارة شعبية منتخبة (سعد زغلول)</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">إعلان هور 1935 (رفض التنازلات لمصر)</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">ثورة شعبية + اضطرار بريطانيا لإعادة دستور 1923 والتفاوض → معاهدة 1936</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">حادثة 4 فبراير 1942 (الإهانة الكبرى)</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">اشتعال وطنية الضباط + تسريع تكوين تنظيم الضباط الأحرار 1949</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">هزيمة فلسطين 1948 وقضية الأسلحة الفاسدة</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">كشف فساد الملك وحاشيته + غضب الضباط → قرار الثورة 1952</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">حريق القاهرة 26 يناير 1952</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">تعجيل الضباط الأحرار بموعد الثورة من نوفمبر 1955 إلى يوليو 1952</div>
+    </div>
+
+    <div class="ce-box">
+      <div class="ce-cause">ثورة 23 يوليو 1952</div>
+      <div class="ce-arrow">←</div>
+      <div class="ce-effect">إلغاء الملكية + اتفاقية الجلاء 1954 + تأميم القناة 1956 + الجمهورية</div>
+    </div>
+
+  </div>
+
+  <div class="comp-section">
+    <h3>📊 مراحل التفاوض المصري البريطاني (1919 — 1956)</h3>
+    <table class="comp-table">
+      <tr>
+        <th>المرحلة / التاريخ</th>
+        <th>الموقف المصري</th>
+        <th>الموقف البريطاني</th>
+        <th>النتيجة</th>
+      </tr>
+      <tr>
+        <td>مؤتمر باريس 1919</td>
+        <td>الاستقلال التام</td>
+        <td>رفض مطلق</td>
+        <td>فشل — سعد يتوجه للرأي العام الأوروبي</td>
+      </tr>
+      <tr>
+        <td>مفاوضات ملنر 1920</td>
+        <td>إلغاء الحماية كلياً</td>
+        <td>استقلال داخلي مع حماية بريطانية</td>
+        <td>فشل — مقاطعة الشعب للجنة ملنر</td>
+      </tr>
+      <tr>
+        <td>مفاوضات ماكدونالد 1921</td>
+        <td>لا لأي معاهدة تُبقي على شكل الاستقلال</td>
+        <td>الإبقاء على الحماية بشكل معدّل</td>
+        <td>فشل → تصريح 28 فبراير 1922 من جانب واحد</td>
+      </tr>
+      <tr>
+        <td>المرحلة الأولى 1920–1936</td>
+        <td>الاستقلال التام داخلياً وخارجياً</td>
+        <td>التحفظات الأربعة + الإبقاء على النفوذ</td>
+        <td>معاهدة 1936 (حل وسط)</td>
+      </tr>
+      <tr>
+        <td>المرحلة الثانية 1946–1952</td>
+        <td>تعديل معاهدة 1936 + الجلاء الكامل</td>
+        <td>رفض التعديل الجوهري</td>
+        <td>إلغاء المعاهدة + كفاح مسلح → اتفاقية الجلاء 1954</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tab-bar').offsetTop - 10, behavior: 'smooth' });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.card, .tl-item, .treaty-card, .figure-card, .comp-section').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

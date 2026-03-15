@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مصر في عهد محمد علي وخلفائه</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   ROOT & RESET
+══════════════════════════════════════════════ */
+:root {
+  --gold: #C9A84C;
+  --gold-light: #e8c76a;
+  --bg: #07070F;
+  --card: #0D0D1A;
+  --card2: #111827;
+  --surface: #0f1420;
+  --border: rgba(201,168,76,0.15);
+  --red: #c0392b;
+  --blue: #1a6fa8;
+  --teal: #0e8a7c;
+  --purple: #6d3aab;
+  --green: #1e7e4f;
+  --orange: #c0640a;
+  --pink: #a0285a;
+  --text: #e8e4d8;
+  --muted: #8888a0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius:3px; }
+
+/* ══════════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════════ */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+@keyframes shimmer  { 0%,100%{opacity:.5} 50%{opacity:1} }
+@keyframes spinSlow { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes pulseRing{
+  0%  {box-shadow:0 0 0 0   rgba(201,168,76,.55)}
+  70% {box-shadow:0 0 0 16px rgba(201,168,76,0)}
+  100%{box-shadow:0 0 0 0   rgba(201,168,76,0)}
+}
+@keyframes tabIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center;
+  padding: 80px 32px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(26,39,68,.8) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 85% 85%, rgba(201,168,76,.05) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 45% at 15% 65%, rgba(12,40,80,.5) 0%, transparent 55%);
+}
+.hero-grid {
+  position:absolute; inset:0; opacity:.035;
+  background-image:
+    linear-gradient(rgba(201,168,76,.6) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,.6) 1px,transparent 1px);
+  background-size:56px 56px;
+}
+.ring {
+  position:absolute;
+  border:1px solid rgba(201,168,76,.07);
+  border-radius:50%;
+  animation:spinSlow 28s linear infinite;
+}
+.ring::before{
+  content:''; position:absolute; inset:18px;
+  border:1px dashed rgba(201,168,76,.1); border-radius:50%;
+}
+.ring-a{width:200px;height:200px;top:10%;left:4%;}
+.ring-b{width:150px;height:150px;bottom:12%;right:4%;animation-direction:reverse;}
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.4);
+  color:var(--gold); padding:5px 18px; border-radius:30px;
+  font-size:.78rem; font-weight:700; letter-spacing:2px;
+  margin-bottom:24px; animation:fadeIn 1s ease both;
+}
+.hero-badge::before{content:'◆';font-size:.55rem;}
+
+.hero h1 {
+  font-family:'Amiri',serif;
+  font-size:clamp(2.2rem,5.5vw,4rem);
+  font-weight:700; color:white; line-height:1.3;
+  margin-bottom:16px;
+  animation:fadeUp .9s ease .15s both;
+}
+.hero h1 em { color:var(--gold); font-style:normal; }
+
+.hero-sub {
+  font-size:clamp(.9rem,1.8vw,1.1rem);
+  color:var(--muted); max-width:560px; line-height:2;
+  margin-bottom:40px;
+  animation:fadeUp .9s ease .3s both;
+}
+
+.hero-stats {
+  display:flex; gap:28px; flex-wrap:wrap; justify-content:center;
+  animation:fadeUp .9s ease .45s both;
+  margin-bottom:50px;
+}
+.stat {
+  padding:12px 22px;
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:10px; background:rgba(201,168,76,.04);
+  text-align:center;
+}
+.stat-n { font-family:'Amiri',serif; font-size:1.9rem; font-weight:700; color:var(--gold); display:block; }
+.stat-l { font-size:.78rem; color:var(--muted); margin-top:1px; }
+
+.hero-cta {
+  display:inline-flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg,#b8860b,var(--gold),#e8c76a);
+  color:#07070F; font-weight:800; font-size:.95rem;
+  padding:13px 32px; border-radius:40px; border:none;
+  cursor:pointer; transition:transform .25s,box-shadow .25s;
+  animation:fadeUp .9s ease .6s both;
+  text-decoration:none;
+}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(201,168,76,.35);}
+
+.scroll-hint {
+  position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+  color:var(--muted); font-size:.7rem; letter-spacing:2px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  animation:shimmer 2.5s ease infinite;
+}
+.scroll-bar{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);}
+
+/* ══════════════════════════════════════════════
+   TAB SYSTEM
+══════════════════════════════════════════════ */
+.tabs-wrapper {
+  position: sticky; top:0; z-index:80;
+  background:rgba(7,7,15,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+
+.tabs-inner {
+  max-width:1300px; margin:0 auto;
+  display:flex; align-items:stretch;
+  overflow-x:auto; scrollbar-width:none;
+  padding:0 24px;
+}
+.tabs-inner::-webkit-scrollbar{display:none;}
+
+.tab-btn {
+  flex-shrink:0;
+  display:flex; align-items:center; gap:8px;
+  padding:16px 22px;
+  color:var(--muted); font-family:'Cairo',sans-serif;
+  font-size:.85rem; font-weight:600;
+  border:none; background:transparent;
+  cursor:pointer; position:relative;
+  transition:color .25s;
+  white-space:nowrap;
+}
+.tab-btn .tab-icon { font-size:1rem; }
+.tab-btn::after {
+  content:''; position:absolute; bottom:0; right:0; left:0;
+  height:2px; background:var(--gold);
+  transform:scaleX(0); transition:transform .25s ease;
+}
+.tab-btn:hover { color:var(--text); }
+.tab-btn.active { color:var(--gold); }
+.tab-btn.active::after { transform:scaleX(1); }
+
+/* ══════════════════════════════════════════════
+   TAB PANELS
+══════════════════════════════════════════════ */
+.tab-panel { display:none; animation:tabIn .4s ease both; }
+.tab-panel.active { display:block; }
+
+.panel-inner {
+  max-width:1300px; margin:0 auto;
+  padding:56px 32px 80px;
+}
+
+.panel-header {
+  text-align:center; margin-bottom:48px;
+}
+.panel-label {
+  font-size:.72rem; font-weight:700; color:var(--gold);
+  letter-spacing:3px; margin-bottom:8px;
+}
+.panel-title {
+  font-family:'Amiri',serif;
+  font-size:clamp(1.7rem,3.5vw,2.4rem);
+  color:white; margin-bottom:10px;
+}
+.panel-line {
+  width:70px; height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto;
+}
+
+/* ══════════════════════════════════════════════
+   CARDS GRID  (Tab 1 — Summary)
+══════════════════════════════════════════════ */
+.cards-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:22px;
+}
+
+.card {
+  background:var(--card2);
+  border-radius:14px; padding:26px;
+  border:1px solid rgba(255,255,255,.055);
+  position:relative; overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(0,0,0,.5);}
+.card::before{
+  content:''; position:absolute; top:0;right:0;left:0; height:3px;
+}
+.card.c-red   ::before,.card.c-red::before   {background:linear-gradient(90deg,#c0392b,#e74c3c);}
+.card.c-blue  ::before,.card.c-blue::before  {background:linear-gradient(90deg,#1a6fa8,#2980b9);}
+.card.c-gold  ::before,.card.c-gold::before  {background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.card.c-teal  ::before,.card.c-teal::before  {background:linear-gradient(90deg,#0e8a7c,#1abc9c);}
+.card.c-purple::before,.card.c-purple::before{background:linear-gradient(90deg,#6d3aab,#9b59b6);}
+.card.c-green ::before,.card.c-green::before {background:linear-gradient(90deg,#1e7e4f,#27ae60);}
+
+.card-icon {
+  width:46px;height:46px; border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem; margin-bottom:14px;
+  background:rgba(255,255,255,.05);
+}
+.card h3 {
+  font-family:'Amiri',serif; font-size:1.15rem; color:white;
+  margin-bottom:14px; padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.card ul{list-style:none;padding:0;}
+.card ul li{
+  padding:6px 0; font-size:.875rem; color:#c0bdb5;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  display:flex; gap:9px; align-items:flex-start; line-height:1.75;
+}
+.card ul li:last-child{border-bottom:none;}
+.card ul li::before{content:'◀';flex-shrink:0;font-size:.55rem;margin-top:5px;}
+.card.c-red    ul li::before{color:#e74c3c;}
+.card.c-blue   ul li::before{color:#2980b9;}
+.card.c-gold   ul li::before{color:var(--gold);}
+.card.c-teal   ul li::before{color:#1abc9c;}
+.card.c-purple ul li::before{color:#9b59b6;}
+.card.c-green  ul li::before{color:#27ae60;}
+.card ul li b{color:white;}
+
+/* ══════════════════════════════════════════════
+   MIND MAP  (Tab 2)
+══════════════════════════════════════════════ */
+.mindmap {
+  display:flex; flex-direction:column; align-items:center;
+}
+
+.mm-center {
+  background:linear-gradient(135deg,#b8860b,var(--gold),#e8c76a);
+  color:#07070F; font-family:'Amiri',serif;
+  font-size:1.25rem; font-weight:700;
+  padding:20px 42px; border-radius:50px; text-align:center;
+  box-shadow:0 0 0 6px rgba(201,168,76,.2),0 0 40px rgba(201,168,76,.25);
+  animation:pulseRing 3s ease infinite;
+  transition:transform .3s; cursor:default; position:relative; z-index:2;
+}
+.mm-center:hover{transform:scale(1.04);}
+
+.mm-vline{
+  width:2px; height:28px;
+  background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.1));
+}
+
+.mm-row{
+  display:flex; gap:14px; justify-content:center;
+  flex-wrap:wrap; width:100%; max-width:1100px;
+}
+
+.mm-branch{
+  flex:1; min-width:190px; max-width:225px;
+  display:flex; flex-direction:column; align-items:center;
+}
+
+.mm-node{
+  padding:11px 18px; border-radius:28px;
+  font-size:.88rem; font-weight:700; text-align:center;
+  width:100%; cursor:default;
+  transition:transform .25s,box-shadow .25s;
+  position:relative; z-index:2;
+}
+.mm-node:hover{transform:scale(1.07);}
+
+.mm-node.nr  {background:rgba(192,57,43,.2); border:1.5px solid #e74c3c; color:#ff8070;}
+.mm-node.nb  {background:rgba(26,111,168,.2);border:1.5px solid #2980b9; color:#70b8ff;}
+.mm-node.nt  {background:rgba(14,138,124,.2);border:1.5px solid #1abc9c; color:#70ffe8;}
+.mm-node.np  {background:rgba(109,58,171,.2);border:1.5px solid #9b59b6; color:#c890ff;}
+.mm-node.ng  {background:rgba(30,126,79,.2); border:1.5px solid #27ae60; color:#80ffa8;}
+.mm-node.no  {background:rgba(192,100,10,.2);border:1.5px solid #e67e22; color:#ffb060;}
+.mm-node.nk  {background:rgba(160,40,90,.2); border:1.5px solid #e91e8c; color:#ff90cc;}
+
+.mm-cline{width:2px;height:18px;opacity:.35;}
+.mm-cline.lr{background:#e74c3c;} .mm-cline.lb{background:#2980b9;}
+.mm-cline.lt{background:#1abc9c;} .mm-cline.lp{background:#9b59b6;}
+.mm-cline.lg{background:#27ae60;} .mm-cline.lo{background:#e67e22;}
+.mm-cline.lk{background:#e91e8c;}
+
+.mm-leaves{
+  display:flex; flex-direction:column; gap:5px;
+  width:100%; padding:0 3px;
+}
+.mm-leaf{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:7px; padding:6px 10px;
+  font-size:.76rem; color:var(--muted);
+  text-align:center; line-height:1.5;
+  transition:background .2s,color .2s,transform .2s;
+  cursor:default;
+}
+.mm-leaf:hover{background:rgba(255,255,255,.08);color:var(--text);transform:scale(1.03);}
+
+/* ══════════════════════════════════════════════
+   TIMELINE  (Tab 3)
+══════════════════════════════════════════════ */
+.timeline-wrap { max-width:840px; margin:0 auto; }
+
+.timeline {
+  position:relative;
+  padding-right:38px;
+}
+.timeline::before{
+  content:''; position:absolute;
+  right:14px; top:0; bottom:0; width:2px;
+  background:linear-gradient(to bottom,transparent,var(--gold) 4%,rgba(201,168,76,.25) 92%,transparent);
+}
+
+.tl-item{
+  position:relative;
+  padding:0 46px 44px 0;
+}
+.tl-dot{
+  position:absolute; right:6px; top:4px;
+  width:17px; height:17px; border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 4px rgba(201,168,76,.18),0 0 18px rgba(201,168,76,.35);
+  transition:transform .3s,box-shadow .3s; z-index:2;
+}
+.tl-item:hover .tl-dot{
+  transform:scale(1.45);
+  box-shadow:0 0 0 6px rgba(201,168,76,.3),0 0 28px rgba(201,168,76,.55);
+}
+.tl-dot.major{
+  width:21px;height:21px;right:4px;top:2px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+}
+
+.tl-year{
+  display:inline-block;
+  font-family:'Amiri',serif; font-size:.95rem; font-weight:700;
+  color:var(--gold); background:rgba(201,168,76,.1);
+  border:1px solid rgba(201,168,76,.3);
+  padding:2px 13px; border-radius:18px; margin-bottom:6px;
+}
+.tl-event{
+  font-size:.98rem; font-weight:700; color:white;
+  margin-bottom:5px; font-family:'Amiri',serif;
+}
+.tl-desc{
+  font-size:.86rem; color:var(--muted); line-height:1.85;
+}
+.tl-desc b{color:#c0bdb5;}
+
+/* ══════════════════════════════════════════════
+   TREATIES  (Tab 4)
+══════════════════════════════════════════════ */
+.treaties-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:20px;
+}
+
+.treaty-card{
+  background:var(--card2);
+  border:1px solid rgba(255,255,255,.055);
+  border-right:4px solid var(--gold);
+  border-radius:12px; padding:22px;
+  transition:transform .3s,box-shadow .3s;
+  position:relative; overflow:hidden;
+}
+.treaty-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.45);}
+.treaty-card::before{
+  content:'📜'; position:absolute;
+  top:14px; left:18px; font-size:1.4rem; opacity:.18;
+}
+
+.treaty-year{
+  display:inline-block;
+  background:rgba(201,168,76,.15);
+  border:1px solid rgba(201,168,76,.35);
+  color:var(--gold); padding:2px 12px;
+  border-radius:16px; font-size:.78rem; font-weight:700;
+  margin-bottom:8px;
+}
+.treaty-name{
+  font-family:'Amiri',serif; font-size:1.1rem;
+  font-weight:700; color:white; margin-bottom:4px;
+}
+.treaty-parties{
+  font-size:.8rem; color:var(--muted);
+  margin-bottom:12px; padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.treaty-pts{list-style:none;padding:0;}
+.treaty-pts li{
+  padding:5px 0; font-size:.84rem; color:#c0bdb5;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  display:flex; gap:8px; align-items:flex-start; line-height:1.7;
+}
+.treaty-pts li:last-child{border-bottom:none;}
+.treaty-pts li::before{content:'◆';flex-shrink:0;color:var(--gold);font-size:.55rem;margin-top:5px;}
+.treaty-pts li b{color:white;}
+
+/* ══════════════════════════════════════════════
+   FIGURES  (Tab 5)
+══════════════════════════════════════════════ */
+.figures-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+
+.figure-card{
+  background:var(--card2);
+  border:1px solid rgba(255,255,255,.055);
+  border-radius:14px; overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.figure-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.45);}
+
+.figure-head{
+  padding:18px 20px 14px;
+  display:flex; align-items:center; gap:14px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.figure-avatar{
+  width:50px;height:50px; border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem; flex-shrink:0;
+  border:2px solid rgba(201,168,76,.3);
+  background:rgba(201,168,76,.08);
+}
+.figure-name{
+  font-family:'Amiri',serif; font-size:1.05rem;
+  font-weight:700; color:white; margin-bottom:2px;
+}
+.figure-role{
+  font-size:.78rem; color:var(--gold); font-weight:600;
+}
+.figure-body{
+  padding:14px 20px;
+}
+.figure-body ul{list-style:none;padding:0;}
+.figure-body ul li{
+  padding:5px 0; font-size:.85rem; color:#c0bdb5;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  display:flex; gap:8px; align-items:flex-start; line-height:1.7;
+}
+.figure-body ul li:last-child{border-bottom:none;}
+.figure-body ul li::before{content:'◀';flex-shrink:0;color:var(--gold);font-size:.55rem;margin-top:5px;}
+.figure-body ul li b{color:white;}
+
+/* ══════════════════════════════════════════════
+   COMPARE TABLE  (Tab 6)
+══════════════════════════════════════════════ */
+.compare-wrap{overflow-x:auto;}
+.compare-table{
+  width:100%; border-collapse:collapse; min-width:600px;
+}
+.compare-table th{
+  background:var(--navy);
+  color:var(--gold); padding:12px 18px;
+  font-size:.88rem; font-weight:700; text-align:right;
+  border-bottom:2px solid rgba(201,168,76,.3);
+}
+.compare-table td{
+  padding:11px 18px; font-size:.86rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  vertical-align:top; line-height:1.75; color:#c0bdb5;
+}
+.compare-table tr:hover td{background:rgba(255,255,255,.025);}
+.compare-table td:first-child{color:white;font-weight:600;}
+.compare-table td b{color:white;}
+
+.compare-section-title{
+  font-family:'Amiri',serif; font-size:1.3rem;
+  color:var(--gold); margin:32px 0 16px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(201,168,76,.2);
+}
+
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+footer{
+  text-align:center; padding:40px 32px;
+  border-top:1px solid var(--border);
+  color:var(--muted); font-size:.8rem;
+}
+footer span{color:var(--gold);}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media(max-width:768px){
+  .hero{padding:70px 18px 50px;}
+  .hero-stats{gap:14px;}
+  .panel-inner{padding:36px 18px 60px;}
+  .cards-grid{grid-template-columns:1fr;}
+  .treaties-grid{grid-template-columns:1fr;}
+  .figures-grid{grid-template-columns:1fr;}
+  .tab-btn{padding:13px 14px;font-size:.78rem;}
+  .mm-branch{min-width:160px;max-width:200px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="ring ring-a"></div>
+  <div class="ring ring-b"></div>
+
+  <div class="hero-badge">الفصل الثاني &nbsp;•&nbsp; التاريخ المصري الحديث</div>
+
+  <h1>مصر في عهد<br><em>محمد علي وخلفائه</em></h1>
+
+  <p class="hero-sub">
+    من خروج الحملة الفرنسية ١٨٠١ حتى خلع الخديوي إسماعيل ١٨٧٩ —
+    بناء الدولة الحديثة، الحروب والتوسعات، والمعاهدات الدولية الكبرى
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-n">٧٨</span><div class="stat-l">سنة من التاريخ</div></div>
+    <div class="stat"><span class="stat-n">١٢+</span><div class="stat-l">معاهدة وفرمان</div></div>
+    <div class="stat"><span class="stat-n">٥</span><div class="stat-l">حروب وتوسعات</div></div>
+    <div class="stat"><span class="stat-n">٤</span><div class="stat-l">حكام بارزون</div></div>
+  </div>
+
+  <a class="hero-cta" href="#tabs" onclick="document.getElementById('tabs').scrollIntoView({behavior:'smooth'});return false;">
+    ابدأ الدراسة ←
+  </a>
+
+  <div class="scroll-hint">
+    <span>مرّر للأسفل</span>
+    <div class="scroll-bar"></div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     TABS BAR
+══════════════════════════════════════════ -->
+<div class="tabs-wrapper" id="tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="switchTab(this,'t-summary')">
+      <span class="tab-icon">📚</span> الملخص التفصيلي
+    </button>
+    <button class="tab-btn" onclick="switchTab(this,'t-mindmap')">
+      <span class="tab-icon">🗺️</span> الخريطة الذهنية
+    </button>
+    <button class="tab-btn" onclick="switchTab(this,'t-timeline')">
+      <span class="tab-icon">📅</span> الخط الزمني
+    </button>
+    <button class="tab-btn" onclick="switchTab(this,'t-treaties')">
+      <span class="tab-icon">📜</span> المعاهدات والفرمانات
+    </button>
+    <button class="tab-btn" onclick="switchTab(this,'t-figures')">
+      <span class="tab-icon">👤</span> الشخصيات
+    </button>
+    <button class="tab-btn" onclick="switchTab(this,'t-compare')">
+      <span class="tab-icon">⚖️</span> المقارنات
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 1 — SUMMARY
+══════════════════════════════════════════════════════════ -->
+<div class="tab-panel active" id="t-summary">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-label">ملخص تفصيلي</div>
+      <h2 class="panel-title">أبرز المحاور والموضوعات</h2>
+      <div class="panel-line"></div>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="card c-red">
+        <div class="card-icon">⚔️</div>
+        <h3>القوى الثلاث وصعود محمد علي</h3>
+        <ul>
+          <li>بعد خروج الحملة الفرنسية ١٨٠١ تصارعت ثلاث قوى: <b>العثمانيون، الإنجليز، المماليك</b></li>
+          <li>الإنجليز أرادوا تأمين طريق الهند والسيطرة على وادي النيل</li>
+          <li>العثمانيون أرسلوا فرق الدالة المتهورة فزاد السخط على خورشيد</li>
+          <li>محمد علي كسب ثقة الشعب بالانضمام للعلماء والتعهد برفع الضرائب</li>
+          <li><b>مايو ١٨٠٥:</b> اجتمع العلماء في دار المحكمة — أول صك اجتماعي في الوطن العربي</li>
+          <li>أقنع العلماء السلطان بتثبيته حين حاولت إنجلترا نقله لسالونيك ١٨٠٦</li>
+          <li><b>مذبحة القلعة ١٨١١:</b> انفرد بالحكم نهائياً بعد القضاء على المماليك</li>
+        </ul>
+      </div>
+
+      <div class="card c-gold">
+        <div class="card-icon">💰</div>
+        <h3>نظام الاحتكار الاقتصادي</h3>
+        <ul>
+          <li>سيطرة الدولة الكاملة على <b>الزراعة والصناعة والتجارة</b> والنقل</li>
+          <li>إلغاء نظام الالتزام ومصادرة أراضي الملتزمين (١٨٠٨—١٨١٤)</li>
+          <li>إنشاء القناطر الخيرية وشق الترع → تحويل الوجه البحري للري الدائم</li>
+          <li>إدخال محاصيل جديدة: التوت للقز، النيلة الهندية، تحسين القطن</li>
+          <li>مصانع حكومية كبيرة مرتبطة باحتياجات الجيش والأسطول</li>
+          <li>هدف الاحتكار: <b>فائض في الميزان التجاري</b> للمنافسة دولياً</li>
+          <li>انتهى بموجب <b>بلطة ليمان ١٨٣٨</b> المطبَّقة قسراً ١٨٤٠</li>
+        </ul>
+      </div>
+
+      <div class="card c-blue">
+        <div class="card-icon">🎓</div>
+        <h3>التعليم والبعثات وبناء الدولة</h3>
+        <ul>
+          <li>مدارس متخصصة (١٨١٦—١٨٣٩): الطب، الهندسة، الزراعة، الصيدلة، الفنون</li>
+          <li>بعثات لأوروبا (١٨١٣—١٨٤٧): إيطاليا وفرنسا وإنجلترا والنمسا</li>
+          <li><b>رفاعة الطهطاوي ١٨٢٦</b> — إمام أول بعثة كبيرة — أسّس مدرسة الألسن ١٨٣٦</li>
+          <li><b>ديوان المدارس ١٨٣٧</b> — أول وزارة تعليم في تاريخ مصر</li>
+          <li>٧ مديريات متساوية بدلاً من ١٦ إقليماً — نظام إداري هرمي</li>
+          <li>مجلس المشورة ١٨٢٩، المجلس العالي ١٨٣٤، القانون الأساسي ١٨٣٧</li>
+          <li>نقد: <b>حكم مطلق فردي</b> — الهيئات كانت مجرد تنفيذ لأوامره</li>
+        </ul>
+      </div>
+
+      <div class="card c-teal">
+        <div class="card-icon">⚓</div>
+        <h3>القوة العسكرية والأسطول</h3>
+        <ul>
+          <li>جيش نظامي بدلاً من الفرق المرتزقة — الجيش أداة للتقدم والعمران</li>
+          <li>محاولة تدريب الأتراك ١٨١٥ فشلت بالتمرد — نجح المصريون ١٨٢٤</li>
+          <li>المدرسة الحربية في أسوان ١٨٢٠ بقيادة <b>سليمان باشا الفرنساوي</b></li>
+          <li>الأسطول: ترسانة بولاق ١٨١٠ ثم الإسكندرية — بعثات بحرية لأوروبا</li>
+          <li>مصانع الأسلحة في القلعة والحوض المرصود وجزيرة الروضة</li>
+          <li>قلاع في الإسكندرية ورشيد ودمياط لتأمين الحدود</li>
+          <li>انتعاش الصناعات الحربية بسبب <b>حرب القرم ١٨٥٣</b> في عهد عباس وسعيد</li>
+        </ul>
+      </div>
+
+      <div class="card c-purple">
+        <div class="card-icon">🌍</div>
+        <h3>الحروب والتوسعات الخارجية</h3>
+        <ul>
+          <li><b>الجزيرة العربية ١٨١١—١٨١٨:</b> بأمر السلطان — إسقاط الدولة السعودية الأولى</li>
+          <li><b>السودان ١٨٢٠:</b> المجال الحيوي الجنوبي — بناء الخرطوم عاصمة ١٨٣٠</li>
+          <li><b>اليونان ١٨٢٤—١٨٢٨:</b> ضم كريت — أول مشاركة للجنود المصريين</li>
+          <li><b>الشام ١٨٣١:</b> عكا ← دمشق ← حمص ← الأناضول — صلح كوتاهية ١٨٣٣</li>
+          <li><b>نزيب يونيو ١٨٣٩:</b> هزيمة ساحقة للعثمانيين + تسليم الأسطول</li>
+          <li>ارتفع شأن مصر دولياً — التفاوض معها مباشرة كأول مظاهر الاستقلال</li>
+          <li>إسماعيل: توسع جنوبي أفريقي — هزيمة في الحبشة ١٨٧٥ → أزمة مالية</li>
+        </ul>
+      </div>
+
+      <div class="card c-green">
+        <div class="card-icon">👑</div>
+        <h3>عصر الخلفاء — عباس، سعيد، إسماعيل</h3>
+        <ul>
+          <li><b>عباس الأول (١٨٤٨—١٨٥٤):</b> أغلق المدارس — الأرناؤوط في الجيش — أنشأ سكة الحديد الإسكندرية—القاهرة</li>
+          <li><b>سعيد باشا (١٨٥٤—١٨٦٣):</b> امتياز السويس لديليسبس — تجنيد إجباري على الجميع — إلغاء الدخولية</li>
+          <li>حرب القرم ١٨٥٣—١٨٥٦: روسيا × العثمانيين — انتعشت الصناعات الحربية</li>
+          <li><b>إسماعيل:</b> مشروع الاستقلال عبر رشوة السلطان وفؤاد باشا بالفرمانات ١٨٦٦—١٨٧٣</li>
+          <li>إسماعيل: جمعية المعارف ١٨٦٨ — دار الكتب ١٨٧٠ — الجمعية الجغرافية ١٨٧٥</li>
+          <li><b>قانون المقابلة ١٨٧١:</b> من يدفع ٦ أمثال الضريبة يملك الأرض ملكية تامة</li>
+          <li>ديون + حرب الحبشة ١٨٧٥ → تدخل أوروبي → <b>خلع إسماعيل ١٨٧٩</b></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 2 — MIND MAP
+══════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="t-mindmap">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-label">خريطة ذهنية</div>
+      <h2 class="panel-title">محاور الفصل الرئيسية</h2>
+      <div class="panel-line"></div>
+    </div>
+
+    <div class="mindmap">
+      <div class="mm-center">
+        مصر في عهد محمد علي وخلفائه
+        <div style="font-size:.8rem;opacity:.75;margin-top:3px;">١٨٠١ — ١٨٧٩ م</div>
+      </div>
+      <div class="mm-vline"></div>
+
+      <!-- Row 1 -->
+      <div class="mm-row">
+        <div class="mm-branch">
+          <div class="mm-node nr">⚔️ الوصول للسلطة</div>
+          <div class="mm-cline lr"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">ثورة الشعب ضد المماليك ١٨٠٤</div>
+            <div class="mm-leaf">تولية مايو ١٨٠٥ — أول صك اجتماعي</div>
+            <div class="mm-leaf">هزيمة حملة فريزر ١٨٠٧</div>
+            <div class="mm-leaf">نفي عمر مكرم ١٨٠٩</div>
+            <div class="mm-leaf">مذبحة القلعة ١٨١١</div>
+          </div>
+        </div>
+        <div class="mm-branch">
+          <div class="mm-node nb">💰 نظام الاحتكار</div>
+          <div class="mm-cline lb"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">الزراعة: القناطر + محاصيل جديدة</div>
+            <div class="mm-leaf">الصناعة: مصانع حكومية + بعثات</div>
+            <div class="mm-leaf">التجارة: احتكار داخلي وخارجي</div>
+            <div class="mm-leaf">النقل: أسطول + موانئ + طرق</div>
+            <div class="mm-leaf">سقط بـ بلطة ليمان ١٨٤٠</div>
+          </div>
+        </div>
+        <div class="mm-branch">
+          <div class="mm-node nt">🌍 الحروب والتوسع</div>
+          <div class="mm-cline lt"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">الجزيرة العربية ١٨١١ — الوهابيون</div>
+            <div class="mm-leaf">السودان ١٨٢٠ — الخرطوم ١٨٣٠</div>
+            <div class="mm-leaf">اليونان ١٨٢٤ — ضم كريت</div>
+            <div class="mm-leaf">الشام ١٨٣١ — أدنة والأناضول</div>
+            <div class="mm-leaf">نزيب ١٨٣٩ — هزيمة العثمانيين</div>
+          </div>
+        </div>
+        <div class="mm-branch">
+          <div class="mm-node np">🎓 التعليم والإدارة</div>
+          <div class="mm-cline lp"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">مدارس ١٨١٦ — طب، هندسة، زراعة</div>
+            <div class="mm-leaf">الطهطاوي ١٨٢٦ — مدرسة الألسن ١٨٣٦</div>
+            <div class="mm-leaf">ديوان المدارس ١٨٣٧ — أول وزارة تعليم</div>
+            <div class="mm-leaf">٧ مديريات — نظام إداري هرمي</div>
+            <div class="mm-leaf">حكم مطلق — الهيئات صورية</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mm-vline" style="height:22px;"></div>
+
+      <!-- Row 2 -->
+      <div class="mm-row" style="max-width:850px;">
+        <div class="mm-branch">
+          <div class="mm-node ng">📜 المعاهدات الكبرى</div>
+          <div class="mm-cline lg"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">صلح أميان ١٨٠٢</div>
+            <div class="mm-leaf">صلح كوتاهية ١٨٣٣</div>
+            <div class="mm-leaf">بلطة ليمان ١٨٣٨ — إلغاء الاحتكار</div>
+            <div class="mm-leaf">تسوية لندن ١٨٤٠ — نكبة كبرى</div>
+            <div class="mm-leaf">فرماني ١٨٤١ — تقييد مصر</div>
+          </div>
+        </div>
+        <div class="mm-branch">
+          <div class="mm-node no">👑 عصر الخلفاء</div>
+          <div class="mm-cline lo"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">عباس: إغلاق المدارس — سكة الحديد</div>
+            <div class="mm-leaf">سعيد: امتياز السويس ١٨٥٤</div>
+            <div class="mm-leaf">إسماعيل: فرمانات ١٨٦٦—١٨٧٣</div>
+            <div class="mm-leaf">قانون المقابلة ١٨٧١</div>
+            <div class="mm-leaf">افتتاح السويس ١٨٦٩ — خلع ١٨٧٩</div>
+          </div>
+        </div>
+        <div class="mm-branch">
+          <div class="mm-node nk">👥 الشخصيات المحورية</div>
+          <div class="mm-cline lk"></div>
+          <div class="mm-leaves">
+            <div class="mm-leaf">محمد علي — مؤسس مصر الحديثة</div>
+            <div class="mm-leaf">عمر مكرم — الزعامة الشعبية</div>
+            <div class="mm-leaf">إبراهيم باشا — القائد العسكري</div>
+            <div class="mm-leaf">الطهطاوي — وسيط حضاري</div>
+            <div class="mm-leaf">إسماعيل — مشروع الاستقلال</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 3 — TIMELINE
+══════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="t-timeline">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-label">الخط الزمني</div>
+      <h2 class="panel-title">التسلسل التاريخي الكامل</h2>
+      <div class="panel-line"></div>
+    </div>
+
+    <div class="timeline-wrap">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٠١ م</div>
+          <div class="tl-event">خروج الحملة الفرنسية من مصر</div>
+          <div class="tl-desc">تركت فراغاً سياسياً كبيراً. بدأ التنافس فوراً بين <b>العثمانيين والإنجليز والمماليك</b> على السيطرة.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">مارس ١٨٠٢</div>
+          <div class="tl-event">صلح أميان — فرنسا × إنجلترا</div>
+          <div class="tl-desc">نصّ على خروج الإنجليز من مصر لكنهم ماطلوا حتى <b>مارس ١٨٠٣</b>. بعد خروجهم تجدد القتال بين المماليك والعثمانيين.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٠٤ م</div>
+          <div class="tl-event">ثورة الشعب المصري ضد المماليك</div>
+          <div class="tl-desc">بسبب سوء الأحوال وزيادة الضرائب. انتهز محمد علي الفرصة وانضم للعلماء والمشايخ ضد المماليك.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot major"></div>
+          <div class="tl-year">مايو ١٨٠٥ ★</div>
+          <div class="tl-event">تولية محمد علي حكم مصر</div>
+          <div class="tl-desc">اجتمع العلماء في دار المحكمة وعزلوا خورشيد وولّوا محمد علياً. <b>أول صك اجتماعي في مصر والعالم العربي</b> — أخذوا عليه العهود بالعدل والمشورة.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٠٦ م</div>
+          <div class="tl-event">المحاولة الإنجليزية لإزاحة محمد علي</div>
+          <div class="tl-desc">طلبت إنجلترا من السلطان تعيين والٍ آخر ونقل محمد علي لسالونيك. تمسّكت الزعامة الشعبية بمحمد علي وأقنعت السلطان بتثبيته.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٠٧ م</div>
+          <div class="tl-event">الحملة الإنجليزية (فريزر) — الهزيمة في رشيد</div>
+          <div class="tl-desc">أرسلت إنجلترا حملة بحرية للاستيلاء على مصر. وقع عبء المقاومة على المصريين بقيادة <b>عمر مكرم</b> في رشيد والحماد — انسحب الإنجليز مقابل الإفراج عن الأسرى.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٠٨ — ١٨٠٩</div>
+          <div class="tl-event">نفي عمر مكرم — نهاية الزعامة الشعبية</div>
+          <div class="tl-desc">استغل محمد علي أزمة الفيضان وزيادة الضرائب. <b>نفى عمر مكرم إلى دمياط ١٨٠٩</b> وعيّن السادات نقيباً مطيعاً — انفرد بالسلطة دون وصاية.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot major"></div>
+          <div class="tl-year">١٨١١ م ★</div>
+          <div class="tl-event">مذبحة القلعة — القضاء النهائي على المماليك</div>
+          <div class="tl-desc">دعا المماليك لحفل في القلعة ثم <b>أمر بمحاصرتهم وقتلهم</b>. انفرد بحكم مصر وبدأ في بناء القوة الذاتية.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨١١ — ١٨١٨</div>
+          <div class="tl-event">الحرب الوهابية في الجزيرة العربية</div>
+          <div class="tl-desc">بأمر السلطان لإسقاط الدولة السعودية الأولى. نجح <b>إبراهيم باشا</b> مما رفع مكانة مصر في الحجاز ونجد وعسير — بداية فكرة الرابطة العربية.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٢٠ م</div>
+          <div class="tl-event">ضم السودان — المجال الحيوي الجنوبي</div>
+          <div class="tl-desc">لأسباب عسكرية واقتصادية وجغرافية. <b>بناء الخرطوم عاصمة ١٨٣٠</b> — توحيد أجزاء السودان لأول مرة — محمد علي أول من حافظ على أمن مصر المائي.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٢٤ — ١٨٢٨</div>
+          <div class="tl-event">حرب اليونان — ضم كريت</div>
+          <div class="tl-desc">بطلب السلطان لقمع ثورة اليونان. <b>أول مشاركة للجنود المصريين</b> — ضم كريت — ارتفع شأن مصر دولياً وتم التفاوض معها مباشرة.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot major"></div>
+          <div class="tl-year">١٨٣١ — ١٨٣٣ ★</div>
+          <div class="tl-event">حرب الشام الأولى — من عكا إلى الأناضول</div>
+          <div class="tl-desc">دخلت القوات المصرية <b>عكا ← دمشق ← حمص ← الأناضول وأدنة</b> واتجهت نحو إسطنبول. أوسع رقعة جغرافية لمصر — انتهت بصلح كوتاهية ١٨٣٣.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">يوليو ١٨٣٣</div>
+          <div class="tl-event">المعاهدة الروسية العثمانية</div>
+          <div class="tl-desc">معاهدة دفاعية هجومية بين روسيا والسلطان ضد محمد علي. دفعته للتفكير في الاستقلال التام، لكن الدول الأوروبية حذّرته.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">أغسطس ١٨٣٨</div>
+          <div class="tl-event">معاهدة بلطة ليمان — ضربة الاحتكار</div>
+          <div class="tl-desc">بريطانيا والدولة العثمانية تنصان على <b>إلغاء الاحتكار الاقتصادي</b> في مصر. رفض محمد علي — أُلزم بها ١٨٤٠ بعد تحالف الدول ضده.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">يونيو ١٨٣٩</div>
+          <div class="tl-event">معركة نزيب — الانتصار الأخير</div>
+          <div class="tl-desc">هزيمة ساحقة للجيش العثماني شمال حلب. <b>سلّم قائد الأسطول العثماني أسطوله دون قتال</b> — لكن النصر أثار الدول الأوروبية وعجّل بتدخلها.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot major"></div>
+          <div class="tl-year">يوليو ١٨٤٠ ★</div>
+          <div class="tl-event">تسوية لندن — النكبة الكبرى</div>
+          <div class="tl-desc">الدول الأوروبية والسلطان ضد محمد علي. <b>حكم مصر وراثياً مقابل إخلاء الشام وكريت والحجاز وأدنة + جزية سنوية + ١٨ ألف جندي فقط</b>. الميزة: شخصية دولية لمصر.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">فبراير ويونيه ١٨٤١</div>
+          <div class="tl-event">فرماني ١٨٤١ — تقييد مصر</div>
+          <div class="tl-desc">تبعية كاملة + ربع الإيرادات للسلطان + ١٨ ألف جندي فقط + تنفيذ كل معاهدات السلطان. <b>أخّرا استقلال مصر عن العثمانيين لعقود</b>.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">١٨٥٤ م</div>
+          <div class="tl-event">امتياز قناة السويس — سعيد باشا</div>
+          <div class="tl-desc">منح سعيد باشا صديقه الفرنسي <b>فرديناند ديليسبس</b> امتياز القناة ٩٩ سنة بشروط مجحفة. بدأ العمل ١٨٥٩.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot major"></div>
+          <div class="tl-year">١١ نوفمبر ١٨٦٩ ★</div>
+          <div class="tl-event">افتتاح قناة السويس</div>
+          <div class="tl-desc">حفل عالمي كبير في عهد الخديوي إسماعيل. <b>أحيت الأهمية الاستراتيجية لمصر</b> لكنها أثقلت ديونها وعجّلت بالتدخل الأجنبي.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">يونيه ١٨٧٣</div>
+          <div class="tl-event">فرمان ١٨٧٣ — الفرمان الشامل</div>
+          <div class="tl-desc">استقلال مصر في كل شيء ما عدا: المعاهدات السياسية والتمثيل الدبلوماسي وصناعة المدرعات والجزية. <b>استقلال ناقص</b> حصل عليه إسماعيل بالرشوة.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot major"></div>
+          <div class="tl-year">١٨٧٩ م ★</div>
+          <div class="tl-event">خلع الخديوي إسماعيل — نهاية عصر</div>
+          <div class="tl-desc">بضغط أوروبي على السلطان بسبب الديون وهزيمة الحبشة ١٨٧٥. <b>تولى توفيق</b> — فتح الباب للاحتلال البريطاني ١٨٨٢.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 4 — TREATIES
+══════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="t-treaties">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-label">المعاهدات والفرمانات</div>
+      <h2 class="panel-title">كل الاتفاقيات الدولية بالتفصيل</h2>
+      <div class="panel-line"></div>
+    </div>
+
+    <div class="treaties-grid">
+
+      <div class="treaty-card">
+        <div class="treaty-year">مارس ١٨٠٢ م</div>
+        <div class="treaty-name">صلح أميان</div>
+        <div class="treaty-parties">الأطراف: فرنسا × إنجلترا</div>
+        <ul class="treaty-pts">
+          <li>ينص على خروج الإنجليز من مصر — ماطلوا حتى مارس ١٨٠٣</li>
+          <li>بعد الخروج: تجدّد القتال بين المماليك والعثمانيين</li>
+          <li>استفاد المماليك الأكثر — احتلوا المنيا وسيطروا على النيل</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-year">مايو ١٨٣٣ م</div>
+        <div class="treaty-name">صلح كوتاهية</div>
+        <div class="treaty-parties">الأطراف: السلطان العثماني × محمد علي</div>
+        <ul class="treaty-pts">
+          <li>صلح مؤقت — خدعة سياسية — فرصة لالتقاط الأنفاس</li>
+          <li>بسط نفوذ مصر على الشام + أدنة + كريت + الحجاز + معظم الجزيرة</li>
+          <li>دليل على ضعف السلطان أمام محمد علي</li>
+          <li><b>أعقبه</b> تسلّح السلطان بالمعاهدة الروسية العثمانية يوليو ١٨٣٣</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-year">يوليو ١٨٣٣ م</div>
+        <div class="treaty-name">المعاهدة الروسية العثمانية</div>
+        <div class="treaty-parties">الأطراف: روسيا × الدولة العثمانية</div>
+        <ul class="treaty-pts">
+          <li>معاهدة دفاعية هجومية — كل طرف يساعد الآخر أمام الخطر</li>
+          <li>السبب: زيادة نفوذ محمد علي وتهديده للسلطان</li>
+          <li>دفعت محمد علي للتفكير في الاستقلال التام ١٨٣٤</li>
+          <li>حذّرته الدول الأوروبية من الاستقلال</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-year">أغسطس ١٨٣٨ م (تطبيق ١٨٤٠)</div>
+        <div class="treaty-name">معاهدة بلطة ليمان</div>
+        <div class="treaty-parties">الأطراف: بريطانيا × الدولة العثمانية (وافقت فرنسا)</div>
+        <ul class="treaty-pts">
+          <li>تنص على <b>إلغاء نظام الاحتكار</b> الذي يتبعه محمد علي في مصر</li>
+          <li>السبب: الاحتكار يعيق تصريف البضائع الأوروبية بعد الثورة الصناعية</li>
+          <li>رفض محمد علي تنفيذها — أُلزم بها بعد تسوية لندن</li>
+          <li><b>النتيجة:</b> سقوط نظام الاحتكار — الباب المفتوح أمام البضائع الأوروبية</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card" style="border-right-color:#e74c3c;">
+        <div class="treaty-year" style="background:rgba(192,57,43,.15);border-color:rgba(192,57,43,.4);color:#e74c3c;">يوليو ١٨٤٠ م ★</div>
+        <div class="treaty-name">تسوية لندن — النكبة الكبرى</div>
+        <div class="treaty-parties">الأطراف: الدول الأوروبية (ما عدا فرنسا) + السلطان — ضد محمد علي</div>
+        <ul class="treaty-pts">
+          <li>حكم مصر وراثياً لأبناء محمد علي + عكا طوال حياته</li>
+          <li><b>إخلاء الشام وكريت والحجاز وأدنة</b> + إعادة الأسطول للسلطان</li>
+          <li>دفع جزية سنوية + القوات في خدمة السلطان + ١٨ ألف جندي فقط</li>
+          <li>الالتزام بتطبيق بلطة ليمان وكل معاهدات السلطان</li>
+          <li>إذا رفض ١٠ أيام: يُحرم من عكا — ١٠ أيام أخرى: يُحرم من مصر</li>
+          <li><b>الميزة الوحيدة:</b> منحت مصر شخصية دولية مستقلة</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card" style="border-right-color:#e74c3c;">
+        <div class="treaty-year" style="background:rgba(192,57,43,.15);border-color:rgba(192,57,43,.4);color:#e74c3c;">فبراير ويونيه ١٨٤١ م</div>
+        <div class="treaty-name">فرماني ١٨٤١</div>
+        <div class="treaty-parties">من: السلطان العثماني — إلى: محمد علي ومصر</div>
+        <ul class="treaty-pts">
+          <li>حكام مصر يتلقون فرمان الولاية من السلطان — تبعية كاملة</li>
+          <li>تُضرب النقود وتُجمع الضرائب باسم السلطان</li>
+          <li>ترسل مصر <b>ربع إيراداتها</b> إلى السلطان</li>
+          <li>لا يزيد الجيش عن ١٨ ألف — لا سفن حربية إلا بإذن</li>
+          <li><b>النتيجة:</b> تأخير استقلال مصر عن السلطنة لعقود</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-year">١٨٥٤ م (افتتاح ١٨٦٩)</div>
+        <div class="treaty-name">امتياز قناة السويس</div>
+        <div class="treaty-parties">سعيد باشا × فرديناند ديليسبس (فرنسا)</div>
+        <ul class="treaty-pts">
+          <li>احتكار الشركة للاستثمار <b>٩٩ سنة</b> من الافتتاح</li>
+          <li>مصر تقدم ٨٠٪ من العمالة الازمة للحفر</li>
+          <li>مصر تحصل على ١٥٪ من الأرباح و٤٤٪ من الأسهم فقط</li>
+          <li>لماذا رفض محمد علي؟ قال: <b>"لا أريد بسفوراً آخر في مصر"</b></li>
+          <li>مظهر للتدخل الأجنبي — شروطه مجحفة للمصريين</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-year">١٨٦٦ — ١٨٧٣ م</div>
+        <div class="treaty-name">فرمانات إسماعيل الأربعة</div>
+        <div class="treaty-parties">مشروع استقلال الخديوي إسماعيل</div>
+        <ul class="treaty-pts">
+          <li><b>فرمان ١٨٦٦:</b> تغيير الوراثة لأبناء إسماعيل + زيادة الجيش لـ ٣٠ ألف + ضرب النقود</li>
+          <li><b>فرمان ١٨٦٧:</b> لقب خديوي (المعظم) + استقلال في الشئون الداخلية والمالية</li>
+          <li><b>فرمان ١٨٧٢:</b> حرية الاستدانة دون الرجوع للسلطان — "القنبلة الاقتصادية"</li>
+          <li><b>فرمان ١٨٧٣ الشامل:</b> استقلال ناقص — ما عدا المعاهدات والجزية والمدرعات</li>
+          <li>حصل عليها برشوة السلطان وفؤاد باشا — رُفعت الجزية من ٤٠٠ إلى ٧٥٠ ألف</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 5 — FIGURES
+══════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="t-figures">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-label">الشخصيات المحورية</div>
+      <h2 class="panel-title">أبطال الحقبة وأدوارهم</h2>
+      <div class="panel-line"></div>
+    </div>
+
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">👑</div>
+          <div>
+            <div class="figure-name">محمد علي باشا</div>
+            <div class="figure-role">مؤسس مصر الحديثة • ١٨٠٥ — ١٨٤٨</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>أصل ألباني — جاء مع الحملة العثمانية لإجلاء الفرنسيين</li>
+          <li><b>وصل للسلطة</b> بالتحالف مع الشعب وخداع خورشيد والمماليك معاً</li>
+          <li>بنى <b>نظام الاحتكار الشامل</b> لتحقيق القوة الذاتية لمصر</li>
+          <li>حروب الجزيرة العربية، السودان، اليونان، الشام</li>
+          <li>أوقفته <b>تسوية لندن ١٨٤٠</b> — فرماني ١٨٤١ قيّدا مصر</li>
+          <li>نقد: حكم مطلق — استخدم العنف والمكر — الهيئات مجرد واجهة</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">🏛️</div>
+          <div>
+            <div class="figure-name">عمر مكرم</div>
+            <div class="figure-role">نقيب الأشراف — زعيم الحركة الشعبية</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>قاد تولية محمد علي ١٨٠٥ وفرض عليه شروط العدل والمشورة</li>
+          <li>رسم خطوط المقاومة ضد الحملة الإنجليزية فريزر في رشيد ١٨٠٧</li>
+          <li>رفض الموافقة على الضرائب التي عرضها محمد علي ١٨٠٨</li>
+          <li><b>نُفي إلى دمياط ١٨٠٩</b> — اغتيل سياسياً بسبب شعبيته المتصاعدة</li>
+          <li>يمثّل أول تجربة ديمقراطية حقيقية في تاريخ مصر الحديث</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">📚</div>
+          <div>
+            <div class="figure-name">رفاعة رافع الطهطاوي</div>
+            <div class="figure-role">مؤسس حركة التنوير المصري</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li><b>١٨٢٦:</b> إمام أول بعثة كبيرة إلى فرنسا</li>
+          <li>استفاد من الثقافة الإنسانية الفرنسية وأدرك قيمة المعارف الأوروبية</li>
+          <li><b>١٨٣٦:</b> اقترح إنشاء مدرسة الألسن لتدريس اللغات والترجمة</li>
+          <li>وسيط حضاري نقل المعارف الغربية لمصر</li>
+          <li>أحد أهم رواد النهضة الثقافية المصرية الحديثة</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">⚔️</div>
+          <div>
+            <div class="figure-name">إبراهيم باشا</div>
+            <div class="figure-role">ابن محمد علي — القائد العسكري الأبرز</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>قاد الحملة ضد الوهابيين في الجزيرة العربية — نجح</li>
+          <li>قاد جيش الشام — دخل عكا ودمشق وحمص وأدنة والأناضول</li>
+          <li>قاد حملة اليونان — تجربة ميدانية قيّمة للجيش المصري</li>
+          <li>توفي بعد أيام قليلة من توليه الحكم خلفاً لأبيه ١٨٤٨</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">🇫🇷</div>
+          <div>
+            <div class="figure-name">سليمان باشا الفرنساوي</div>
+            <div class="figure-role">الكولونيل سيف — منظّم الجيش المصري</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>أحد ضباط جيش نابليون بونابرت — أعلن إسلامه</li>
+          <li>استعان به محمد علي لتدريب ضباط الجيش على النظام الحديث</li>
+          <li>أسّس المدرسة الحربية الأولى في أسوان عام ١٨٢٠</li>
+          <li>يمثل نموذج نقل الخبرة العسكرية الأوروبية لمصر</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">👑</div>
+          <div>
+            <div class="figure-name">الخديوي إسماعيل</div>
+            <div class="figure-role">مشروع الاستقلال • ١٨٦٣ — ١٨٧٩</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>درس في أوروبا وتأثّر بها — مشروعه: استقلال مصر بالدبلوماسية والرشوة</li>
+          <li>حصل على فرمانات ١٨٦٦—١٨٧٣ برشوة السلطان وفؤاد باشا</li>
+          <li>افتتح <b>قناة السويس ١٨٦٩</b> في حفل عالمي</li>
+          <li>أسّس جمعية المعارف، دار الكتب، الجمعية الجغرافية، الجمعية الخيرية</li>
+          <li>حرب الحبشة ١٨٧٥ + ديون متراكمة → <b>خُلع ١٨٧٩</b> بضغط أوروبي</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">🚢</div>
+          <div>
+            <div class="figure-name">فرديناند ديليسبس</div>
+            <div class="figure-role">الدبلوماسي الفرنسي — صاحب مشروع القناة</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>صديق سعيد باشا — استغلّ الصداقة للحصول على امتياز القناة ١٨٥٤</li>
+          <li>احتكار استثمار القناة ٩٩ سنة بشروط مجحفة للمصريين</li>
+          <li>بدأ العمل ١٨٥٩ في عهد سعيد — الافتتاح ١٨٦٩ في عهد إسماعيل</li>
+          <li>يمثل نموذج التغلغل الأجنبي في مصر عبر الاستثمار والعلاقات الشخصية</li>
+        </ul></div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-head">
+          <div class="figure-avatar">🕌</div>
+          <div>
+            <div class="figure-name">خورشيد باشا</div>
+            <div class="figure-role">والي مصر العثماني قبل محمد علي</div>
+          </div>
+        </div>
+        <div class="figure-body"><ul>
+          <li>حاكم الإسكندرية — عيّنه السلطان والياً على مصر</li>
+          <li>أرسل فرق الدالة المتهورين → زاد السخط الشعبي عليه</li>
+          <li>حاول نقل محمد علي لجدة ثم طلب سحب فرق الألبان — رُفض</li>
+          <li><b>عُزل بإرادة الشعب مايو ١٨٠٥</b> — أول مرة بإرادة شعبية لا عسكرية</li>
+        </ul></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 6 — COMPARE
+══════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="t-compare">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-label">مقارنات وتحليلات</div>
+      <h2 class="panel-title">وجوه التشابه والاختلاف</h2>
+      <div class="panel-line"></div>
+    </div>
+
+    <div class="compare-section-title">١ — محمد علي مقابل الخديوي إسماعيل</div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>وجه المقارنة</th><th>محمد علي (١٨٠٥—١٨٤٨)</th><th>الخديوي إسماعيل (١٨٦٣—١٨٧٩)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>الهدف</td><td>بناء القوة الذاتية لمصر</td><td>استقلال مصر عن العثمانيين</td></tr>
+          <tr><td>الأسلوب</td><td>القوة والمواجهة العسكرية</td><td>الدبلوماسية والرشوة والتقارب</td></tr>
+          <tr><td>الاقتصاد</td><td>احتكار شامل — الدولة تُدير كل شيء</td><td>الباب المفتوح بعد بلطة ليمان</td></tr>
+          <tr><td>التعليم</td><td>لخدمة الجيش والاقتصاد</td><td>لبناء دولة على النسق الأوروبي</td></tr>
+          <tr><td>التوسع</td><td>جميع الاتجاهات</td><td>جنوباً وجنوب شرقياً فقط (تجنباً للصدام مع العثمانيين)</td></tr>
+          <tr><td>الجيش</td><td>بناه من الصفر — الجيش أداة للعمران</td><td>طوّر ووسّع — صحيفتان عسكريتان للتثقيف</td></tr>
+          <tr><td>النهاية</td><td>تسوية لندن ١٨٤٠ أوقفت توسعاته</td><td>خُلع ١٨٧٩ بضغط أوروبي</td></tr>
+          <tr><td><b>القاسم المشترك</b></td><td colspan="2"><b>التدخل الأجنبي أوقف مشروع كليهما</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare-section-title">٢ — القوى الثلاث: أهداف وأساليب ونتائج</div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>القوة</th><th>الهدف</th><th>الأسلوب</th><th>النتيجة</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>العثمانيون</td>
+            <td>إعادة بسط النفوذ والقضاء على المماليك</td>
+            <td>إرسال الولاة — فرق الدالة — الفرمانات</td>
+            <td>فشلوا في السيطرة المنفردة — قبلوا تثبيت محمد علي</td>
+          </tr>
+          <tr>
+            <td>الإنجليز</td>
+            <td>تأمين طريق الهند والسيطرة على وادي النيل</td>
+            <td>دعم المماليك — حملة فريزر ١٨٠٧ — الضغط الدبلوماسي</td>
+            <td>هُزموا في رشيد — حققوا أهدافهم الاقتصادية ببلطة ليمان</td>
+          </tr>
+          <tr>
+            <td>المماليك</td>
+            <td>العودة إلى حكم مصر</td>
+            <td>الاستعانة بإنجلترا — الصراع المسلح مع العثمانيين</td>
+            <td>مذبحة القلعة ١٨١١ أنهت وجودهم نهائياً</td>
+          </tr>
+          <tr>
+            <td><b>الشعب المصري</b></td>
+            <td>الاستقرار والعدل ورفع الضرائب</td>
+            <td>الزعامة الشعبية عبر العلماء والمشايخ — الثورات</td>
+            <td>ولّوا محمد علياً لكن نُزعت منهم القوة بعد نفي عمر مكرم</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare-section-title">٣ — آثار سقوط الاحتكار على كل قطاع</div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>القطاع</th><th>في عهد الاحتكار</th><th>بعد سقوط الاحتكار</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>الزراعة</td><td>الدولة توجّه وتلزم — إدخال محاصيل جديدة — الري الدائم</td><td>حرية الزراعة — تأخر وجمود — انتعاش القطن بالطلب الأوروبي</td></tr>
+          <tr><td>الصناعة</td><td>مصانع حكومية كبيرة مرتبطة بالجيش</td><td>إغلاق معظم المصانع — تدهور الحرف — انتعاش بسبب حرب القرم</td></tr>
+          <tr><td>التجارة</td><td>الدولة تحتكر التسويق داخلياً وخارجياً</td><td>البيع في المزاد — التجار الإنجليز يتاجرون — تراجع التاجر المحلي</td></tr>
+          <tr><td>النقل</td><td>بناء الأسطول وإصلاح الموانئ لخدمة الاحتكار</td><td>اتساع المواصلات — سكة حديد — شركتا مالحة في عهد سعيد</td></tr>
+          <tr><td>التعليم</td><td>مدارس وبعثات لخدمة الجيش والاقتصاد</td><td>في عهد عباس: إغلاق المدارس — انتشار المدارس الأجنبية التبشيرية</td></tr>
+          <tr><td>الاجتماع</td><td>تدهور القوى القديمة وظهور طبقات جديدة</td><td>استمرار تدهور التجار والحرفيين — تقوية طبقة الأعيان</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:10px;">
+    <span style="font-family:'Amiri',serif;font-size:1.05rem;color:white;">مصر في عهد محمد علي وخلفائه</span>
+  </div>
+  الفترة الزمنية <span>١٨٠١ — ١٨٧٩</span> م &nbsp;•&nbsp; الفصل الثاني — التاريخ المصري الحديث
+</footer>
+
+<script>
+function switchTab(btn, panelId) {
+  // deactivate all buttons
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  // deactivate all panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  // activate clicked
+  btn.classList.add('active');
+  const panel = document.getElementById(panelId);
+  panel.classList.add('active');
+  // scroll tab bar so active btn is visible
+  btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+// Scroll-reveal animation
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+function observeItems() {
+  document.querySelectorAll('.card, .tl-item, .treaty-card, .figure-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = `opacity .55s ease ${i * 0.06}s, transform .55s ease ${i * 0.06}s`;
+    observer.observe(el);
+  });
+}
+observeItems();
+
+// Re-observe when switching tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => setTimeout(observeItems, 50));
+});
+</script>
+</body>
+</html>

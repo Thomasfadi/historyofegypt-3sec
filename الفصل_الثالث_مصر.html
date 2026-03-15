@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الفصل الثالث — مصر والتدخل الأجنبي والثورة العرابية</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070F;
+    --card: #0e1420;
+    --card2: #111827;
+    --gold: #C9A84C;
+    --gold-light: #e8c96b;
+    --gold-dim: rgba(201,168,76,0.15);
+    --text: #e8e0d0;
+    --text-dim: #9a9080;
+    --red: #c0392b;
+    --blue: #2980b9;
+    --green: #27ae60;
+    --purple: #8e44ad;
+    --orange: #e67e22;
+    --teal: #16a085;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #07070F 0%, #0d1a2e 50%, #07070F 100%);
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid var(--gold-dim);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.8rem;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+  }
+  .hero h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    color: var(--gold-light);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  /* ── TABS ── */
+  .tabs-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7,7,15,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gold-dim);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-wrapper::-webkit-scrollbar { display: none; }
+  .tabs {
+    display: flex;
+    gap: 2px;
+    padding: 0 16px;
+    min-width: max-content;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 14px 18px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.25s;
+    white-space: nowrap;
+    position: relative;
+  }
+  .tab-btn:hover { color: var(--gold-light); }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tab-icon { margin-left: 6px; font-size: 1rem; }
+
+  /* ── PANELS ── */
+  .panel {
+    display: none;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease;
+  }
+  .panel.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 10px auto 0;
+  }
+
+  /* ── SUMMARY CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 22px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 0 12px 12px 0;
+  }
+  .card.c-gold::before  { background: var(--gold); }
+  .card.c-red::before   { background: var(--red); }
+  .card.c-blue::before  { background: var(--blue); }
+  .card.c-green::before { background: var(--green); }
+  .card.c-purple::before{ background: var(--purple); }
+  .card.c-orange::before{ background: var(--orange); }
+  .card.c-teal::before  { background: var(--teal); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .card-icon {
+    font-size: 1.6rem;
+    min-width: 36px;
+    text-align: center;
+  }
+  .card-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .card.c-gold .card-title  { color: var(--gold-light); }
+  .card.c-red .card-title   { color: #e74c3c; }
+  .card.c-blue .card-title  { color: #5dade2; }
+  .card.c-green .card-title { color: #58d68d; }
+  .card.c-purple .card-title{ color: #bb8fce; }
+  .card.c-orange .card-title{ color: #f0a500; }
+  .card.c-teal .card-title  { color: #48c9b0; }
+
+  .card ul { padding-right: 16px; }
+  .card ul li {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 4px;
+    list-style: none;
+    padding-right: 14px;
+    position: relative;
+  }
+  .card ul li::before {
+    content: '◈';
+    position: absolute;
+    right: 0;
+    color: var(--gold-dim);
+    font-size: 0.65rem;
+    top: 4px;
+  }
+  .sub-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 10px 0 4px;
+    border-bottom: 1px dashed var(--gold-dim);
+    padding-bottom: 3px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-right: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--gold), var(--gold), transparent);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+    background: var(--card2);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tl-item:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+  .tl-dot {
+    position: absolute;
+    right: -32px;
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(201,168,76,0.4);
+    border: 2px solid var(--bg);
+  }
+  .tl-year {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .tl-desc {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* ── TREATIES ── */
+  .treaty-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .treaty-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+  }
+  .treaty-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .date-badge {
+    background: var(--gold);
+    color: #07070F;
+    font-weight: 900;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-family: 'Cairo', sans-serif;
+  }
+  .treaty-name {
+    font-family: 'Amiri', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+  .parties {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+  .parties span { color: var(--gold); font-weight: 600; }
+
+  /* ── FIGURES ── */
+  .figures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .figure-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 22px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-align: center;
+  }
+  .figure-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+  }
+  .figure-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-dim), rgba(201,168,76,0.3));
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 12px;
+  }
+  .figure-name {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .figure-role {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    background: var(--gold-dim);
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  .figure-card ul {
+    text-align: right;
+    padding-right: 12px;
+  }
+  .figure-card ul li {
+    font-size: 0.84rem;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 4px;
+    list-style: none;
+    padding-right: 14px;
+    position: relative;
+  }
+  .figure-card ul li::before {
+    content: '▸';
+    position: absolute;
+    right: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  /* ── MIND MAP ── */
+  .mindmap-wrapper {
+    overflow-x: auto;
+    padding: 20px 0;
+  }
+  .mindmap {
+    min-width: 800px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 600px;
+  }
+  .mm-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #b8860b, var(--gold));
+    color: #07070F;
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 20px 28px;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(201,168,76,0.5);
+    z-index: 10;
+    transition: transform 0.3s;
+    cursor: default;
+  }
+  .mm-center:hover { transform: translate(-50%, -50%) scale(1.08); }
+
+  .mm-branch {
+    position: absolute;
+    transition: transform 0.3s;
+  }
+  .mm-branch:hover { transform: scale(1.05); }
+  .mm-node {
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 140px;
+    max-width: 180px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: default;
+  }
+  .mm-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.2);
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-top: 5px;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  /* ── COMPARISONS ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 0.86rem;
+  }
+  .compare-table caption {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-align: right;
+    font-weight: 700;
+  }
+  .compare-table th {
+    background: linear-gradient(135deg, #1a2535, #0e1a28);
+    color: var(--gold);
+    padding: 12px 16px;
+    border: 1px solid rgba(201,168,76,0.2);
+    font-family: 'Amiri', serif;
+    font-size: 0.95rem;
+  }
+  .compare-table td {
+    padding: 10px 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .compare-table tr:hover td { background: var(--gold-dim); }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-left: 4px;
+  }
+  .badge-cause { background: rgba(231,76,60,0.2); color: #e74c3c; }
+  .badge-effect { background: rgba(46,204,113,0.2); color: #2ecc71; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.5rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .figures-grid { grid-template-columns: 1fr; }
+    .mindmap { min-width: 600px; }
+    .panel { padding: 24px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📚 تاريخ — الصف الثالث الثانوي</div>
+  <h1>الفصل الثالث<br>مصر والتدخل الأجنبي والثورة العرابية والاحتلال البريطاني</h1>
+  <p>من عهد إسماعيل حتى نشأة الأحزاب السياسية — شامل لكل الشخصيات والأحداث والمعاهدات والتواريخ</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">٢٠+</span><span class="stat-label">حدث تاريخي</span></div>
+    <div class="stat"><span class="stat-num">١٥+</span><span class="stat-label">شخصية مؤثرة</span></div>
+    <div class="stat"><span class="stat-num">١٠+</span><span class="stat-num" style="font-size:1.3rem">معاهدة واتفاقية</span></div>
+    <div class="stat"><span class="stat-num">١٨٧٦</span><span class="stat-label">بداية التدخل الرسمي</span></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('summary',this)"><span class="tab-icon">📋</span>ملخص تفصيلي</button>
+    <button class="tab-btn" onclick="showTab('mindmap',this)"><span class="tab-icon">🧠</span>خريطة ذهنية</button>
+    <button class="tab-btn" onclick="showTab('timeline',this)"><span class="tab-icon">⏳</span>الخط الزمني</button>
+    <button class="tab-btn" onclick="showTab('treaties',this)"><span class="tab-icon">📜</span>المعاهدات والاتفاقيات</button>
+    <button class="tab-btn" onclick="showTab('figures',this)"><span class="tab-icon">👤</span>الشخصيات</button>
+    <button class="tab-btn" onclick="showTab('compare',this)"><span class="tab-icon">⚖️</span>المقارنات</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- TAB 1: SUMMARY -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="summary" class="panel active">
+  <h2 class="section-title">ملخص تفصيلي — كل المحاور</h2>
+  <div class="cards-grid">
+
+    <div class="card c-gold">
+      <div class="card-header"><div class="card-icon">💰</div><div class="card-title">أسباب الأزمة المالية في عهد إسماعيل</div></div>
+      <div class="sub-title">أسباب الاستدانة</div>
+      <ul>
+        <li>الصرف على الفرمانات السلطانية لتحقيق الاستقلال الذاتي</li>
+        <li>مشروع قناة السويس وحفل الافتتاح المكلف</li>
+        <li>إدخال مظاهر الحضارة الأجنبية وأعباؤها المالية</li>
+        <li>الحروب الخاسرة في الحبشة</li>
+      </ul>
+      <div class="sub-title">الأسباب الحقيقية للتدخل الأجنبي</div>
+      <ul>
+        <li>توسع مصر جنوبًا هدّد النفوذ الأوروبي في شرق أفريقيا</li>
+        <li>الرغبة في السيطرة على قناة السويس ذات الأهمية الاستراتيجية</li>
+        <li><strong>دليل:</strong> حملة إسماعيل على الحبشة 1875 هو نفس عام بدء التدخل الأجنبي</li>
+      </ul>
+    </div>
+
+    <div class="card c-blue">
+      <div class="card-header"><div class="card-icon">🏦</div><div class="card-title">مظاهر التدخل الأجنبي في عهد إسماعيل</div></div>
+      <div class="sub-title">بعثة كيف — أول مظهر للتدخل</div>
+      <ul>
+        <li>استدعى إسماعيل بعثة كيف من بريطانيا لحل الأزمة المالية</li>
+        <li>طلبت فرنسا بعثة فييه موازية حتى لا تنفرد إنجلترا بشؤون مصر</li>
+      </ul>
+      <div class="sub-title">صندوق الدين 1876م — أول هيئة رسمية للتدخل</div>
+      <ul>
+        <li>اقتراح فرنسي لإنشاء صندوق لإرضاء الدائنين</li>
+        <li>خزانة فرعية تتولى استلام المبالغ المخصصة للديون مباشرة</li>
+        <li>يديره مندوبون أجانب تنتدبهم الدول الدائنة — دليل على أنه أول هيئة للتدخل</li>
+      </ul>
+      <div class="sub-title">المجلس الأعلى للمالية — 11 مايو 1876</div>
+      <ul>
+        <li>11 عضوًا: نصفهم أجانب ونصفهم مصريون</li>
+      </ul>
+      <div class="sub-title">المراقبة الثنائية — نوفمبر 1876م</div>
+      <ul>
+        <li>مراقب إنجليزي للإيرادات + مراقب فرنسي للمصروفات</li>
+      </ul>
+    </div>
+
+    <div class="card c-red">
+      <div class="card-header"><div class="card-icon">📋</div><div class="card-title">لجنة التحقيق الأوروبية وفرمان أغسطس 1879</div></div>
+      <div class="sub-title">موقف إسماعيل من اللجنة</div>
+      <ul>
+        <li>يناير 1877م: مرسوم بتشكيل لجنة للتحقيق في عجز الإيرادات</li>
+        <li>مارس 1877م: تعميم اختصاصات اللجنة لتشمل الإيرادات والمصروفات</li>
+        <li>فرض على الوزراء والموظفين تقديم البيانات للجنة</li>
+      </ul>
+      <div class="sub-title">فرمان أغسطس 1879م</div>
+      <ul>
+        <li>إبلاغ الباب العالي بنصوص المعاهدات قبل توقيعها</li>
+        <li>تحديد الجيش بـ 18 ألف جندي فقط (مثل فرمان 1841)</li>
+        <li>عدم عقد قروض جديدة إلا لتسوية القديمة وبموافقة الدائنين</li>
+        <li><strong>نتيجة:</strong> قيّد سلطات الخديوية ومزاياها</li>
+      </ul>
+      <div class="sub-title">اعتراض إنجلترا وفرنسا على الفرمان</div>
+      <ul>
+        <li>ليس عطفًا على إسماعيل، بل حتى لا تزيد سلطة السلطان فتعطل مصالحهم</li>
+      </ul>
+    </div>
+
+    <div class="card c-green">
+      <div class="card-header"><div class="card-icon">⚙️</div><div class="card-title">وزارة رياض باشا ومساوئها</div></div>
+      <div class="sub-title">تشكيل الوزارة</div>
+      <ul>
+        <li>تخلص توفيق من وزارة شريف بناء على رغبة إنجلترا وفرنسا</li>
+        <li>تشكّل وزارة برئاسة توفيق سبتمبر 1879 ثم حلّ رياض باشا محله</li>
+        <li>رياض: ميول للحكم المطلق، معادٍ للدستور، خاضع للنفوذ الأوروبي</li>
+      </ul>
+      <div class="sub-title">إجراءات رياض المثيرة للغضب</div>
+      <ul>
+        <li>بيع حصة مصر (15%) في أرباح قناة السويس لاتحاد ماليين باريس 1880م</li>
+        <li>إلغاء قانون المقابلة يناير 1881م ← تذمر ملاك الأراضي</li>
+        <li>تأليف لجنة دولية مارس 1880م لتصفية الديون</li>
+        <li>بدء العمل بقانون التصفية يوليو 1880م (استمر 24 سنة حتى 1904م)</li>
+      </ul>
+      <div class="sub-title">نتائج عودة المراقبة الثنائية في عهد رياض</div>
+      <ul>
+        <li>عودة المراقبين بسلطات أوسع من الوزراء</li>
+        <li>حق حضور جلسات مجلس الوزراء والاطلاع على الإيرادات والمصروفات</li>
+        <li>رأيهما استشاري شكلًا لكنه نافذ عمليًا</li>
+      </ul>
+    </div>
+
+    <div class="card c-purple">
+      <div class="card-header"><div class="card-icon">🏛️</div><div class="card-title">الحركة الوطنية قبل الثورة العرابية</div></div>
+      <div class="sub-title">جمعية حلوان (الحزب الوطني)</div>
+      <ul>
+        <li>جمعية سرية — نشرت بيان نوفمبر 1879م</li>
+        <li>طالبت باسترداد أملاك الدومين والدائرة السنية</li>
+        <li>إلغاء تخصيص إيرادات السكك الحديدية للدين</li>
+        <li>توحيد الديون بفائدة 4% فقط</li>
+        <li>مراقبة مختلطة 3 أجانب فقط تعينهم حكوماتهم</li>
+      </ul>
+      <div class="sub-title">جمعية مصر الفتاة</div>
+      <ul>
+        <li>تأسست في الإسكندرية وأصدرت جريدة باسمها</li>
+        <li>طالبت الخديوي بالحريات العامة</li>
+      </ul>
+    </div>
+
+    <div class="card c-orange">
+      <div class="card-header"><div class="card-icon">⚔️</div><div class="card-title">أسباب الثورة العرابية</div></div>
+      <div class="sub-title">الأسباب السياسية</div>
+      <ul>
+        <li>ازدياد التدخل الأجنبي وخضوع توفيق للأجانب</li>
+        <li>الحكم المطلق المستبد للخديوي ورياض باشا</li>
+      </ul>
+      <div class="sub-title">الأسباب الاقتصادية</div>
+      <ul>
+        <li>تخصيص أكثر من نصف موارد مصر لسداد الديون</li>
+        <li>تذمر ملاك الأراضي من إلغاء قانون المقابلة</li>
+      </ul>
+      <div class="sub-title">الأسباب العسكرية</div>
+      <ul>
+        <li>سوء معاملة الرؤساء الأتراك وتعسف الشراكسة (عثمان رفقي)</li>
+        <li>قصر الترقية على خريجي المدارس الحربية — مرسوم 31 يوليو 1880م</li>
+        <li>إحالة ضباط للتقاعد توفيرًا للنفقات</li>
+      </ul>
+      <div class="sub-title">السبب المباشر (الشرارة)</div>
+      <ul>
+        <li>نقل الأميرالاي عبد العال حلمي من آلاي طره إلى ديوان الحربية = تنزيل لرتبته</li>
+        <li>تعيين شركسي بدلًا منه ← تجمع الضباط في منزل عرابي يناير 1881م</li>
+      </ul>
+    </div>
+
+    <div class="card c-teal">
+      <div class="card-header"><div class="card-icon">🎯</div><div class="card-title">مراحل الثورة العرابية — تسلسل الأحداث</div></div>
+      <div class="sub-title">حادثة قصر النيل (مظاهرة عابدين الأولى) يناير-فبراير 1881</div>
+      <ul>
+        <li>رفض رياض مطالب الضباط وقبض على الثلاثة: عرابي وعلي فهمي وعبد العال حلمي</li>
+        <li>أثناء المحاكمة: خرج الزملاء وهاجموا القصر ← عزل عثمان رفقي وتعيين البارودي</li>
+      </ul>
+      <div class="sub-title">مطالب مايو 1881م</div>
+      <ul>
+        <li>زيادة الجيش إلى 18,000 جندي</li>
+        <li>تكوين مجلس نواب تكون الوزارة مسؤولة أمامه</li>
+      </ul>
+      <div class="sub-title">مظاهرة عابدين 9 سبتمبر 1881م</div>
+      <ul>
+        <li>مطالب: عزل رياض + تشكيل مجلس نواب + زيادة الجيش إلى 18 ألف</li>
+        <li>نتيجة: عُزل رياض — شكّل شريف الوزارة الثالثة — البارودي وزيرًا للحربية</li>
+      </ul>
+    </div>
+
+    <div class="card c-red">
+      <div class="card-header"><div class="card-icon">🚢</div><div class="card-title">التدخل الأجنبي المباشر وسقوط الثورة</div></div>
+      <div class="sub-title">المذكرة المشتركة الأولى — يناير 1882م</div>
+      <ul>
+        <li>إنجلترا وفرنسا ترى تشكيل مجلس النواب خطرًا على مصالحهما</li>
+        <li>طالبا بحل البرلمان فلم يتمكنا ← طالبا بعدم مناقشة الميزانية</li>
+        <li>احتج شريف باشا رسميًا — رفض العرابيون — تقدم شريف باستقالته</li>
+        <li>تعيين البارودي رئيسًا للوزراء = <strong>وزارة الثورة</strong></li>
+      </ul>
+      <div class="sub-title">مؤامرة الضباط الشراكسة</div>
+      <ul>
+        <li>مؤامرة لاغتيال عرابي وأربعين ضابطًا</li>
+        <li>القبض على المتآمرين ← حكم بالنفي للسودان ← رفض الخديوي التصديق</li>
+        <li>حل وسط: نفيهم خارج مصر دون تجريدهم من الرتب</li>
+      </ul>
+      <div class="sub-title">المذكرة الثانية المشتركة — 11 مايو 1882م</div>
+      <ul>
+        <li>أسباب: شعور القنصلين بأن العرابيين يريدون عزل الخديوي</li>
+        <li>إرسال أسطول إنجليزي-فرنسي إلى الشواطئ المصرية</li>
+        <li>مطالب: استقالة البارودي + خروج عرابي من مصر</li>
+      </ul>
+      <div class="sub-title">مذبحة الإسكندرية — 11 يونيو 1882م</div>
+      <ul>
+        <li>مشاجرة بين مصري وملطي (رعية بريطانية) تحولت إلى معارك</li>
+        <li>اضطربت الأمور ← وزارة جديدة برئاسة راغب باشا 20 يونيو</li>
+      </ul>
+    </div>
+
+    <div class="card c-blue">
+      <div class="card-header"><div class="card-icon">🏳️</div><div class="card-title">الضربة الإنجليزية وسقوط الثورة</div></div>
+      <div class="sub-title">ضرب إنجلترا الإسكندرية — 11 يوليو 1882م</div>
+      <ul>
+        <li>سبب: تحصين عرابي للإسكندرية ورغبة مصر في غلق الميناء</li>
+        <li>نزلت القوات الإنجليزية واحتلت الإسكندرية</li>
+        <li>حاصرت قصر الخديوي ← استسلم لهم</li>
+        <li>انسحب عرابي إلى كفر الدوار لإقامة خط دفاع ثانٍ</li>
+      </ul>
+      <div class="sub-title">معركة كفر الدوار</div>
+      <ul>
+        <li>عرابي يرفض أوامر الخديوي بوقف التحصينات</li>
+        <li>وجّه لتوفيق تهمة الخيانة العظمى ← تشكّل مجلس عرفي لإدارة البلاد</li>
+        <li>انتهت بانتصار عرابي واضطرار الأسطول للاتجاه نحو قناة السويس</li>
+      </ul>
+      <div class="sub-title">معركة التل الكبير — 14 سبتمبر 1882م</div>
+      <ul>
+        <li>خيانة إدارة قناة السويس: سمحت للسفن الإنجليزية بالمرور</li>
+        <li>هزيمة الجيش المصري — احتلال الإنجليز القاهرة</li>
+        <li>استعرض الخديوي الجيش الإنجليزي في ساحة قصر عابدين</li>
+      </ul>
+      <div class="sub-title">أسباب فشل الثورة العرابية</div>
+      <ul>
+        <li>الانقسام في صفوف الأمة بعد فرمان السلطان بعصيان عرابي</li>
+        <li>اختلاط الهدف بين طرد الأجانب وتحدي الخديوي</li>
+        <li>ظهور عناصر انهزامية وطالب بعضهم عرابي بمغادرة البلاد</li>
+        <li>عدم تكافؤ القوتين العسكريتين</li>
+        <li>خيانة إدارة قناة السويس وتسهيل دخول الأسطول الإنجليزي</li>
+        <li>معاداة الدول الكبرى لأي ثورات وطنية قد تقضي على الملكيات</li>
+      </ul>
+    </div>
+
+    <div class="card c-gold">
+      <div class="card-header"><div class="card-icon">🇬🇧</div><div class="card-title">مصر تحت الاحتلال البريطاني</div></div>
+      <div class="sub-title">الأوضاع السياسية</div>
+      <ul>
+        <li>فُقد الاستقلال الذي حاول محمد علي وإسماعيل تحقيقه</li>
+        <li>حل الجيش المصري وإنشاء جيش صغير بقيادة إنجليزية</li>
+        <li>القانون الأساسي 1883م: سلطة صورية للخديوي + فعلية للإنجليز</li>
+        <li>إلغاء المراقبة الثنائية ← عداء فرنسا</li>
+        <li>إلغاء مجلس شورى النواب ← مجالس صورية</li>
+        <li>اللورد كرومر "إيفلن بارنج" أول معتمد بريطاني — حكم 24 سنة</li>
+      </ul>
+      <div class="sub-title">السياسة الزراعية</div>
+      <ul>
+        <li>تحسين الري والصرف — استكمال القنوات — إصلاح القناطر الخيرية</li>
+        <li>إنشاء خزان أسوان وقناطر إسنا وزفتي وأسيوط</li>
+        <li>اهتمام بالقطن (محصول صيفي يخدم المصانع الإنجليزية)</li>
+        <li>إهمال المحاصيل الشتوية ← عجز في الاستهلاك المحلي</li>
+      </ul>
+      <div class="sub-title">إهمال الصناعة</div>
+      <ul>
+        <li>ضريبة 8% على المنسوجات ← توقف صناعة القطن</li>
+        <li>إغلاق مصانع المدافع والذخيرة — تدهور الصناعات الصغيرة</li>
+        <li>إلغاء طوائف الحرف 1891م</li>
+        <li>خطر البنك الأهلي: احتكر الأوراق المالية وربط الجنيه المصري بالإسترليني</li>
+      </ul>
+      <div class="sub-title">التعليم</div>
+      <ul>
+        <li>أصبح بمصروفات عالية بعد أن كان مجانيًا</li>
+        <li>دانلوب وضع أسسًا أماتت روح الابتكار وأنشأت الفرد على الخضوع</li>
+      </ul>
+    </div>
+
+    <div class="card c-purple">
+      <div class="card-header"><div class="card-icon">🌟</div><div class="card-title">الحركة الوطنية — مصطفى كامل ومحمد فريد</div></div>
+      <div class="sub-title">مصطفى كامل — وسائل النضال</div>
+      <ul>
+        <li>توطيد علاقته بالخديوي حتى لا يكرر خطأ عرابي مع توفيق</li>
+        <li>اقترح على السلطان: تسحب تركيا قواتها من اليونان مقابل انسحاب إنجلترا من مصر</li>
+        <li>سافر إلى فرنسا "عدو عدوي صديقي" — ارتبط بالصحفيين الأوروبيين</li>
+        <li>أسس جريدة اللواء 1900م (تنادي بالجلاء والدستور)</li>
+        <li>أسس جريدة العالم الإسلامي 1905م (فكرة الجامعة الإسلامية)</li>
+        <li>أنشأ نادي المدارس العليا — أنشأ الحزب الوطني 1907م</li>
+        <li>أصدر طبعتين إنجليزية وفرنسية من اللواء للقارئ الأوروبي</li>
+        <li>توفي في سن الشباب 1908م</li>
+      </ul>
+      <div class="sub-title">محمد فريد — خليفة مصطفى كامل</div>
+      <ul>
+        <li>وسّع الحزب الوطني ليشمل النقابات العمالية</li>
+        <li>أسس نقابة عمال الصنائع اليدوية 1909م</li>
+        <li>مدارس ليلية لتثقيف عامة الشعب</li>
+        <li>حوكم بالسجن 6 أشهر بسبب مقدمة ديوان "وطنيتي"</li>
+        <li>غادر مصر 1912م ومات في ألمانيا 1919م</li>
+      </ul>
+      <div class="sub-title">سياسة كتشنر</div>
+      <ul>
+        <li>أعاد سياسة القبضة الحديدية والنجلزة</li>
+        <li>قبض على محمد فريد وحكم عليه بالسجن 6 أشهر</li>
+      </ul>
+    </div>
+
+    <div class="card c-teal">
+      <div class="card-header"><div class="card-icon">📰</div><div class="card-title">الوفاق الودي 1904م وحادثة دنشواي</div></div>
+      <div class="sub-title">أسباب الوفاق الودي</div>
+      <ul>
+        <li>حادثة فاشودة 1898م كانت مقدمة لسياسة الوفاق</li>
+        <li>أطماع فرنسا في مراكش ← رأت تسوية علاقاتها مع إنجلترا</li>
+        <li>ظهور قوة ألمانيا المتنامية ← تقارب الدولتين</li>
+        <li>زيارة ملك إنجلترا باريس 1903م كانت وراء هذه السياسة</li>
+      </ul>
+      <div class="sub-title">نص الوفاق 1904م</div>
+      <ul>
+        <li>فرنسا تطلق يد إنجلترا في مصر مقابل إطلاق إنجلترا يد فرنسا في المغرب</li>
+      </ul>
+      <div class="sub-title">حادثة دنشواي 1906م</div>
+      <ul>
+        <li>اطمئنان إنجلترا لعدم معارضة فرنسا ← اشتدت سلطات الاحتلال</li>
+        <li>أحكام قاسية الهدف منها إخماد صوت الوطنيين</li>
+        <li>استغلها مصطفى كامل للتنديد بالاحتلال في مصر وأوروبا</li>
+        <li>سحب إنجلترا كرومر 1907م لتهدئة الموقف ← اشتدت الحركة الوطنية</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- TAB 2: MIND MAP -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="mindmap" class="panel">
+  <h2 class="section-title">الخريطة الذهنية</h2>
+  <div class="mindmap-wrapper">
+    <div style="position:relative; width:100%; max-width:1100px; margin:0 auto; height:660px;">
+      <!-- SVG lines -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 1100 660">
+        <!-- Lines from center ~550,330 to each branch -->
+        <line x1="550" y1="330" x2="120" y2="100" stroke="#C9A84C" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="550" y1="330" x2="900" y2="90" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="550" y1="330" x2="950" y2="330" stroke="#5dade2" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="550" y1="330" x2="870" y2="560" stroke="#58d68d" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="550" y1="330" x2="200" y2="580" stroke="#bb8fce" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="550" y1="330" x2="80" y2="380" stroke="#f0a500" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="550" y1="330" x2="260" y2="100" stroke="#48c9b0" stroke-width="2" stroke-dasharray="6,4" opacity="0.5"/>
+      </svg>
+
+      <!-- CENTER NODE -->
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#8B6914,#C9A84C);color:#07070F;font-family:'Amiri',serif;font-size:1rem;font-weight:700;width:130px;height:130px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 30px rgba(201,168,76,0.6);z-index:10;cursor:default;">مصر والاحتلال الأجنبي</div>
+
+      <!-- Branch 1: أسباب التدخل (top-right) -->
+      <div style="position:absolute;top:30px;left:50px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#b8860b;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">💰 الأزمة المالية</div>
+        <div style="background:rgba(184,134,11,0.15);border:1px solid rgba(184,134,11,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          قناة السويس وتكاليف الافتتاح<br>حروب الحبشة الخاسرة<br>الفرمانات السلطانية<br>صندوق الدين 1876
+        </div>
+      </div>
+
+      <!-- Branch 2: التدخل الرسمي -->
+      <div style="position:absolute;top:30px;right:80px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#c0392b;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">🏦 مؤسسات التدخل</div>
+        <div style="background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          بعثة كيف + بعثة فييه<br>المراقبة الثنائية 1876<br>قانون التصفية 1880<br>القانون الأساسي 1883
+        </div>
+      </div>
+
+      <!-- Branch 3: الثورة العرابية -->
+      <div style="position:absolute;top:270px;right:0px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#2980b9;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">⚔️ الثورة العرابية</div>
+        <div style="background:rgba(41,128,185,0.15);border:1px solid rgba(41,128,185,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          مظاهرة عابدين 1881<br>وزارة البارودي 1882<br>ضرب الإسكندرية يوليو 1882<br>التل الكبير سبتمبر 1882
+        </div>
+      </div>
+
+      <!-- Branch 4: الاحتلال -->
+      <div style="position:absolute;bottom:60px;right:60px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#27ae60;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">🇬🇧 الاحتلال البريطاني</div>
+        <div style="background:rgba(39,174,96,0.15);border:1px solid rgba(39,174,96,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          حل الجيش المصري<br>اللورد كرومر 24 سنة<br>إهمال الصناعة<br>إهمال التعليم
+        </div>
+      </div>
+
+      <!-- Branch 5: الحركة الوطنية -->
+      <div style="position:absolute;bottom:50px;left:80px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#8e44ad;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">🌟 الحركة الوطنية</div>
+        <div style="background:rgba(142,68,173,0.15);border:1px solid rgba(142,68,173,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          مصطفى كامل 1900<br>جريدة اللواء 1900<br>الحزب الوطني 1907<br>محمد فريد
+        </div>
+      </div>
+
+      <!-- Branch 6: وزارة رياض -->
+      <div style="position:absolute;top:310px;left:0px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#e67e22;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">⚙️ وزارة رياض</div>
+        <div style="background:rgba(230,126,34,0.15);border:1px solid rgba(230,126,34,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          إلغاء المقابلة 1881<br>بيع حصة قناة السويس<br>لجنة دولية 1880<br>قانون التصفية
+        </div>
+      </div>
+
+      <!-- Branch 7: المعاهدات -->
+      <div style="position:absolute;top:30px;left:230px;transition:transform 0.3s;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">
+        <div style="background:#16a085;border-radius:10px;padding:8px 14px;font-size:0.82rem;font-weight:700;color:#fff;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">📜 المعاهدات</div>
+        <div style="background:rgba(22,160,133,0.15);border:1px solid rgba(22,160,133,0.3);padding:8px 10px;border-radius:6px;margin-top:6px;font-size:0.72rem;color:#e8e0d0;line-height:1.7;">
+          فرمان أغسطس 1879<br>ميثاق النزاهة 1882<br>الوفاق الودي 1904<br>الحكم الثنائي 1899
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- TAB 3: TIMELINE -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="timeline" class="panel">
+  <h2 class="section-title">الخط الزمني الكامل</h2>
+  <div class="timeline">
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1875م</div>
+      <div class="tl-title">⚔️ حملة إسماعيل على الحبشة — بداية التدخل الأجنبي</div>
+      <div class="tl-desc">شنّ الخديوي إسماعيل حملة عسكرية على الحبشة وانتهت بالهزيمة. كان هذا العام نفسه الذي بدأ فيه التدخل الأجنبي رسميًا في شؤون مصر، مما يكشف أن التوسع الجنوبي كان هو السبب الحقيقي لذلك التدخل لا الديون.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1876م — يناير</div>
+      <div class="tl-title">🏦 إنشاء صندوق الدين (أول هيئة رسمية للتدخل الأجنبي)</div>
+      <div class="tl-desc">اقترح الجانب الفرنسي إنشاء صندوق الدين كخزانة فرعية تتولى استلام المبالغ المخصصة للديون. يعتبر أول هيئة رسمية للتدخل الأجنبي في شؤون مصر لأن مندوبين أجانب يديرونه بتفويض من الدول الدائنة.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1876م — 11 مايو</div>
+      <div class="tl-title">📊 تشكيل المجلس الأعلى للمالية</div>
+      <div class="tl-desc">يتكون من 11 عضوًا نصفهم أجانب ونصفهم مصريون، لمراقبة الأوضاع المالية وضمان تسديد الديون. كان خطوة إضافية في تعمق التدخل الأجنبي في الإدارة المالية المصرية.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1876م — نوفمبر</div>
+      <div class="tl-title">👁️ تشكيل المراقبة الثنائية</div>
+      <div class="tl-desc">أصدر الخديوي مرسومًا بتعيين مراقب إنجليزي للإيرادات ومراقب فرنسي للمصروفات. كان ذلك تجسيدًا عمليًا لسيطرة القوتين على الاقتصاد المصري.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1877م — يناير</div>
+      <div class="tl-title">🔍 مرسوم تشكيل لجنة التحقيق الأوروبية</div>
+      <div class="tl-desc">أصدر إسماعيل مرسوم يناير 1877م بتشكيل لجنة للتحقيق في أسباب عجز الإيرادات. ثم صدر مرسوم مارس 1877م بتعميم اختصاصاتها لتشمل الإيرادات والمصروفات معًا.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1879م — أغسطس</div>
+      <div class="tl-title">📋 فرمان أغسطس 1879م — تقييد الخديوية</div>
+      <div class="tl-desc">أصدر السلطان فرمانًا يلزم مصر بإبلاغ الباب العالي بالمعاهدات قبل توقيعها وتحديد الجيش بـ18 ألف جندي. اعترضت عليه إنجلترا وفرنسا حتى لا تزيد سلطة السلطان على الخديوي فتعطل مصالحهما.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1879م — سبتمبر</div>
+      <div class="tl-title">🏛️ تشكيل وزارة رياض باشا</div>
+      <div class="tl-desc">تخلص توفيق من وزارة شريف باشا (الذي تمسك بالدستور ومجلس النواب) بناءً على رغبة إنجلترا وفرنسا. جاء رياض باشا المعروف بميوله للحكم المطلق وعدائه للدستور وخضوعه للأوروبيين ليكون أداة جيدة للدول الدائنة.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1879م — نوفمبر</div>
+      <div class="tl-title">📢 بيان جمعية حلوان</div>
+      <div class="tl-desc">نشرت جمعية حلوان السرية (الحزب الوطني) بيانها المطالب باسترداد أملاك الدائرة السنية والدومين وتوحيد الديون بفائدة 4% فقط. حاول رياض معرفة أعضائها لنفيهم للسودان لكنه لم يستطع.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1880م — يناير</div>
+      <div class="tl-title">⚠️ إلغاء قانون المقابلة</div>
+      <div class="tl-desc">ألغى رياض باشا قانون المقابلة الذي كان يمكّن الحكومة من جمع أموال ضريبية كثيرة، مما أدى إلى تذمر ملاك الأراضي الزراعية الذين كانوا قد استدانوا لدفع الضريبة مسبقًا.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1880م — يوليو</div>
+      <div class="tl-title">📑 قانون التصفية</div>
+      <div class="tl-desc">بدأ العمل بقانون التصفية الذي يحدد نفقات الحكومة بأقل من نصف الإيرادات والباقي لسداد الديون. استمر حتى 1904م أي 24 سنة، وكان أساس نظام مصر المالي تحت الاحتلال.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1881م — يناير</div>
+      <div class="tl-title">🎖️ تجمع الضباط في منزل عرابي — بداية الحركة العسكرية</div>
+      <div class="tl-desc">بعد نقل عبد العال حلمي من آلاي طره إلى ديوان الحربية (تنزيل مقنّع لرتبته وتعيين شركسي مكانه)، تجمع الضباط المصريون في منزل أحمد عرابي وكتبوا عريضة تطالب بعزل وزير الحربية عثمان رفقي.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1881م — فبراير</div>
+      <div class="tl-title">⚡ حادثة قصر النيل (مظاهرة عابدين الأولى)</div>
+      <div class="tl-desc">رفض رياض مطالبهم وقبض على الضباط الثلاثة (عرابي — علي فهمي — عبد العال حلمي) لمحاكمتهم. أثناء المحاكمة في قصر النيل، هاجم زملاؤهم مقر المحاكمة، فهرب المجلس العسكري، وتوجه الضباط لعابدين.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1881م — 9 سبتمبر</div>
+      <div class="tl-title">🏟️ مظاهرة عابدين الكبرى</div>
+      <div class="tl-desc">جمّع عرابي الجيش في ميدان عابدين وقدم مطالب: عزل رياض + تشكيل مجلس نواب + زيادة الجيش إلى 18 ألفًا. بناءً على نصيحة القنصلين الإنجليزي والفرنسي عُزل رياض وشكّل شريف الوزارة الثالثة.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — يناير</div>
+      <div class="tl-title">📝 المذكرة المشتركة الأولى</div>
+      <div class="tl-desc">أرسلت إنجلترا وفرنسا مذكرة مشتركة تعرضان التدخل لحماية عرش الخديوي والمطالبة بحل البرلمان. رفض شريف باشا وقدم استقالته ← تعيين البارودي رئيسًا للوزراء = وزارة الثورة.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — فبراير</div>
+      <div class="tl-title">📜 دستور فبراير 1882م</div>
+      <div class="tl-desc">وضعت وزارة البارودي دستور فبراير الذي أقرّ حق مجلس النواب في مناقشة الميزانية. احتج عليه المراقبان الأجنبيان فازداد التوتر بين الوزارة والقنصليتين.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — 11 مايو</div>
+      <div class="tl-title">⚓ المذكرة الثانية المشتركة + وصول الأسطول</div>
+      <div class="tl-desc">أرسلت إنجلترا وفرنسا قطعًا من الأسطول إلى الشواطئ المصرية بحجة حماية رعاياهما. طالبت المذكرة باستقالة البارودي وخروج عرابي من مصر — رفض البارودي فاستقال احتجاجًا على قبول الخديوي.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — 11 يونيو</div>
+      <div class="tl-title">🔥 مذبحة الإسكندرية</div>
+      <div class="tl-desc">وقعت مشاجرة بين مصري وملطي (رعية بريطانية) تحولت إلى معارك متبادلة. اضطربت الأمور وتألفت وزارة جديدة برئاسة راغب باشا في 20 يونيو 1882م.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — يونيو</div>
+      <div class="tl-title">🌍 مؤتمر الأستانة — ميثاق النزاهة</div>
+      <div class="tl-desc">دعت فرنسا (إدراكًا منها لرغبة إنجلترا في الانفراد بمصر) الدول الكبرى لعقد مؤتمر دولي. وقّع المجتمعون ميثاق النزاهة بعدم الانفراد بأي عمل نحو المسألة المصرية — لكن إنجلترا أضافت عبارة "إلا إذا حدث ما يؤدي إلى ذلك" ثم خلقت الموقف الاضطراري.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — 11 يوليو</div>
+      <div class="tl-title">💣 ضرب إنجلترا الإسكندرية</div>
+      <div class="tl-desc">بذريعة تحصين عرابي للإسكندرية ورغبة مصر في غلق الميناء، قصف الأسطول الإنجليزي الإسكندرية، ونزلت القوات واحتلتها. حاصر الإنجليز قصر الخديوي الذي استسلم لهم، بينما انسحب عرابي إلى كفر الدوار.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1882م — 14 سبتمبر</div>
+      <div class="tl-title">💔 معركة التل الكبير — نهاية الثورة</div>
+      <div class="tl-desc">خانت إدارة قناة السويس عرابي وسمحت بعبور السفن الإنجليزية، فالتقيا في التل الكبير بالشرقية. انتهت بهزيمة ساحقة للجيش المصري، واحتل الإنجليز القاهرة وعرض الخديوي استعراضهم في ساحة عابدين.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1883م</div>
+      <div class="tl-title">📖 القانون الأساسي — نظام الاحتلال البريطاني</div>
+      <div class="tl-desc">وضع اللورد دافرين خطوط الإدارة الإنجليزية لمصر بعد الاحتلال. نص على عدم حكم مصر مباشرة (ازدواجية السلطة) مع إلغاء المجالس الفعلية واستبدالها بمجالس صورية.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1898م</div>
+      <div class="tl-title">🌍 حادثة فاشودة</div>
+      <div class="tl-desc">أرسلت فرنسا حملة لاحتلال فاشودة في جنوب السودان، فاحتجت إنجلترا باسم مصر وأرسلت حملة عسكرية. انتهت بانسحاب فرنسا بعد مواجهة دبلوماسية — دخل اليأس نفوس المصريين إلا مصطفى كامل الذي قال مقولته الشهيرة.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1899م — يناير</div>
+      <div class="tl-title">🤝 اتفاقية الحكم الثنائي للسودان</div>
+      <div class="tl-desc">وقّع الخديوي عباس حلمي اتفاقية الحكم الثنائي للسودان بين مصر وإنجلترا. عقدتها إنجلترا حتى تستطيع مواجهة فرنسا باسمها بوصفها شريكة لمصر في السودان.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1900م</div>
+      <div class="tl-title">📰 تأسيس جريدة اللواء</div>
+      <div class="tl-desc">أسس مصطفى كامل جريدة اللواء التي تنادي بالجلاء والدستور. كان ذلك بعد يأس المصريين من فاشودة، فكثّف مصطفى كامل نشاطه لإيقاظ الوعي الوطني.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1904م</div>
+      <div class="tl-title">🕊️ الوفاق الودي بين إنجلترا وفرنسا</div>
+      <div class="tl-desc">وافقت فرنسا على إطلاق يد إنجلترا في مصر مقابل إطلاق إنجلترا يد فرنسا في المغرب. اطمأنت إنجلترا لغياب المعارضة الفرنسية فاشتدت سلطات الاحتلال في التضييق على الوطنيين.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1906م</div>
+      <div class="tl-title">😡 حادثة دنشواي</div>
+      <div class="tl-desc">أصدر الاحتلال أحكامًا قاسية على أهالي دنشواي بهدف إخماد صوت الوطنيين إلى الأبد. استغلها مصطفى كامل للتنديد بالاحتلال في مصر وأوروبا، فسحبت إنجلترا كرومر 1907م لتهدئة الموقف، غير أن الحركة الوطنية اشتدت.</div>
+    </div>
+
+    <div class="tl-item"><div class="tl-dot"></div>
+      <div class="tl-year">1907م</div>
+      <div class="tl-title">🏛️ نشأة الأحزاب السياسية في مصر</div>
+      <div class="tl-desc">يعتبر عام 1907 عام نشأة الأحزاب السياسية في مصر، حيث ظهرت أحزاب متعددة كلها تناضل ضد الإنجليز وتطالب بالجلاء والدستور كل بطريقتها. استمرت الأحوال حتى قامت الحرب العالمية الأولى 1914م.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- TAB 4: TREATIES -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="treaties" class="panel">
+  <h2 class="section-title">المعاهدات والاتفاقيات والمراسيم</h2>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">1876م</span>
+      <div class="treaty-name">🏦 صندوق الدين — أول هيئة رسمية للتدخل الأجنبي</div>
+    </div>
+    <p class="parties">الأطراف: <span>الجانب الفرنسي</span> (المقترح) + <span>الدول الدائنة الأوروبية</span> + <span>مصر</span></p>
+    <ul>
+      <li>خزانة فرعية تتولى استلام المبالغ المخصصة للديون مباشرة</li>
+      <li>يديره مندوبون أجانب تنتدبهم الدول الدائنة ويعينهم الخديوي</li>
+      <li>النتيجة: أول إضفاء رسمي للطابع المؤسسي على التدخل الأجنبي في شؤون مصر</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">نوفمبر 1876م</span>
+      <div class="treaty-name">👁️ المراقبة الثنائية (الإنجليزية-الفرنسية)</div>
+    </div>
+    <p class="parties">الأطراف: <span>إنجلترا</span> + <span>فرنسا</span> + <span>الخديوي توفيق</span></p>
+    <ul>
+      <li>مراقب إنجليزي يختص بالإيرادات + مراقب فرنسي يختص بالمصروفات</li>
+      <li>رأيهما رسميًا استشاري لكنه عمليًا نافذ</li>
+      <li>في عهد رياض باشا: حق حضور جلسات مجلس الوزراء والاطلاع على كل البيانات المالية</li>
+      <li>سلطاتهما أوسع من سلطات الوزراء في التطبيق الفعلي</li>
+      <li>ألغاها القانون الأساسي 1883م ← أغضب فرنسا حتى 1904م</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">أغسطس 1879م</span>
+      <div class="treaty-name">📋 فرمان أغسطس 1879م — تقييد الخديوية</div>
+    </div>
+    <p class="parties">الأطراف: <span>السلطان العثماني</span> → <span>مصر (الخديوي إسماعيل)</span></p>
+    <ul>
+      <li>وجوب إبلاغ الباب العالي بنصوص المعاهدات قبل توقيعها</li>
+      <li>تحديد عدد الجيش بـ18 ألف جندي (كفرمان 1841)</li>
+      <li>عدم عقد قروض جديدة إلا لتسوية القديمة وبموافقة الدائنين</li>
+      <li>الأثر: قيّد سلطات ومزايا الخديوية بصورة جوهرية</li>
+      <li>اعترضت إنجلترا وفرنسا لأنه يزيد سلطة السلطان ويعطل مصالحهما</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">يوليو 1880م</span>
+      <div class="treaty-name">📑 قانون التصفية</div>
+    </div>
+    <p class="parties">الأطراف: <span>لجنة دولية</span> (شُكّلت مارس 1880م) + <span>الحكومة المصرية في عهد توفيق</span></p>
+    <ul>
+      <li>تحديد نفقات الحكومة السنوية بأقل من نصف الإيرادات — الباقي لسداد الديون</li>
+      <li>وضع أملاك الدائرة السنية والدومين تحت إدارة دولية</li>
+      <li>كان أساس النظام المالي لمصر حتى 1904م (24 سنة)</li>
+      <li>النتيجة: حرمان مصر من أكثر من نصف مواردها لصالح الدائنين الأجانب</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">يناير 1882م</span>
+      <div class="treaty-name">📝 المذكرة المشتركة الأولى</div>
+    </div>
+    <p class="parties">الأطراف: <span>إنجلترا</span> + <span>فرنسا</span> → <span>الخديوي توفيق</span></p>
+    <ul>
+      <li>الهدف: حماية عرش الخديوي والمطالبة بحل البرلمان</li>
+      <li>لما لم يتمكنا، طالبا بعدم مناقشة الميزانية في البرلمان</li>
+      <li>نتيجة: احتج شريف باشا رسميًا + رفض العرابيون + تقدم شريف باستقالته</li>
+      <li>أفضى إلى تعيين البارودي رئيسًا للوزراء (وزارة الثورة)</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">فبراير 1882م</span>
+      <div class="treaty-name">📜 دستور فبراير 1882م</div>
+    </div>
+    <p class="parties">الأطراف: <span>وزارة البارودي (الثورة)</span></p>
+    <ul>
+      <li>أقرّ حق مجلس النواب في مناقشة الميزانية</li>
+      <li>دليل على أن وزارة البارودي تُعرف بـ"وزارة الثورة"</li>
+      <li>احتج عليه المراقبان الأجنبيان ← ازداد التوتر</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">11 مايو 1882م</span>
+      <div class="treaty-name">⚓ المذكرة الثانية المشتركة + وصول الأسطول</div>
+    </div>
+    <p class="parties">الأطراف: <span>إنجلترا</span> + <span>فرنسا</span> → <span>الخديوي توفيق</span></p>
+    <ul>
+      <li>إرسال قطع من الأسطول إلى الشواطئ المصرية</li>
+      <li>مطالبة باستقالة وزارة البارودي وخروج عرابي من مصر</li>
+      <li>قدّمها رئيس النواب سلطان باشا (لقبه الوطنيون بالخائن)</li>
+      <li>وافق عليها الخديوي ← استقال البارودي احتجاجًا</li>
+      <li>ظل عرابي وزيرًا للحربية بضغط الضباط</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">يونيو 1882م</span>
+      <div class="treaty-name">🌍 ميثاق النزاهة (مؤتمر الأستانة)</div>
+    </div>
+    <p class="parties">الأطراف: <span>الدول الكبرى الأوروبية</span> في مؤتمر الأستانة</p>
+    <ul>
+      <li>تعهد المجتمعون بعدم انفراد أي دولة بالعمل نحو المسألة المصرية</li>
+      <li>عدم احتلال جزء من الأراضي دون أن تتمتع به كافة الدول</li>
+      <li>أضاف مندوب إنجلترا: "إلا إذا حدث ما يؤدي إلى ذلك"</li>
+      <li>النتيجة: خلقت إنجلترا الموقف الاضطراري وضربت الإسكندرية 11 يوليو</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">1883م</span>
+      <div class="treaty-name">📖 القانون الأساسي</div>
+    </div>
+    <p class="parties">الأطراف: <span>اللورد دافرين (سفير إنجلترا في الأستانة)</span> — وضعه إنجلترا من تركيا</p>
+    <ul>
+      <li>عدم حكم مصر مباشرة: سلطة صورية للخديوي + سلطة فعلية للإنجليز</li>
+      <li>استمرار التبعية العثمانية منعًا لإثارة السلطان</li>
+      <li>سياسة "النجلزة" = طبع الإدارة بالطابع الإنجليزي</li>
+      <li>إلغاء المراقبة الثنائية ← عداء فرنسا حتى 1904م</li>
+      <li>إلغاء مجلس شورى النواب + إنشاء مجالس صورية</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">يناير 1899م</span>
+      <div class="treaty-name">🤝 اتفاقية الحكم الثنائي للسودان</div>
+    </div>
+    <p class="parties">الأطراف: <span>إنجلترا</span> + <span>مصر (الخديوي عباس حلمي الثاني)</span></p>
+    <ul>
+      <li>تقسيم إدارة السودان بين مصر وإنجلترا</li>
+      <li>وضعت الحدود عند دائرة 22 شمالًا</li>
+      <li>عقدتها إنجلترا لمواجهة فرنسا باسم مصر بعد حادثة فاشودة</li>
+      <li>النتيجة: تحوّل عباس من سياسة المسالمة إلى سياسة الوفاق مع الإنجليز</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="date-badge">1904م</span>
+      <div class="treaty-name">🕊️ الوفاق الودي بين إنجلترا وفرنسا</div>
+    </div>
+    <p class="parties">الأطراف: <span>إنجلترا</span> + <span>فرنسا</span></p>
+    <ul>
+      <li>فرنسا تطلق يد إنجلترا في مصر مقابل إطلاق إنجلترا يد فرنسا في المغرب</li>
+      <li>أسبابه: فاشودة + أطماع فرنسا في مراكش + ظهور قوة ألمانيا + زيارة الملك الإنجليزي باريس 1903م</li>
+      <li>النتيجة: اشتداد سلطات الاحتلال على الوطنيين (حادثة دنشواي 1906م)</li>
+      <li>فتحت الباب لسياسة الوفاق التي اتبعها جورست مع الخديوي</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- TAB 5: KEY FIGURES -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="figures" class="panel">
+  <h2 class="section-title">الشخصيات الرئيسية</h2>
+  <div class="figures-grid">
+
+    <div class="figure-card">
+      <div class="figure-avatar">👑</div>
+      <div class="figure-name">الخديوي إسماعيل</div>
+      <div class="figure-role">خديوي مصر | حتى 1879م</div>
+      <ul>
+        <li>أنشأ قناة السويس وبالغ في الاستدانة لتمويل المشاريع الكبرى</li>
+        <li>سعى لتحقيق الاستقلال الذاتي بالصرف على الفرمانات السلطانية</li>
+        <li>استدعى بعثة كيف لحل الأزمة المالية ← أول خطوة للتدخل الأجنبي</li>
+        <li>وسّع نفوذ مصر جنوبًا (السودان والحبشة) فأقلق الأوروبيين</li>
+        <li>رفض فرمان 1879م الذي قيّد سلطاته ← أُجبر على التنازل لابنه توفيق</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">⚠️</div>
+      <div class="figure-name">الخديوي توفيق</div>
+      <div class="figure-role">خديوي مصر | 1879—1892م</div>
+      <ul>
+        <li>خضع للأجانب منذ توليه الحكم: أعاد المراقبة الثنائية وعيّن رياض باشا</li>
+        <li>تخلص من وزارة شريف (الدستورية) بناءً على رغبة إنجلترا وفرنسا</li>
+        <li>قبل المذكرة الثانية المشتركة فاستقال البارودي احتجاجًا</li>
+        <li>استسلم للأسطول الإنجليزي بعد ضرب الإسكندرية 1882م</li>
+        <li>اتهمه عرابي بالخيانة العظمى فشكّل مجلس عرفي بديلًا عنه</li>
+        <li>استعرض الجيش الإنجليزي في ساحة عابدين 14 سبتمبر 1882م</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🎖️</div>
+      <div class="figure-name">أحمد عرابي</div>
+      <div class="figure-role">وزير الحربية | قائد الثورة العرابية</div>
+      <ul>
+        <li>يناير 1881م: تجمّع الضباط في منزله وكتبوا عريضة المطالب الأولى</li>
+        <li>قاد مظاهرة عابدين 9 سبتمبر 1881م بثلاثة مطالب: عزل رياض + مجلس نواب + زيادة الجيش</li>
+        <li>عُيِّن وزيرًا للحربية في وزارة البارودي (وزارة الثورة) 1882م</li>
+        <li>حصّن الإسكندرية ← ذريعة لضربها يوليو 1882م</li>
+        <li>اتهم الخديوي بالخيانة وأقام مجلسًا عرفيًا</li>
+        <li>انتصر في كفر الدوار لكن خانته إدارة قناة السويس في التل الكبير</li>
+        <li>هُزم في التل الكبير 14 سبتمبر 1882م ونُفي</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🏛️</div>
+      <div class="figure-name">رياض باشا</div>
+      <div class="figure-role">رئيس الوزراء | 1879—1881م</div>
+      <ul>
+        <li>معروف بميوله للحكم المطلق ومعاداته للدستور والحياة النيابية</li>
+        <li>خاضع للنفوذ الأوروبي ← الأداة المثالية للدول الدائنة</li>
+        <li>ألغى قانون المقابلة 1881م ← تذمر ملاك الأراضي</li>
+        <li>أعاد المراقبة الثنائية بسلطات أوسع</li>
+        <li>اضطهد الوطنيين وعطّل الصحف وانحاز للأوروبيين</li>
+        <li>عُزل بناءً على مطالب مظاهرة عابدين سبتمبر 1881م</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🌹</div>
+      <div class="figure-name">شريف باشا</div>
+      <div class="figure-role">رئيس الوزراء (عدة مرات)</div>
+      <ul>
+        <li>تمسك بالدستور ومجلس النواب والحياة النيابية</li>
+        <li>رفض عدم إعطاء مجلس النواب حق مناقشة الميزانية</li>
+        <li>احتج رسميًا على المذكرة المشتركة الأولى يناير 1882م</li>
+        <li>قدّم استقالته أمام إصرار الطرفين (العرابيين والقنصلين) ← وصل البارودي</li>
+        <li>تخلص منه توفيق لأنه تمسك بالدستور فعطّل مصالح الدائنين</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">⚔️</div>
+      <div class="figure-name">محمود سامي البارودي</div>
+      <div class="figure-role">رئيس الوزراء | وزير الحربية</div>
+      <ul>
+        <li>عُيِّن وزيرًا للحربية بعد مظاهرة عابدين الأولى فبراير 1881م</li>
+        <li>شجّع العرابيين على التمسك بحق مجلس النواب في مناقشة الميزانية</li>
+        <li>ترأس وزارة الثورة 1882م وعيّن عرابي وزيرًا للحربية</li>
+        <li>وضع دستور فبراير 1882م</li>
+        <li>استقال احتجاجًا على قبول الخديوي للمذكرة الثانية المشتركة</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🇬🇧</div>
+      <div class="figure-name">اللورد كرومر (إيفلن بارنج)</div>
+      <div class="figure-role">أول معتمد بريطاني في مصر | 24 سنة</div>
+      <ul>
+        <li>وُضع كأول معتمد بريطاني في مصر بعد الاحتلال 1883م</li>
+        <li>طبّق سياسة "النجلزة" — أي طبع الإدارة بالطابع الإنجليزي</li>
+        <li>اهتم بالزراعة على حساب الصناعة لخدمة المصانع الإنجليزية</li>
+        <li>أهمل التعليم وجعله مدفوع التكاليف بعد أن كان مجانيًا</li>
+        <li>سُحب من مصر 1907م لتهدئة الموقف بعد دنشواي ← ازداد الوضع توترًا</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🌟</div>
+      <div class="figure-name">مصطفى كامل</div>
+      <div class="figure-role">الزعيم الوطني | مؤسس الحزب الوطني</div>
+      <ul>
+        <li>تعلّم في مدرسة الحقوق المصرية والفرنسية</li>
+        <li>وثّق علاقته بالخديوي والسلطان ثم بفرنسا لمواجهة الاحتلال</li>
+        <li>أسس جريدة اللواء 1900م (الجلاء والدستور) + العالم الإسلامي 1905م</li>
+        <li>بعد فاشودة قال مقولته الشهيرة: "لا يأس مع الحياة ولا حياة مع اليأس"</li>
+        <li>استغل حادثة دنشواي 1906م للتنديد بالاحتلال أمام الرأي العام الأوروبي</li>
+        <li>أنشأ نادي المدارس العليا والحزب الوطني 1907م</li>
+        <li>توفي في سن الشباب 1908م</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">✊</div>
+      <div class="figure-name">محمد فريد</div>
+      <div class="figure-role">رئيس الحزب الوطني بعد مصطفى كامل</div>
+      <ul>
+        <li>خلف مصطفى كامل في رئاسة الحزب الوطني</li>
+        <li>وسّع الحزب ليشمل النقابات العمالية لا المثقفين فقط</li>
+        <li>أسس نقابة عمال الصنائع اليدوية 1909م</li>
+        <li>أسس مدارس ليلية لتثقيف عامة الشعب</li>
+        <li>حوكم بالسجن 6 أشهر بسبب مقدمة ديوان "وطنيتي"</li>
+        <li>غادر مصر طوعًا 1912م لمواصلة النضال من أوروبا (ألمانيا)</li>
+        <li>توفي في ألمانيا 1919م</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🔱</div>
+      <div class="figure-name">الخديوي عباس حلمي الثاني</div>
+      <div class="figure-role">خديوي مصر | 1892—1914م</div>
+      <ul>
+        <li>أفرج عن مسجوني الثورة العرابية وأعاد بعضهم للخدمة</li>
+        <li>عفا عن عبدالله نديم خطيب الثورة العرابية</li>
+        <li>أزمة مع كرومر 1893م: عيّن حسين فخري دون استشارته ← اضطر للتراجع</li>
+        <li>وثّق علاقاته بالسلطان العثماني لمواجهة الهيمنة الإنجليزية</li>
+        <li>وقّع الحكم الثنائي للسودان 1899م تحت ضغط الأحداث</li>
+        <li>تحوّل من المقاومة للمسالمة بعد فاشودة ثم الوفاق مع إنجلترا</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">📚</div>
+      <div class="figure-name">عثمان رفقي</div>
+      <div class="figure-role">وزير الحربية التركي</div>
+      <ul>
+        <li>تعسّف مع الضباط المصريين وانحاز للشراكسة</li>
+        <li>قصر الترقية على خريجي المدارس الحربية (مرسوم 31 يوليو 1880م)</li>
+        <li>سبب رئيسي لتذمر الضباط وانضمامهم للثورة العرابية</li>
+        <li>عُزل بعد مظاهرة عابدين الأولى وعُيِّن البارودي بدلًا منه</li>
+      </ul>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-avatar">🌏</div>
+      <div class="figure-name">جمال الدين الأفغاني</div>
+      <div class="figure-role">المفكر الإسلامي | فكرة الجامعة الإسلامية</div>
+      <ul>
+        <li>أسّس مع محمد عبده جريدة العروة الوثقى لمهاجمة الاحتلال</li>
+        <li>بثّ فكرة الجامعة الإسلامية كأساس للمقاومة</li>
+        <li>أثّر على أجيال من الوطنيين المصريين والمسلمين</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- TAB 6: COMPARISONS -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="compare" class="panel">
+  <h2 class="section-title">المقارنات والعلاقات السببية</h2>
+
+  <table class="compare-table">
+    <caption>مقارنة بين وزارة شريف باشا ووزارة رياض باشا</caption>
+    <tr><th>وجه المقارنة</th><th>شريف باشا</th><th>رياض باشا</th></tr>
+    <tr><td>الموقف من الدستور</td><td>وضع الدستور وتمسك به</td><td>عدو للدستور والنظام النيابي</td></tr>
+    <tr><td>الموقف من مجلس النواب</td><td>أيّده وأعطاه حق مناقشة الميزانية</td><td>عطّل الحياة النيابية</td></tr>
+    <tr><td>الموقف من الأجانب</td><td>رفض هيمنتهم وقدّم الاستقالة احتجاجًا</td><td>خاضع تمامًا للنفوذ الأوروبي</td></tr>
+    <tr><td>موقف الوطنيين منه</td><td>محبوب — دعمه العرابيون والوطنيون</td><td>مكروه — أثار السخط والتبرم</td></tr>
+    <tr><td>موقف إنجلترا وفرنسا</td><td>ضغطا لإقالته لأنه يعطل مصالحهما</td><td>أيّداه لأنه خير أداة لهما</td></tr>
+    <tr><td>السياسة الاقتصادية</td><td>لا سياسة محددة ضارة</td><td>ألغى قانون المقابلة + باع حصة القناة</td></tr>
+  </table>
+
+  <table class="compare-table">
+    <caption>مقارنة بين سياسة كرومر وسياسة جورست</caption>
+    <tr><th>وجه المقارنة</th><th>كرومر (1883—1907)</th><th>جورست (بعد كرومر)</th></tr>
+    <tr><td>الأسلوب العام</td><td>القبضة الحديدية والنجلزة</td><td>الوفاق والمرونة النسبية</td></tr>
+    <tr><td>الموقف من الخديوي</td><td>مراقبة صارمة وتقييد صلاحياته</td><td>خفّف الرقابة ووسّع صلاحياته</td></tr>
+    <tr><td>الإدارة</td><td>سياسة النجلزة = إنجليز في كل مصلحة</td><td>ألغى النجلزة وأعاد التمصير</td></tr>
+    <tr><td>مجلس الوزراء</td><td>محدود الصلاحيات</td><td>توسّع في صلاحيات النظار</td></tr>
+    <tr><td>المصريون في الإدارة</td><td>الأجانب يسيطرون على المناصب العليا</td><td>المصريون يديرون شؤون بلادهم نسبيًا</td></tr>
+    <tr><td>النتيجة على الحركة الوطنية</td><td>خمود ثم اشتداد (دنشواي)</td><td>خديوي عباس تنكّر للحركة الوطنية</td></tr>
+  </table>
+
+  <table class="compare-table">
+    <caption>مقارنة بين أسلوب مصطفى كامل وأسلوب محمد فريد في النضال</caption>
+    <tr><th>وجه المقارنة</th><th>مصطفى كامل</th><th>محمد فريد</th></tr>
+    <tr><td>الجمهور المستهدف</td><td>المثقفون والرأي العام الأوروبي</td><td>عامة الشعب والنقابات العمالية</td></tr>
+    <tr><td>الارتكاز الدولي</td><td>فرنسا ثم السلطان العثماني</td><td>الاستقلالية أكثر من السابق</td></tr>
+    <tr><td>الصحافة</td><td>اللواء + العالم الإسلامي + طبعات أوروبية</td><td>واصل نشاط الحزب والصحافة</td></tr>
+    <tr><td>التنظيم</td><td>أسس الحزب الوطني ونادي المدارس العليا</td><td>وسّع الحزب ليشمل النقابات</td></tr>
+    <tr><td>المصير</td><td>توفي 1908م شابًا</td><td>نُفي 1912م ومات في ألمانيا 1919م</td></tr>
+  </table>
+
+  <table class="compare-table">
+    <caption>العلاقات السببية الكبرى — سبب وأثر</caption>
+    <tr><th>السبب <span class="badge badge-cause">سبب</span></th><th>الحدث</th><th>النتيجة <span class="badge badge-effect">نتيجة</span></th></tr>
+    <tr><td>توسع مصر في الحبشة 1875م</td><td>التدخل الأجنبي</td><td>بعثة كيف + صندوق الدين + المراقبة الثنائية</td></tr>
+    <tr><td>إلغاء قانون المقابلة + بيع حصة القناة + قانون التصفية</td><td>وزارة رياض</td><td>تذمر ملاك الأراضي + تذمر الضباط + الحركة الوطنية</td></tr>
+    <tr><td>نقل عبد العال حلمي وتعيين شركسي مكانه</td><td>الشرارة المباشرة للثورة</td><td>تجمع الضباط في منزل عرابي يناير 1881م</td></tr>
+    <tr><td>قبول الخديوي للمذكرة الثانية 1882م</td><td>انهيار وزارة الثورة</td><td>استقالة البارودي + ظل عرابي وزيرًا للحربية بضغط الضباط</td></tr>
+    <tr><td>خيانة إدارة قناة السويس لعرابي</td><td>معركة التل الكبير</td><td>هزيمة الجيش المصري + الاحتلال البريطاني 1882م</td></tr>
+    <tr><td>فرمان السلطان بعصيان عرابي</td><td>انقسام الأمة</td><td>فشل الثورة + ظهور الإنجليز كحماة للخديوي</td></tr>
+    <tr><td>حادثة فاشودة 1898م</td><td>يأس المصريين وتكثيف نشاط كامل</td><td>الحكم الثنائي للسودان 1899م + جريدة اللواء 1900م</td></tr>
+    <tr><td>الوفاق الودي 1904م</td><td>اطمئنان إنجلترا لغياب المعارضة الفرنسية</td><td>دنشواي 1906م + سحب كرومر + اشتداد الحركة الوطنية</td></tr>
+  </table>
+
+  <table class="compare-table">
+    <caption>مقارنة بين الخديوي إسماعيل والخديوي توفيق في مواجهة التدخل الأجنبي</caption>
+    <tr><th>وجه المقارنة</th><th>إسماعيل</th><th>توفيق</th></tr>
+    <tr><td>الموقف من الاستقلال</td><td>سعى فعلًا لتحقيق الاستقلال بالفرمانات والتوسع</td><td>خضع للأجانب من اللحظة الأولى</td></tr>
+    <tr><td>الموقف من التدخل الأجنبي</td><td>حاول الإفلات منه ولكن أخفق ماليًا</td><td>أداة طيّعة في يد الإنجليز والفرنسيين</td></tr>
+    <tr><td>علاقته بالشعب والجيش</td><td>علاقة أفضل نسبيًا</td><td>ازدراء الجيش والرأي العام ← الثورة</td></tr>
+    <tr><td>المصير</td><td>عُزل بضغط إنجليزي-فرنسي 1879م</td><td>بقي حتى وفاته 1892م تحت الاحتلال</td></tr>
+  </table>
+
+</div>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top: document.querySelector('.tabs-wrapper').offsetTop - 10, behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>

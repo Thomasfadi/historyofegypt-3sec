@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شفرة الباب الأول — الحملة الفرنسية على مصر</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070F;
+    --card: #111827;
+    --card2: #0d1421;
+    --gold: #C9A84C;
+    --gold2: #e8c76a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --text: #e8e0d0;
+    --muted: #8a8090;
+    --border: rgba(201,168,76,0.2);
+    --red: #c0392b;
+    --blue: #1a6b8a;
+    --green: #1e7a4a;
+    --purple: #6c3483;
+    --teal: #0e6655;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #07070F 0%, #0d1421 40%, #1a0e05 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 0.75rem;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+  .hero h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--gold);
+    text-shadow: 0 0 40px rgba(201,168,76,0.4);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+  }
+  .stat-label { color: var(--muted); font-size: 0.8rem; }
+  .hero-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #07070F;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 50px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+  /* TABS */
+  .tab-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7,7,15,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 1rem;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 1rem 1.2rem;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--gold); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* PANELS */
+  .panel { display: none; padding: 2rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+  .panel.active { display: block; animation: fadeUp 0.4s ease; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    transition: all 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+    border-color: rgba(201,168,76,0.4);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .card-icon {
+    font-size: 1.8rem;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .card ul { list-style: none; }
+  .card ul li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: #c8c0b8;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+  .card ul li::before { content: '◆'; color: var(--gold); font-size: 0.5rem; margin-top: 5px; flex-shrink: 0; }
+  .card ul li:last-child { border-bottom: none; }
+
+  /* accent colors */
+  .accent-red .card-icon { background: rgba(192,57,43,0.15); }
+  .accent-blue .card-icon { background: rgba(26,107,138,0.15); }
+  .accent-green .card-icon { background: rgba(30,122,74,0.15); }
+  .accent-purple .card-icon { background: rgba(108,52,131,0.15); }
+  .accent-teal .card-icon { background: rgba(14,102,85,0.15); }
+  .accent-gold .card-icon { background: rgba(201,168,76,0.15); }
+  .accent-orange .card-icon { background: rgba(211,84,0,0.15); }
+
+  .accent-red { border-top: 3px solid var(--red); }
+  .accent-blue { border-top: 3px solid var(--blue); }
+  .accent-green { border-top: 3px solid var(--green); }
+  .accent-purple { border-top: 3px solid var(--purple); }
+  .accent-teal { border-top: 3px solid var(--teal); }
+  .accent-gold { border-top: 3px solid var(--gold); }
+  .accent-orange { border-top: 3px solid #d35400; }
+
+  /* MIND MAP */
+  .mindmap-wrap {
+    overflow-x: auto;
+    padding: 2rem 0;
+  }
+  .mindmap {
+    min-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+  .mm-center {
+    background: linear-gradient(135deg, #a07c2a, var(--gold));
+    color: #07070F;
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(201,168,76,0.3);
+    min-width: 160px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .mm-branches {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: 2rem;
+  }
+  .mm-branch {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .mm-branch-node {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 150px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+    align-self: flex-start;
+    margin-top: 0.3rem;
+  }
+  .mm-branch-node:hover { transform: scale(1.05); }
+  .mm-subs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .mm-sub {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .mm-sub:hover { border-color: var(--gold); color: var(--gold); transform: translateX(-3px); }
+
+  .mm-b1 { background: rgba(192,57,43,0.2); color: #e74c3c; border: 1px solid rgba(192,57,43,0.4); }
+  .mm-b2 { background: rgba(26,107,138,0.2); color: #3498db; border: 1px solid rgba(26,107,138,0.4); }
+  .mm-b3 { background: rgba(30,122,74,0.2); color: #2ecc71; border: 1px solid rgba(30,122,74,0.4); }
+  .mm-b4 { background: rgba(108,52,131,0.2); color: #9b59b6; border: 1px solid rgba(108,52,131,0.4); }
+  .mm-b5 { background: rgba(211,84,0,0.2); color: #e67e22; border: 1px solid rgba(211,84,0,0.4); }
+  .mm-b6 { background: rgba(14,102,85,0.2); color: #1abc9c; border: 1px solid rgba(14,102,85,0.4); }
+  .mm-b7 { background: rgba(201,168,76,0.2); color: var(--gold); border: 1px solid rgba(201,168,76,0.4); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .tl-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-right: 50px;
+    position: relative;
+    animation: fadeUp 0.5s ease both;
+  }
+  .tl-dot {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(201,168,76,0.6);
+    flex-shrink: 0;
+  }
+  .tl-date {
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    align-self: flex-start;
+    flex-shrink: 0;
+    font-weight: 700;
+    min-width: 90px;
+    text-align: center;
+  }
+  .tl-content { flex: 1; }
+  .tl-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .tl-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+  /* TREATY CARDS */
+  .treaty-card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    transition: all 0.3s;
+  }
+  .treaty-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border-color: rgba(201,168,76,0.35);
+  }
+  .treaty-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .treaty-date {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #07070F;
+    font-weight: 900;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    flex-shrink: 0;
+  }
+  .treaty-name {
+    font-family: 'Amiri', serif;
+    font-size: 1.25rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .treaty-parties {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  .treaty-parties span { color: var(--text); }
+  .treaty-card ul { list-style: none; }
+  .treaty-card ul li {
+    padding: 0.35rem 0;
+    font-size: 0.88rem;
+    color: #c8c0b8;
+    display: flex; gap: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+  }
+  .treaty-card ul li::before { content: '▸'; color: var(--gold); flex-shrink: 0; }
+  .treaty-card ul li:last-child { border-bottom: none; }
+
+  /* PERSON CARDS */
+  .person-card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    transition: all 0.3s;
+  }
+  .person-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+    border-color: rgba(201,168,76,0.4);
+  }
+  .person-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .person-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .person-name {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .person-role {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+  }
+  .person-card ul { list-style: none; }
+  .person-card ul li {
+    padding: 0.4rem 0;
+    font-size: 0.88rem;
+    color: #c8c0b8;
+    display: flex; gap: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+  }
+  .person-card ul li::before { content: '◈'; color: var(--gold); font-size: 0.7rem; margin-top: 4px; flex-shrink: 0; }
+  .person-card ul li:last-child { border-bottom: none; }
+
+  /* COMPARISON TABLES */
+  .compare-wrap { overflow-x: auto; margin-bottom: 2rem; }
+  .compare-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th {
+    background: var(--gold-dim);
+    color: var(--gold);
+    font-family: 'Amiri', serif;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 0.7rem 1rem;
+    font-size: 0.88rem;
+    color: #c8c0b8;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(201,168,76,0.03); }
+  td:first-child { color: var(--gold); font-weight: 600; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+  @media (max-width:600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .hero-stats { gap: 1rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .mm-branch-node { min-width: 100px; font-size: 0.8rem; }
+    .panel { padding: 1.2rem 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">مع القيصر محمد طلبه ✦ شفرة الباب الأول</div>
+  <h1>الحملة الفرنسية على مصر</h1>
+  <p>دراسة شاملة — من محاولات الاحتلال إلى الجلاء (١٦٧٢ – ١٨٠١م)</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">١٢٩</span><span class="stat-label">عاماً من الأطماع</span></div>
+    <div class="stat"><span class="stat-num">٦</span><span class="stat-label">تبويبات دراسية</span></div>
+    <div class="stat"><span class="stat-num">٢٠+</span><span class="stat-label">شخصية محورية</span></div>
+    <div class="stat"><span class="stat-num">١٥+</span><span class="stat-num">حدثاً تاريخياً</span></div>
+  </div>
+  <button class="hero-cta" onclick="document.querySelector('.tab-bar').scrollIntoView({behavior:'smooth'})">ابدأ المذاكرة ◀</button>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar" id="tabBar">
+  <button class="tab-btn active" onclick="showTab('summary',this)">📚 الملخص التفصيلي</button>
+  <button class="tab-btn" onclick="showTab('mindmap',this)">🧠 الخريطة الذهنية</button>
+  <button class="tab-btn" onclick="showTab('timeline',this)">📅 الخط الزمني</button>
+  <button class="tab-btn" onclick="showTab('treaties',this)">📜 المعاهدات والأحداث</button>
+  <button class="tab-btn" onclick="showTab('figures',this)">👤 الشخصيات</button>
+  <button class="tab-btn" onclick="showTab('compare',this)">⚖️ المقارنات</button>
+</div>
+
+<!-- ===== TAB 1: SUMMARY ===== -->
+<div class="panel active" id="panel-summary">
+  <div class="section-title">📚 الملخص التفصيلي</div>
+  <div class="cards-grid">
+
+    <div class="card accent-red">
+      <div class="card-header">
+        <div class="card-icon">🇫🇷</div>
+        <div class="card-title">محاولات فرنسا قبل الحملة</div>
+      </div>
+      <ul>
+        <li>لويس الرابع عشر (١٦٧٢–١٧١٤): ضرب التجارة الهولندية في الهند عبر مصر — ضمن الخطط البديلة</li>
+        <li>لويس الخامس عشر (١٧٦٩): طلب من العثمانيين التنازل عن مصر دبلوماسياً دون قوة عسكرية</li>
+        <li>لويس السادس عشر (ق١٨): إحياء طريق التجارة القديم بدلاً من رأس الرجاء الصالح</li>
+        <li>تدل المحاولات على صراع استعماري أوروبي ومكانة مصر كشريان التجارة</li>
+        <li>معظم المحاولات ذات هدف اقتصادي بالدرجة الأولى</li>
+        <li>اكتشف البرتغاليون طريق رأس الرجاء وسيطرت عليه إنجلترا</li>
+      </ul>
+    </div>
+
+    <div class="card accent-blue">
+      <div class="card-header">
+        <div class="card-icon">⚔️</div>
+        <div class="card-title">الثورة الفرنسية وعوامل الحملة</div>
+      </div>
+      <ul>
+        <li>الثورة الفرنسية ١٤ يوليو ١٧٨٩: أول ثورة اجتماعية أوروبية قادها أبناء الطبقة الوسطى</li>
+        <li>نتائجها: القضاء على النظام الملكي الإقطاعي وإعلان الجمهورية وإعدام لويس السادس عشر (١٧٩٣)</li>
+        <li>قيام تحالف أوروبي لإعادة الملكية؛ انتصرت فرنسا على الجميع ما عدا إنجلترا (دولة بحرية)</li>
+        <li>نابليون فكّر في توجيه ضربة لإنجلترا خارج أراضيها عبر غزو مصر</li>
+        <li>أهداف الحملة: تهديد مصالح بريطانيا، إقامة إمبراطورية فرنسية، تسهيل التجارة للشرق</li>
+        <li>الطبقة الوسطى = البرجوازية؛ الطبقة الأرستقراطية = الطبقة العليا لم تشترك في الثورة</li>
+      </ul>
+    </div>
+
+    <div class="card accent-green">
+      <div class="card-header">
+        <div class="card-icon">🌾</div>
+        <div class="card-title">الأوضاع الاقتصادية قبل الحملة</div>
+      </div>
+      <ul>
+        <li>الزراعة: تدهورت — الأرض مِلك للدولة تُزرع بـ"حق الانتفاع" مقابل ضرائب</li>
+        <li>نظام الالتزام: الملتزم يجمع الضرائب مقابل أرض "الوسية" معفاة من الضرائب</li>
+        <li>مساوئ الالتزام: سطوة الملتزم، فرض إتاوات خارجة، إهمال مشروعات الري والجسور</li>
+        <li>الصناعة: يدوية بسيطة؛ الصنّاع في طوائف شبيهة بالنقابات تجمع الضرائب وتشرف على الإنتاج</li>
+        <li>التجارة الخارجية تدهورت بسبب تحوّل طريق الشرق-الغرب لطريق رأس الرجاء الصالح</li>
+        <li>سيطرة التجار الأجانب نتيجة تنظيمهم وتمتعهم بالامتيازات التجارية العثمانية</li>
+      </ul>
+    </div>
+
+    <div class="card accent-purple">
+      <div class="card-header">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">الأوضاع السياسية والاجتماعية</div>
+      </div>
+      <ul>
+        <li>المجتمع طبقتان: الحكام (الأتراك والبكوات) والمحكومون (المصريون وشريحة وسطى من علماء وتجار)</li>
+        <li>المجتمع طبقي (حكام ومحكومون) — انتشر الجهل وسادت الخرافات وبقي بصيص علم في الأزهر</li>
+        <li>السلطة موزّعة على: الوالي (نائب السلطان) + الديوان (مراقبة الوالي) + البكوات (إدارة الأقاليم)</li>
+        <li>قِصَر مدة الوالي وتطلّع المماليك للحكم أدى لحركة علي بك الكبير (١٧٦٣)</li>
+        <li>علي بك الكبير: عزل الوالي، ضرب العملة باسمه، أخضع الحجاز، أرسل محمد أبو الذهب للشام</li>
+        <li>فشل الحركة بخيانة أبو الذهب — مصر والية عثمانية مجدداً تحت حكم الثنائي مراد بك وإبراهيم بك</li>
+      </ul>
+    </div>
+
+    <div class="card accent-teal">
+      <div class="card-header">
+        <div class="card-icon">⚓</div>
+        <div class="card-title">الحملة الفرنسية — الوصول والمعارك</div>
+      </div>
+      <ul>
+        <li>خروج الحملة من ميناء طولون (جنوب فرنسا)؛ استولت على جزيرة مالطة في الطريق</li>
+        <li>منشور نابليون (يونيو ١٧٩٨): ادّعى محاربة المماليك وإقامة حكومة أهلية — ترغيب وترهيب</li>
+        <li>أول مقاومة: أهل الإسكندرية بقيادة محمد كريم الذي أُعدم رمياً بالرصاص (سبتمبر ١٧٩٨)</li>
+        <li>معركة شبراخيت (يوليو ١٧٩٨): هزيمة مراد بك — تراجع جنوباً لإمبابة</li>
+        <li>معركة إمبابة: فرّ مراد بك للصعيد وإبراهيم بك للشام — استولى الفرنسيون على القاهرة</li>
+        <li>موقعة أبي قير البحرية (أغسطس ١٧٩٨): تحطيم الأسطول الفرنسي — بداية النهاية</li>
+      </ul>
+    </div>
+
+    <div class="card accent-orange">
+      <div class="card-header">
+        <div class="card-icon">🔥</div>
+        <div class="card-title">ثورات القاهرة والصعيد</div>
+      </div>
+      <ul>
+        <li>ثورة القاهرة الأولى (أكتوبر ١٧٩٨): قادها الأزهر — قُتل حاكم القاهرة الفرنسي دوبوي</li>
+        <li>دخول الفرنسيين الأزهر بخيولهم أثار الشعور الديني وأظهر وجه الاحتلال القبيح</li>
+        <li>مقاومة الصعيد: ١٠ أشهر بحرب مناوشات — بمساعدة قوات من الجزيرة العربية</li>
+        <li>حملة الشام (١٧٩٩): فشل نابليون في فتح عكا بفضل استبسال أهلها وأحمد باشا الجزار والأسطول الإنجليزي</li>
+        <li>ثورة القاهرة الثانية (مارس–أبريل ١٨٠٠): قُتل كليبر على يد سليمان الحلبي (يونيو ١٨٠٠)</li>
+        <li>جلاء الحملة: ١٨ سبتمبر ١٨٠١ بعد استسلام الفرنسيين لقوات إنجليزية-عثمانية مشتركة</li>
+      </ul>
+    </div>
+
+    <div class="card accent-gold">
+      <div class="card-header">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">آثار الحملة الفرنسية</div>
+      </div>
+      <ul>
+        <li>الآثار السياسية: الدواوين (ديوان القاهرة، دواوين الأقاليم، الديوان العام) — أول تجربة شبه ديمقراطية</li>
+        <li>الديوان العام برئاسة الشيخ عبد الله الشرقاوي بالاقتراع السري — ربط السياسة بالعلم</li>
+        <li>الآثار الاقتصادية: انتعاش الزراعة بدراسة النيل والقنوات، إنشاء حدائق نباتية</li>
+        <li>الآثار الاجتماعية: محاجر صحية، مستشفى عسكري، إصلاح القضاء (رسوم ثابتة ٢٪)</li>
+        <li>الآثار العلمية: المجمع العلمي (١٤٦ عالماً)، كتاب وصف مصر، حجر رشيد، مطبعتان</li>
+        <li>الصدمة الحضارية: نافذة المصريين على التقدم الأوروبي وفكرة المشاركة في الحكم</li>
+      </ul>
+    </div>
+
+    <div class="card accent-blue">
+      <div class="card-header">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">المجمع العلمي وإنجازاته</div>
+      </div>
+      <ul>
+        <li>أنشأ نابليون المجمع العلمي على غرار المجمع العلمي الفرنسي في باريس</li>
+        <li>أهدافه: تقدم العلوم والمعارف، دراسة الطبيعة والصناعة والتاريخ، إبداء الرأي للحكومة</li>
+        <li>أنشأ مطبعتين (عربية وفرنسية) وجريدتين فرنسيتين (سياسية وعلمية-اقتصادية)</li>
+        <li>أصدر مينو جريدة باللغة العربية لنشر الأوامر وتوضيح أغراض الحكومة</li>
+        <li>دراسة فكرة حفر قناة تصل البحر الأحمر بالمتوسط (لم تنفذ بخطأ في حسابات المستوى)</li>
+        <li>تأليف كتاب "وصف مصر" — أول موسوعة عن مصر؛ حجر رشيد ففتح باب التاريخ القديم</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 2: MIND MAP ===== -->
+<div class="panel" id="panel-mindmap">
+  <div class="section-title">🧠 الخريطة الذهنية</div>
+  <div class="mindmap-wrap">
+    <div class="mindmap">
+      <div class="mm-branches">
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b1">🇫🇷 محاولات الاحتلال</div>
+          <div class="mm-subs">
+            <div class="mm-sub">لويس ١٤ — ضرب التجارة الهولندية</div>
+            <div class="mm-sub">لويس ١٥ — طلب دبلوماسي من العثمانيين</div>
+            <div class="mm-sub">لويس ١٦ — إحياء طريق التجارة القديم</div>
+            <div class="mm-sub">الهدف الرئيسي: اقتصادي</div>
+          </div>
+        </div>
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b2">⚖️ الأحوال قبل الحملة</div>
+          <div class="mm-subs">
+            <div class="mm-sub">زراعة متدهورة — نظام الالتزام</div>
+            <div class="mm-sub">صناعة يدوية — طوائف الحرف</div>
+            <div class="mm-sub">تجارة منكمشة — رأس الرجاء الصالح</div>
+            <div class="mm-sub">مجتمع طبقي: حكام ومحكومون</div>
+          </div>
+        </div>
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b3">⚔️ الحملة (١٧٩٨)</div>
+          <div class="mm-subs">
+            <div class="mm-sub">طولون ← مالطة ← الإسكندرية</div>
+            <div class="mm-sub">منشور نابليون: ترغيب وترهيب</div>
+            <div class="mm-sub">شبراخيت ← إمبابة ← القاهرة</div>
+            <div class="mm-sub">أبو قير البحرية: تحطيم الأسطول</div>
+          </div>
+        </div>
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b4">🔥 المقاومة المصرية</div>
+          <div class="mm-subs">
+            <div class="mm-sub">محمد كريم — الإسكندرية</div>
+            <div class="mm-sub">الأزهر — ثورة القاهرة الأولى</div>
+            <div class="mm-sub">الصعيد — ١٠ أشهر مناوشات</div>
+            <div class="mm-sub">سليمان الحلبي — اغتيال كليبر</div>
+          </div>
+        </div>
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b5">🌍 السياق الدولي</div>
+          <div class="mm-subs">
+            <div class="mm-sub">تنافس إنجلترا-فرنسا الاستعماري</div>
+            <div class="mm-sub">الثورة الفرنسية ١٧٨٩</div>
+            <div class="mm-sub">التحالف العثماني-الروسي-الإنجليزي</div>
+            <div class="mm-sub">نلسون وأبو قير البحرية</div>
+          </div>
+        </div>
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b6">🏛️ آثار الحملة</div>
+          <div class="mm-subs">
+            <div class="mm-sub">الدواوين — أول تجربة شبه ديمقراطية</div>
+            <div class="mm-sub">المجمع العلمي — ١٤٦ عالماً</div>
+            <div class="mm-sub">كتاب وصف مصر + حجر رشيد</div>
+            <div class="mm-sub">صدمة حضارية وانفتاح على أوروبا</div>
+          </div>
+        </div>
+
+        <div class="mm-branch">
+          <div class="mm-branch-node mm-b7">🚪 الجلاء (١٨٠١)</div>
+          <div class="mm-subs">
+            <div class="mm-sub">معاهدة العريش (يناير ١٨٠٠) — فشلت</div>
+            <div class="mm-sub">مينو: خطة تحويل مصر لمستعمرة</div>
+            <div class="mm-sub">قوات إنجليزية-عثمانية مشتركة</div>
+            <div class="mm-sub">الجلاء ١٨ سبتمبر ١٨٠١</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="mm-center">الحملة<br>الفرنسية<br>على مصر<br>١٧٩٨–١٨٠١</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 3: TIMELINE ===== -->
+<div class="panel" id="panel-timeline">
+  <div class="section-title">📅 الخط الزمني الكامل</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٦٧٢–١٧١٤</div>
+      <div class="tl-content">
+        <div class="tl-title">محاولة لويس الرابع عشر</div>
+        <div class="tl-desc">فكرة احتلال مصر لضرب التجارة الهولندية المارة عبرها نحو الهند. دخلت ضمن الخطط البديلة وكشفت عن أهمية الموقع المصري وبداية الاهتمام الأوروبي.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٧٦٣</div>
+      <div class="tl-content">
+        <div class="tl-title">علي بك الكبير يمسك بزمام الأمور</div>
+        <div class="tl-desc">صعد علي بك الكبير أحد زعماء المماليك وبدأ يتطلع للاستقلال باستغلال الصراعات الدولية. أول من فكّر في إنشاء رابطة عربية.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٧٦٨–١٧٧٢</div>
+      <div class="tl-content">
+        <div class="tl-title">حركة علي بك الكبير</div>
+        <div class="tl-desc">انتهز فرصة الحرب العثمانية الروسية فعزل الوالي ومنع آخر من القدوم، ضرب النقود باسمه، أخضع الحجاز، وأرسل محمد أبو الذهب لفتح الشام. فشلت الحركة بخيانة أبو الذهب.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٧٦٩</div>
+      <div class="tl-content">
+        <div class="tl-title">محاولة لويس الخامس عشر</div>
+        <div class="tl-desc">تجددت الفكرة الفرنسية لكن دبلوماسياً: طلب من الدولة العثمانية التنازل عن مصر لفرنسا. جاءت في أيام المماليك وعلي بك الكبير — استخدام العقل بدلاً من القوة.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">ق ١٨</div>
+      <div class="tl-content">
+        <div class="tl-title">محاولة لويس السادس عشر</div>
+        <div class="tl-desc">إحياء طريق التجارة القديم بدلاً من الدوران حول إفريقيا لتسهيل وصول التجارة الفرنسية إلى شرق آسيا. الرابعة والأخيرة قبل الثورة الفرنسية.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٤ يوليو ١٧٨٩</div>
+      <div class="tl-content">
+        <div class="tl-title">الثورة الفرنسية</div>
+        <div class="tl-desc">أول ثورة اجتماعية في أوروبا قادها أبناء الطبقة الوسطى (البرجوازية) بالتحالف مع طبقة العامة. قضت على النظام الملكي الإقطاعي وأعلنت الجمهورية.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٧٩٣</div>
+      <div class="tl-content">
+        <div class="tl-title">إعدام الملك لويس السادس عشر</div>
+        <div class="tl-desc">أعدم الملك لويس السادس عشر على المقصلة مما جعل الثورة دموية وأشعل التحالف الأوروبي ضد فرنسا. انتصرت فرنسا على جميع التحالفات الأوروبية ما عدا إنجلترا.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">يونيو ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">منشور نابليون قبيل الحملة</div>
+        <div class="tl-desc">وزّع نابليون منشوره على المصريين قبل الوصول مدّعياً محاربة المماليك وإقامة حكومة أهلية. استخدم الترغيب (العدالة) والترهيب (التهديد بحرق القرى).</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١ يوليو ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">نزول الحملة بالإسكندرية</div>
+        <div class="tl-desc">فوجئ المماليك بنزول الحملة في الإسكندرية التي كانت غير محصّنة بسبب انشغالهم بالنزاعات الداخلية. بادر أهل الإسكندرية بقيادة محمد كريم بالمقاومة.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">يوليو ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">معركة شبراخيت في البحيرة</div>
+        <div class="tl-desc">أول اختبار ميداني حقيقي بين الفرنسيين والمماليك. هُزم مراد بك وتقهقر جنوباً للدفاع عن القاهرة ورابط في إمبابة. كشفت التفاوت الحضاري بين الطرفين.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">يوليو ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">معركة إمبابة (موقعة الأهرام)</div>
+        <div class="tl-desc">هُزم المماليك ثانية. فرّ مراد بك إلى الصعيد وإبراهيم بك والوالي إلى الشام. خلت القاهرة من الدفاع وسقطت في يد الفرنسيين — فراغ سياسي تام.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">أغسطس ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">موقعة أبي قير البحرية</div>
+        <div class="tl-desc">حطّم الأسطول الإنجليزي بقيادة نلسون الأسطولَ الفرنسي. حُرمت الحملة من إمداداتها وانتهت آمال فرنسا في السيادة على البحر المتوسط — بداية النهاية.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">سبتمبر ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">إعدام محمد كريم</div>
+        <div class="tl-desc">أُعدم حاكم الإسكندرية الذي قاد أول مقاومة مصرية للحملة رمياً بالرصاص. إعدامه كشف زيف منشور نابليون وأثبت أن المحتل لم يأتِ محرراً.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">أكتوبر ١٧٩٨</div>
+      <div class="tl-content">
+        <div class="tl-title">ثورة القاهرة الأولى</div>
+        <div class="tl-desc">قاد الأزهر الثورة ونظّم قبول المتطوعين. قُتل الجنرال دوبوي (حاكم القاهرة الفرنسي). دخل الفرنسيون الأزهر بخيولهم مما أجّج الشعور الديني وامتدت الثورة للأقاليم المجاورة.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">مارس ١٧٩٩</div>
+      <div class="tl-content">
+        <div class="tl-title">حملة نابليون على الشام</div>
+        <div class="tl-desc">خرج نابليون لمواجهة التحالف العثماني قبل أن يصله في مصر. فشل في اقتحام عكا بسبب استبسال أهلها وحاكمها أحمد باشا الجزار ومساعدة الأسطول الإنجليزي.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">يوليو ١٧٩٩</div>
+      <div class="tl-content">
+        <div class="tl-title">موقعة أبي قير البرية</div>
+        <div class="tl-desc">نزل الأسطول العثماني في أبي قير. توجّه إليه نابليون وهزمه هزيمة شنيعة — آخر معركة لنابليون في مصر قبل عودته لفرنسا.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">أغسطس ١٧٩٩</div>
+      <div class="tl-content">
+        <div class="tl-title">عودة نابليون إلى فرنسا</div>
+        <div class="tl-desc">غادر نابليون مصر سراً تاركاً قيادة الحملة لنائبه كليبر بسبب المتاعب التي تواجه حكومة فرنسا مع النمسا وحلفائها. كانت نقطة تحوّل كبرى في مسار الحملة.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">يناير ١٨٠٠</div>
+      <div class="tl-content">
+        <div class="tl-title">معاهدة العريش</div>
+        <div class="tl-desc">وقّع كليبر اتفاقية جلاء الفرنسيين على نفقة الدولة العثمانية. اعترضت عليها حكومة إنجلترا وطلبت الاستسلام فرفض كليبر وقرر البقاء وطرد القوات العثمانية.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">مارس–أبريل ١٨٠٠</div>
+      <div class="tl-content">
+        <div class="tl-title">ثورة القاهرة الثانية</div>
+        <div class="tl-desc">انتهز المصريون متاعب الفرنسيين وثاروا من جديد وهاجموا معسكراتهم. أُخمدت الثورة بعد اتفاق مع مراد بك على حكم الصعيد.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٤ يونيه ١٨٠٠</div>
+      <div class="tl-content">
+        <div class="tl-title">اغتيال كليبر</div>
+        <div class="tl-desc">أقدم سليمان الحلبي — شاب سوري من طلاب الأزهر — على اغتيال كليبر في القاهرة. تولّى مينو قيادة الحملة بعده وكان يرى البقاء في مصر وتحويلها لمستعمرة فرنسية.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">١٨ سبتمبر ١٨٠١</div>
+      <div class="tl-content">
+        <div class="tl-title">جلاء الحملة الفرنسية عن مصر</div>
+        <div class="tl-desc">استسلمت الحملة الفرنسية وغادرت مصر بعد أن أرسلت إنجلترا أسطولاً جديداً إلى أبي قير (فبراير ١٨٠١) انضم إليه جيش عثماني وبعض زعماء المماليك. انتهت الحملة بعد ثلاث سنوات.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 4: TREATIES ===== -->
+<div class="panel" id="panel-treaties">
+  <div class="section-title">📜 المعاهدات والاتفاقيات والأحداث الكبرى</div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">يونيو ١٧٩٨</span>
+      <span class="treaty-name">منشور نابليون للمصريين</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>نابليون بونابرت ← المصريون والدولة العثمانية</span></div>
+    <ul>
+      <li>ادّعى نابليون أنه جاء لمحاربة المماليك (الغرباء الذين يستنزفون ثروة مصر)</li>
+      <li>وعد بإنشاء حكومة أهلية يكون الحكم فيها للمصريين</li>
+      <li>جامل الدولة العثمانية بقدر المستطاع لتجنب توحدها مع الأعداء</li>
+      <li>هدّد بحرق القرى التي تتعرض للقوات الفرنسية (ترهيب)</li>
+      <li>وُزِّع قبل وصول الحملة إلى شواطئ مصر</li>
+      <li>فشل المنشور — أثبتت مقاومة أهل الإسكندرية أن المصريين أدركوا نوايا الاستعمار</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">أغسطس ١٧٩٨</span>
+      <span class="treaty-name">موقعة أبي قير البحرية</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>الأسطول الإنجليزي (نلسون) ضد الأسطول الفرنسي</span></div>
+    <ul>
+      <li>تحطيم (إغراق) الأسطول الفرنسي في خليج أبي قير بواسطة نلسون</li>
+      <li>حرمان الحملة الفرنسية من إمداداتها الواردة من فرنسا</li>
+      <li>القضاء على آمال فرنسا في بسط سيادتها على حوض البحر المتوسط</li>
+      <li>الصخرة التي تحطمت عليها أحلام الفرنسيين وبداية النهاية للحملة</li>
+      <li>دليل على مراقبة إنجلترا المستمرة للملاحة في المتوسط وتتبّع الأسطول الفرنسي</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">يناير ١٨٠٠</span>
+      <span class="treaty-name">اتفاقية العريش</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>كليبر (فرنسا) ← السلطان العثماني وقائد الأسطول الإنجليزي في المتوسط</span></div>
+    <ul>
+      <li>رأى كليبر استحالة بقاء الحملة نظراً لتناقص الجيش وتجدد الثورات وحصار الأسطول الإنجليزي</li>
+      <li>نص الاتفاق: جلاء الفرنسيين عن مصر على نفقة الدولة العثمانية</li>
+      <li>سبب الفشل: اعترضت إنجلترا وطلبت استسلام الجيش الفرنسي لا مجرد الجلاء</li>
+      <li>رفض كليبر الاستسلام محافظاً على الهيبة الفرنسية وقرر البقاء</li>
+      <li>من أخطاء إنجلترا أنها رفضتها فأطالت مدة بقاء الحملة بلا مسوّغ</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">فبراير ١٨٠١</span>
+      <span class="treaty-name">العملية العسكرية المشتركة لطرد الفرنسيين</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>إنجلترا + الجيش العثماني + بعض زعماء المماليك</span></div>
+    <ul>
+      <li>أرسلت إنجلترا أسطولاً جديداً إلى أبي قير (فبراير ١٨٠١)</li>
+      <li>انضم إليه جيش عثماني وبعض زعماء المماليك في تحالف مشترك</li>
+      <li>لم تستطع القوات الفرنسية بقيادة مينو المقاومة فدخل التحالف القاهرة</li>
+      <li>استسلمت الحملة الفرنسية وغادرت مصر رسمياً في ١٨ سبتمبر ١٨٠١</li>
+      <li>خروج الفرنسيين لم يتم بجهد العثمانيين وحدهم بل بفضل التدخل الإنجليزي الحاسم</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٧٩٨–١٨٠١</span>
+      <span class="treaty-name">الدواوين — المرسوم التنظيمي لنابليون</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>نابليون بونابرت ← الأعيان والعلماء والتجار المصريون</span></div>
+    <ul>
+      <li>ديوان القاهرة: ٩ أعضاء من المشايخ والوجهاء — للتداول في أحوال العاصمة</li>
+      <li>دواوين الأقاليم: ٧ أعضاء في كل مديرية — منع المشاحنات وجباية الضرائب</li>
+      <li>الديوان العام: ٩ مندوبين من كل مديرية (٣ علماء + ٣ تجار + ٣ مشايخ القرى)</li>
+      <li>رأسه الشيخ عبد الله الشرقاوي بالاقتراع السري — أول تجربة شبه ديمقراطية</li>
+      <li>هدفه الحقيقي: التعرف على ما يدور في أذهان صفوة المصريين (هدف استخباراتي)</li>
+      <li>سلطات الدواوين مقيّدة بمصالح الفرنسيين — عروش وهمية</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ===== TAB 5: FIGURES ===== -->
+<div class="panel" id="panel-figures">
+  <div class="section-title">👤 الشخصيات الرئيسية</div>
+  <div class="cards-grid">
+
+    <div class="person-card accent-gold">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(201,168,76,0.15);">🎖️</div>
+        <div>
+          <div class="person-name">نابليون بونابرت</div>
+          <div class="person-role">قائد الحملة الفرنسية (١٧٩٨–١٧٩٩)</div>
+        </div>
+      </div>
+      <ul>
+        <li>فكّر في غزو مصر لضرب إنجلترا خارج أراضيها بعد فشله في مواجهة الأسطول البريطاني</li>
+        <li>وزّع منشوره قبل الوصول مستخدماً الترغيب والترهيب مع المصريين والعثمانيين</li>
+        <li>هزم المماليك في شبراخيت وإمبابة واستولى على القاهرة (يوليو ١٧٩٨)</li>
+        <li>أنشأ الدواوين والمجمع العلمي — ربط السياسة بالعلم</li>
+        <li>فشلت حملته على الشام ولم يفتح عكا (مارس ١٧٩٩)</li>
+        <li>غادر مصر سراً في أغسطس ١٧٩٩ تاركاً الحملة لكليبر</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-blue">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(26,107,138,0.15);">⚔️</div>
+        <div>
+          <div class="person-name">مراد بك</div>
+          <div class="person-role">زعيم المماليك — حاكم مصر الفعلي</div>
+        </div>
+      </div>
+      <ul>
+        <li>كان يحكم مصر فعلياً مع إبراهيم بك حين وصلت الحملة</li>
+        <li>هُزم في معركتي شبراخيت وإمبابة وتراجع جنوباً للصعيد</li>
+        <li>قاوم الفرنسيين في الصعيد بحرب مناوشات قرابة ١٠ أشهر</li>
+        <li>رفض عرض نابليون بحكم الصعيد تحت الإشراف الفرنسي</li>
+        <li>أعاق التجارة الفرنسية عبر النيل كحصار اقتصادي للحملة</li>
+        <li>قبل لاحقاً في عهد كليبر حكم الصعيد مقابل إخماد ثورة مارس ١٨٠٠</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-red">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(192,57,43,0.15);">🏛️</div>
+        <div>
+          <div class="person-name">علي بك الكبير</div>
+          <div class="person-role">زعيم المماليك المستقل (١٧٦٣–١٧٧٢)</div>
+        </div>
+      </div>
+      <ul>
+        <li>أول زعيم مملوكي يسعى لاستقلال مصر حقيقي عن العثمانيين</li>
+        <li>عزل الوالي العثماني ومنع قدوم غيره وامتنع عن دفع الخراج</li>
+        <li>ضرب النقود باسمه (استقلال اقتصادي) وأخضع الحجاز (مكانة دينية)</li>
+        <li>أرسل محمد أبو الذهب لغزو الشام ودخل دمشق</li>
+        <li>فشلت حركته بخيانة محمد أبو الذهب الذي انحاز للسلطان العثماني</li>
+        <li>أول من فكّر في إنشاء رابطة عربية — نموذج مبكر للوحدة</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-purple">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(108,52,131,0.15);">🌊</div>
+        <div>
+          <div class="person-name">الجنرال كليبر</div>
+          <div class="person-role">قائد الحملة بعد نابليون (١٧٩٩–١٨٠٠)</div>
+        </div>
+      </div>
+      <ul>
+        <li>أدرك استحالة بقاء الحملة وسعى للجلاء من خلال معاهدة العريش (يناير ١٨٠٠)</li>
+        <li>رفض شروط إنجلترا (الاستسلام) محافظاً على الهيبة الفرنسية</li>
+        <li>هاجم القوات العثمانية وأعادها متقهقرة إلى الشام</li>
+        <li>أخمد ثورة القاهرة الثانية (مارس–أبريل ١٨٠٠) بعد اتفاق مع مراد بك</li>
+        <li>اغتاله سليمان الحلبي (شاب سوري من طلاب الأزهر) في ١٤ يونيه ١٨٠٠</li>
+        <li>كان عكس مينو؛ يرى الرحيل لا البقاء</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-green">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(30,122,74,0.15);">📜</div>
+        <div>
+          <div class="person-name">الجنرال مينو</div>
+          <div class="person-role">قائد الحملة الأخير (١٨٠٠–١٨٠١)</div>
+        </div>
+      </div>
+      <ul>
+        <li>كان من أنصار البقاء في مصر وتحويلها لمستعمرة فرنسية دائمة</li>
+        <li>وضع خطة إصلاحية شاملة في الزراعة والصناعة والتجارة والصحة والقضاء</li>
+        <li>اقترح إنشاء مصانع لا تضم مصريين حتى لا تتسرب أسرار الصناعة إليهم</li>
+        <li>أصدر جريدة باللغة العربية لنشر الأوامر وتوضيح أغراض الحكومة</li>
+        <li>فتح أسواقاً جديدة في بلاد البحر الأحمر (جدة، ينبع، السويس)</li>
+        <li>استسلم للقوات الإنجليزية-العثمانية وغادر مصر في سبتمبر ١٨٠١</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-teal">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(14,102,85,0.15);">🏅</div>
+        <div>
+          <div class="person-name">محمد كريم</div>
+          <div class="person-role">حاكم الإسكندرية — أول المقاومين</div>
+        </div>
+      </div>
+      <ul>
+        <li>قاد أهل الإسكندرية في أول مقاومة مصرية ضد الحملة الفرنسية</li>
+        <li>مقاومته دليل على فشل منشور نابليون وإدراك المصريين لنوايا الاستعمار</li>
+        <li>اعتقلته القوات الفرنسية وأعدمته رمياً بالرصاص في سبتمبر ١٧٩٨</li>
+        <li>إعدامه جاء بعد دخول الحملة القاهرة وانتصار أبي قير — لأنه رمز المقاومة</li>
+        <li>يُعتبر أول شهيد وطني في وجه الحملة الفرنسية على مصر</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-orange">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(211,84,0,0.15);">🗡️</div>
+        <div>
+          <div class="person-name">سليمان الحلبي</div>
+          <div class="person-role">طالب أزهري — مُغتال كليبر</div>
+        </div>
+      </div>
+      <ul>
+        <li>شاب سوري من طلاب الأزهر</li>
+        <li>أقدم على اغتيال الجنرال كليبر في القاهرة بتاريخ ١٤ يونيه ١٨٠٠</li>
+        <li>اغتياله أظهر الدور السياسي للأزهر للمرة الثانية في مقاومة الاحتلال</li>
+        <li>عمله يُعبّر عن روح المقاومة الإسلامية التي لم تُخمد طوال سنوات الاحتلال</li>
+      </ul>
+    </div>
+
+    <div class="person-card accent-red">
+      <div class="person-header">
+        <div class="person-avatar" style="background:rgba(192,57,43,0.15);">🕌</div>
+        <div>
+          <div class="person-name">الشيخ عبد الله الشرقاوي</div>
+          <div class="person-role">رئيس الديوان العام</div>
+        </div>
+      </div>
+      <ul>
+        <li>من علماء الأزهر البارزين</li>
+        <li>رأس الديوان العام الذي أنشأه نابليون</li>
+        <li>تم اختياره بالاقتراع السري من جملة الأعضاء — تجربة ديمقراطية أولى</li>
+        <li>يمثل دور الطبقة الوسطى (العلماء) في الحياة السياسية المصرية</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 6: COMPARE ===== -->
+<div class="panel" id="panel-compare">
+  <div class="section-title">⚖️ المقارنات والتحليلات</div>
+
+  <div class="compare-wrap">
+    <div class="compare-title">📊 محاولات فرنسا لاحتلال مصر عبر العصور</div>
+    <table>
+      <tr><th>المحاولة</th><th>الملك</th><th>التاريخ</th><th>الأسلوب</th><th>الهدف</th></tr>
+      <tr><td>الأولى</td><td>لويس ١٤</td><td>١٦٧٢–١٧١٤</td><td>خطط بديلة</td><td>ضرب التجارة الهولندية</td></tr>
+      <tr><td>الثانية</td><td>لويس ١٥</td><td>١٧٦٩</td><td>دبلوماسي — طلب تنازل</td><td>إضعاف الدولة العثمانية</td></tr>
+      <tr><td>الثالثة</td><td>لويس ١٦</td><td>ق ١٨</td><td>اقتصادي</td><td>إحياء طريق التجارة القديم</td></tr>
+      <tr><td>الرابعة</td><td>نابليون</td><td>١٧٩٨</td><td>عسكري</td><td>ضرب إنجلترا وإمبراطورية شرقية</td></tr>
+    </table>
+  </div>
+
+  <div class="compare-wrap">
+    <div class="compare-title">📊 قادة الحملة الفرنسية — مقارنة</div>
+    <table>
+      <tr><th>الجانب</th><th>نابليون</th><th>كليبر</th><th>مينو</th></tr>
+      <tr><td>الموقف من البقاء</td><td>غادر سراً ١٧٩٩</td><td>أراد الجلاء</td><td>أراد البقاء والاستعمار</td></tr>
+      <tr><td>الأسلوب</td><td>عسكري + سياسي</td><td>دبلوماسي + عسكري</td><td>إداري + اقتصادي</td></tr>
+      <tr><td>الإنجاز</td><td>دواوين + مجمع علمي</td><td>طرد العثمانيين من الشام</td><td>إصلاحات زراعة وتجارة</td></tr>
+      <tr><td>النهاية</td><td>غادر سراً</td><td>اغتالَه سليمان الحلبي</td><td>استسلم للإنجليز ١٨٠١</td></tr>
+    </table>
+  </div>
+
+  <div class="compare-wrap">
+    <div class="compare-title">📊 الثورة الفرنسية مقابل ثورة القاهرة الأولى</div>
+    <table>
+      <tr><th>وجه المقارنة</th><th>الثورة الفرنسية (١٧٨٩)</th><th>ثورة القاهرة الأولى (١٧٩٨)</th></tr>
+      <tr><td>القيادة</td><td>الطبقة الوسطى (البرجوازية)</td><td>علماء الأزهر (الطبقة الوسطى)</td></tr>
+      <tr><td>الطابع</td><td>دموية — إعدام الملك</td><td>دموية — قتل حاكم الفرنسيين</td></tr>
+      <tr><td>الهدف</td><td>إسقاط النظام الملكي</td><td>طرد المحتل الأجنبي</td></tr>
+      <tr><td>النتيجة</td><td>نجاح — إعلان الجمهورية</td><td>إخماد بالقمع والإرهاب</td></tr>
+      <tr><td>الدور الديني</td><td>غائب — علمانية</td><td>محوري — الأزهر يقود</td></tr>
+    </table>
+  </div>
+
+  <div class="compare-wrap">
+    <div class="compare-title">📊 علي بك الكبير مقابل محمد بك أبو الذهب</div>
+    <table>
+      <tr><th>الجانب</th><th>علي بك الكبير</th><th>محمد بك أبو الذهب</th></tr>
+      <tr><td>الموقف من السلطة العثمانية</td><td>مستقل — عزل الوالي وضرب عملته</td><td>انحاز للسلطان وخان سيده</td></tr>
+      <tr><td>الطموح</td><td>إنشاء رابطة عربية مستقلة</td><td>الحفاظ على مكانته عند السلطان</td></tr>
+      <tr><td>المبدأ</td><td>يمتلك رؤية وطنية</td><td>انعدام المبدأ — خيانة</td></tr>
+      <tr><td>النتيجة</td><td>فشل بسبب خيانة قائده</td><td>عاد والياً تحت السلطان</td></tr>
+      <tr><td>الدرس المستفاد</td><td>سوء اختيار القادة يُفشل الحركات</td><td>احذر من صديقك ألف مرة</td></tr>
+    </table>
+  </div>
+
+  <div class="compare-wrap">
+    <div class="compare-title">📊 مقاومة الإسكندرية مقابل مقاومة عكا</div>
+    <table>
+      <tr><th>الجانب</th><th>الإسكندرية (١٧٩٨)</th><th>عكا (١٧٩٩)</th></tr>
+      <tr><td>القيادة</td><td>محمد كريم (حاكم المدينة)</td><td>أحمد باشا الجزار</td></tr>
+      <tr><td>التحصينات</td><td>ضعيفة — أُهملت</td><td>قوية + مساعدة الأسطول الإنجليزي</td></tr>
+      <tr><td>الدعم الدولي</td><td>لا يوجد</td><td>دعم إنجليزي بحري</td></tr>
+      <tr><td>النتيجة</td><td>سقطت + إعدام محمد كريم</td><td>صمدت وأفشلت حملة الشام</td></tr>
+      <tr><td>التأثير</td><td>أشعلت روح المقاومة</td><td>أرجعت نابليون لمصر</td></tr>
+    </table>
+  </div>
+
+  <div class="compare-wrap">
+    <div class="compare-title">📊 أسباب تدهور الأحوال في مصر قبيل الحملة</div>
+    <table>
+      <tr><th>المجال</th><th>أسباب التدهور</th><th>النتيجة</th></tr>
+      <tr><td>الزراعة</td><td>نظام الالتزام — إهمال الري والجسور — حق الانتفاع لا الملكية</td><td>تراجع الإنتاج وفقر الفلاح</td></tr>
+      <tr><td>الصناعة</td><td>بقاء الصناعة يدوية — عزلة عن التطور الأوروبي</td><td>توسّع الفجوة الحضارية</td></tr>
+      <tr><td>التجارة</td><td>طريق رأس الرجاء + عدم الأمن + عدم استقرار العملة</td><td>سيطرة الأجانب على التجارة</td></tr>
+      <tr><td>السياسة</td><td>أدوات التبعية العثمانية — نظام الشك والتوازنات</td><td>صراع مستمر وانعدام المركزية</td></tr>
+      <tr><td>الاجتماع</td><td>جهل وخرافات — تعليم مقتصر على العلوم الشرعية</td><td>عزلة عن التطور العالمي</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.getElementById('tabBar').offsetTop - 10, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مراجعة الربط - التاريخ المصري</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070F;
+    --card: #111827;
+    --gold: #C9A84C;
+    --gold2: #E8C96A;
+    --text: #E5E7EB;
+    --muted: #9CA3AF;
+    --blue: #1E40AF;
+    --red: #991B1B;
+    --green: #065F46;
+    --purple: #4C1D95;
+    --teal: #134E4A;
+    --orange: #92400E;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Cairo',sans-serif; direction:rtl; }
+
+  @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes glow { 0%,100%{box-shadow:0 0 10px var(--gold)} 50%{box-shadow:0 0 30px var(--gold), 0 0 60px #C9A84C44} }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0D0D1A 0%, #111827 50%, #0D0D1A 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at center, #C9A84C11 0%, transparent 70%);
+  }
+  .hero h1 { font-family:'Amiri',serif; font-size:clamp(2rem,5vw,3.5rem); color:var(--gold); text-shadow:0 0 30px #C9A84C88; margin-bottom:10px; }
+  .hero p { color:var(--muted); font-size:1.1rem; margin-bottom:30px; }
+  .hero-stats { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-bottom:30px; }
+  .stat { background:var(--card); border:1px solid var(--gold); border-radius:12px; padding:15px 25px; text-align:center; }
+  .stat-num { font-size:2rem; font-weight:900; color:var(--gold); }
+  .stat-label { font-size:0.85rem; color:var(--muted); }
+  .cta-btn {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #000; border:none; padding:12px 35px; border-radius:25px;
+    font-family:'Cairo',sans-serif; font-size:1rem; font-weight:700;
+    cursor:pointer; transition:all 0.3s; animation: pulse 2s infinite;
+  }
+  .cta-btn:hover { transform:scale(1.05); box-shadow:0 0 25px var(--gold); }
+
+  /* TABS */
+  .tabs-bar {
+    position:sticky; top:0; z-index:100;
+    background:#0A0A14;
+    border-bottom:2px solid var(--gold);
+    display:flex; overflow-x:auto; gap:0;
+    scrollbar-width:none;
+  }
+  .tabs-bar::-webkit-scrollbar { display:none; }
+  .tab-btn {
+    padding:14px 20px; background:transparent; border:none; color:var(--muted);
+    font-family:'Cairo',sans-serif; font-size:0.9rem; cursor:pointer;
+    white-space:nowrap; border-bottom:3px solid transparent;
+    transition:all 0.3s; flex-shrink:0;
+  }
+  .tab-btn:hover { color:var(--gold); background:#ffffff08; }
+  .tab-btn.active { color:var(--gold); border-bottom-color:var(--gold); background:#C9A84C11; font-weight:700; }
+
+  /* PANELS */
+  .panel { display:none; padding:40px 20px; max-width:1400px; margin:0 auto; animation:fadeIn 0.4s ease; }
+  .panel.active { display:block; }
+
+  /* CARDS GRID */
+  .cards-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:25px; }
+  .card {
+    background:var(--card); border-radius:16px; padding:25px;
+    border-right:4px solid; transition:all 0.3s;
+    position:relative; overflow:hidden;
+  }
+  .card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:inherit; }
+  .card:hover { transform:translateY(-5px); box-shadow:0 15px 40px #00000088; }
+  .card-icon { font-size:2.5rem; margin-bottom:12px; }
+  .card h3 { font-family:'Amiri',serif; font-size:1.3rem; color:var(--gold); margin-bottom:15px; }
+  .card ul { list-style:none; }
+  .card ul li { padding:6px 0; padding-right:20px; position:relative; font-size:0.95rem; line-height:1.7; border-bottom:1px solid #ffffff08; }
+  .card ul li:last-child { border:none; }
+  .card ul li::before { content:'◆'; position:absolute; right:0; color:var(--gold); font-size:0.6rem; top:10px; }
+
+  .card-blue { border-color:#3B82F6; }
+  .card-red { border-color:#EF4444; }
+  .card-green { border-color:#10B981; }
+  .card-purple { border-color:#8B5CF6; }
+  .card-orange { border-color:#F59E0B; }
+  .card-teal { border-color:#14B8A6; }
+  .card-pink { border-color:#EC4899; }
+  .card-indigo { border-color:#6366F1; }
+
+  .section-title {
+    font-family:'Amiri',serif; font-size:2rem; color:var(--gold);
+    text-align:center; margin-bottom:35px; padding-bottom:15px;
+    border-bottom:1px solid #C9A84C44; position:relative;
+  }
+  .section-title::after {
+    content:''; position:absolute; bottom:-1px; left:50%; transform:translateX(-50%);
+    width:80px; height:3px; background:var(--gold); border-radius:2px;
+  }
+
+  /* MIND MAP */
+  .mindmap-container {
+    display:flex; justify-content:center; align-items:center;
+    min-height:700px; position:relative; overflow:visible; padding:40px;
+  }
+  .mm-center {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color:#000; border-radius:50%; width:160px; height:160px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Amiri',serif; font-size:1.1rem; font-weight:700;
+    text-align:center; z-index:10; position:relative;
+    box-shadow:0 0 40px #C9A84C66; animation:glow 3s infinite;
+    flex-shrink:0;
+  }
+  .mm-branches { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; width:100%; max-width:1200px; }
+  .mm-branch {
+    background:var(--card); border-radius:16px; padding:20px;
+    border:2px solid; transition:all 0.3s; cursor:default;
+  }
+  .mm-branch:hover { transform:scale(1.03); box-shadow:0 10px 30px #00000066; }
+  .mm-branch h4 { font-family:'Amiri',serif; font-size:1.1rem; margin-bottom:12px; }
+  .mm-branch ul { list-style:none; }
+  .mm-branch ul li { font-size:0.85rem; padding:4px 0; color:var(--muted); padding-right:15px; position:relative; }
+  .mm-branch ul li::before { content:'←'; position:absolute; right:0; font-size:0.7rem; }
+
+  .mm-b1 { border-color:#3B82F6; } .mm-b1 h4 { color:#3B82F6; }
+  .mm-b2 { border-color:#EF4444; } .mm-b2 h4 { color:#EF4444; }
+  .mm-b3 { border-color:#10B981; } .mm-b3 h4 { color:#10B981; }
+  .mm-b4 { border-color:#8B5CF6; } .mm-b4 h4 { color:#8B5CF6; }
+  .mm-b5 { border-color:#F59E0B; } .mm-b5 h4 { color:#F59E0B; }
+  .mm-b6 { border-color:#EC4899; } .mm-b6 h4 { color:#EC4899; }
+  .mm-center-wrap { display:flex; justify-content:center; align-items:center; grid-column:2; margin:20px 0; }
+
+  /* TIMELINE */
+  .timeline { position:relative; padding:20px 0; }
+  .timeline::before { content:''; position:absolute; right:30px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom, var(--gold), transparent); }
+  .tl-item { position:relative; margin-bottom:30px; padding-right:70px; }
+  .tl-dot {
+    position:absolute; right:21px; top:8px; width:20px; height:20px;
+    background:var(--gold); border-radius:50%; border:3px solid var(--bg);
+    box-shadow:0 0 15px var(--gold); z-index:1;
+  }
+  .tl-year { display:inline-block; background:var(--gold); color:#000; padding:4px 12px; border-radius:20px; font-weight:700; font-size:0.85rem; margin-bottom:8px; }
+  .tl-content { background:var(--card); border-radius:12px; padding:18px 20px; border-right:3px solid var(--gold); }
+  .tl-content h4 { font-family:'Amiri',serif; color:var(--gold); margin-bottom:8px; font-size:1.1rem; }
+  .tl-content p { color:var(--muted); font-size:0.9rem; line-height:1.8; }
+  .tl-who { display:inline-block; background:#C9A84C22; color:var(--gold); padding:2px 10px; border-radius:10px; font-size:0.8rem; margin-top:6px; }
+
+  /* TREATIES */
+  .treaty-card {
+    background:var(--card); border-radius:16px; padding:25px;
+    margin-bottom:25px; border:1px solid #C9A84C44;
+    transition:all 0.3s;
+  }
+  .treaty-card:hover { border-color:var(--gold); box-shadow:0 10px 30px #00000066; }
+  .treaty-header { display:flex; align-items:center; gap:15px; margin-bottom:15px; flex-wrap:wrap; }
+  .treaty-date { background:var(--gold); color:#000; padding:6px 16px; border-radius:20px; font-weight:700; font-size:0.9rem; flex-shrink:0; }
+  .treaty-name { font-family:'Amiri',serif; font-size:1.4rem; color:var(--gold2); }
+  .treaty-parties { color:var(--muted); font-size:0.9rem; margin-bottom:12px; }
+  .treaty-parties span { color:var(--text); }
+  .treaty-list { list-style:none; }
+  .treaty-list li { padding:7px 20px; position:relative; border-bottom:1px solid #ffffff08; font-size:0.93rem; line-height:1.7; }
+  .treaty-list li:last-child { border:none; }
+  .treaty-list li::before { content:'⚡'; position:absolute; right:0; font-size:0.8rem; }
+  .treaty-results { margin-top:12px; background:#C9A84C11; border-radius:8px; padding:12px 15px; }
+  .treaty-results h5 { color:var(--gold); margin-bottom:8px; font-size:0.9rem; }
+
+  /* FIGURES */
+  .figures-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:25px; }
+  .figure-card {
+    background:var(--card); border-radius:16px; overflow:hidden;
+    transition:all 0.3s; border:1px solid #ffffff11;
+  }
+  .figure-card:hover { transform:translateY(-5px); box-shadow:0 15px 40px #00000088; border-color:var(--gold); }
+  .figure-header { padding:20px; background:linear-gradient(135deg, #111827, #1F2937); border-bottom:2px solid var(--gold); }
+  .figure-emoji { font-size:3rem; margin-bottom:8px; }
+  .figure-name { font-family:'Amiri',serif; font-size:1.5rem; color:var(--gold); }
+  .figure-role { color:var(--muted); font-size:0.9rem; margin-top:4px; }
+  .figure-period { display:inline-block; background:var(--gold); color:#000; padding:3px 10px; border-radius:10px; font-size:0.8rem; font-weight:700; margin-top:8px; }
+  .figure-body { padding:20px; }
+  .figure-body h5 { color:var(--gold); margin-bottom:10px; font-size:0.95rem; border-bottom:1px solid #C9A84C44; padding-bottom:6px; }
+  .figure-body ul { list-style:none; }
+  .figure-body ul li { padding:6px 18px; position:relative; font-size:0.88rem; line-height:1.7; color:var(--muted); }
+  .figure-body ul li::before { content:'←'; position:absolute; right:0; color:var(--gold); font-size:0.8rem; }
+  .figure-body ul li span { color:var(--text); }
+
+  /* COMPARISONS */
+  .comp-table { width:100%; border-collapse:collapse; margin-bottom:30px; overflow:hidden; border-radius:12px; }
+  .comp-table th { background:var(--gold); color:#000; padding:14px 15px; text-align:right; font-family:'Amiri',serif; font-size:1rem; }
+  .comp-table td { background:var(--card); padding:12px 15px; border-bottom:1px solid #ffffff11; font-size:0.9rem; line-height:1.7; }
+  .comp-table tr:hover td { background:#1F2937; }
+  .comp-table .highlight { color:var(--gold); font-weight:600; }
+  .comp-section { margin-bottom:50px; }
+  .comp-section h3 { font-family:'Amiri',serif; font-size:1.5rem; color:var(--gold); margin-bottom:20px; padding:12px 20px; background:var(--card); border-radius:10px; border-right:4px solid var(--gold); }
+
+  /* RESPONSIVE */
+  @media(max-width:768px) {
+    .hero h1 { font-size:1.8rem; }
+    .hero-stats { gap:15px; }
+    .cards-grid { grid-template-columns:1fr; }
+    .figures-grid { grid-template-columns:1fr; }
+    .mm-branches { grid-template-columns:1fr; }
+    .timeline::before { right:15px; }
+    .tl-item { padding-right:45px; }
+    .tl-dot { right:7px; }
+    .tab-btn { padding:12px 12px; font-size:0.8rem; }
+  }
+
+  .badge { display:inline-block; padding:3px 10px; border-radius:10px; font-size:0.8rem; font-weight:600; margin:2px; }
+  .badge-blue { background:#1E40AF33; color:#60A5FA; border:1px solid #1E40AF; }
+  .badge-red { background:#991B1B33; color:#FCA5A5; border:1px solid #991B1B; }
+  .badge-green { background:#06553633; color:#6EE7B7; border:1px solid #065536; }
+
+  .info-box { background:#C9A84C11; border:1px solid #C9A84C44; border-radius:10px; padding:15px 18px; margin:15px 0; }
+  .info-box strong { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>📜 مراجعة الربط التاريخية</h1>
+  <p>تاريخ مصر من القرن الثامن عشر حتى عهد الخديوي إسماعيل</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">٦</div><div class="stat-label">محاور رئيسية</div></div>
+    <div class="stat"><div class="stat-num">٨+</div><div class="stat-label">معاهدات واتفاقيات</div></div>
+    <div class="stat"><div class="stat-num">١٥+</div><div class="stat-label">شخصية تاريخية</div></div>
+    <div class="stat"><div class="stat-num">٨٠+</div><div class="stat-label">حدث تاريخي</div></div>
+  </div>
+  <button class="cta-btn" onclick="document.querySelector('.tabs-bar').scrollIntoView({behavior:'smooth'})">ابدأ المراجعة ←</button>
+</div>
+
+<!-- TABS -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('summary',this)">📋 الملخص التفصيلي</button>
+  <button class="tab-btn" onclick="showTab('mindmap',this)">🧠 الخريطة الذهنية</button>
+  <button class="tab-btn" onclick="showTab('timeline',this)">📅 الخط الزمني</button>
+  <button class="tab-btn" onclick="showTab('treaties',this)">📜 المعاهدات والاتفاقيات</button>
+  <button class="tab-btn" onclick="showTab('figures',this)">👤 الشخصيات</button>
+  <button class="tab-btn" onclick="showTab('compare',this)">⚖️ المقارنات</button>
+</div>
+
+<!-- ===== TAB 1: SUMMARY ===== -->
+<div class="panel active" id="panel-summary">
+  <h2 class="section-title">📋 الملخص التفصيلي الشامل</h2>
+
+  <div class="info-box" style="margin-bottom:30px;">
+    <strong>🎯 دليل سريع:</strong> النصف الثاني من القرن ١٨ → حركة علي بك الكبير + الثورة الفرنسية | النصف الأول من القرن ١٩ → عصر محمد علي | النصف الثاني من القرن ١٩ → خلفاء محمد علي + حرب القرم + إسماعيل
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="card card-red">
+      <div class="card-icon">⚔️</div>
+      <h3>الحملة الفرنسية على مصر (١٧٩٨–١٨٠١)</h3>
+      <ul>
+        <li><strong>المسار:</strong> أبحرت من ميناء طولون (جنوب فرنسا) → مرّت على مالطه وكريت → دخلت الإسكندرية</li>
+        <li><strong>هدف خط السير:</strong> تضليل الأسطول الإنجليزي عبر المرور بالجزر</li>
+        <li><strong>منشور نابليون:</strong> مجاملة الدولة العثمانية، وعداء حكام الأقاليم (المماليك)، واستخدام الترهيب والترغيب لكسب المصريين عن طريق العواطف الدينية، والوعود بالإصلاحات السياسية</li>
+        <li><strong>المجمع العلمي:</strong> أدى لمعرفة المصريين بمدى عزلتهم، وكانت له وظيفة علمية وسياسية في آنٍ واحد</li>
+        <li><strong>حملة نابليون على الشام (١٧٩٩):</strong> ذهب لتجنب الوقوع بين نارَين، ولمواجهة التحالفات، وأدت التحالفات ضده لتغيير الاستراتيجية</li>
+        <li><strong>خروج الحملة ١٨٠١م:</strong> بعد وصول الأسطول الإنجليزي ومشاركة العثمانيين والمماليك، استسلمت الحملة وخرجت في سبتمبر</li>
+      </ul>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-icon">🕌</div>
+      <h3>ثورات المصريين ضد الاحتلال الفرنسي</h3>
+      <ul>
+        <li><strong>ثورة القاهرة الأولى ١٧٩٨م:</strong> قاد الأزهر لواء المقاومة، قتل الحاكم الفرنسي، دخلت القوات الفرنسية الجامع بالخيول مما أثار الشعور الديني، وأعدمت الكثيرين</li>
+        <li><strong>ثورة القاهرة الثانية ١٨٠٠م:</strong> انتهز المصريون معاناة فرنسا، هاجم المصريون المعسكرات، قُتل كليبر وتولى مينو الحملة</li>
+        <li><strong>دور الأزهر:</strong> تفعيل الدور السياسي، تأكيد الوجه القبيح لنابليون، الأقوال الدينية تعكس أفعاله</li>
+        <li><strong>دور سليمان الحلبي:</strong> ظهور بوادر القومية العربية، للأزهر دور سياسي، تفعيل دور الاغتيالات السياسية</li>
+        <li><strong>دور حجر رشيد:</strong> ظهور النعرة الفرعونية والنزعة القومية، معرفة تاريخ مصر المصري</li>
+      </ul>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-icon">👑</div>
+      <h3>محمد علي باشا (١٨٠٥–١٨٤٨)</h3>
+      <ul>
+        <li><strong>الوصول للحكم:</strong> ثورة ١٨٠٤م ضد الولاة العثمانيين بسبب سوء الأحوال الاقتصادية، انضم لثورة رشيد ١٨٠٥م، ثم عُزل خورشيد وتولى محمد علي</li>
+        <li><strong>مذبحة القلعة ١٨١١م:</strong> تزامنت مع مشاكل السلطان، تطبيق فكرة الإبادة الجماعية، أدت لانفراد محمد علي بالسلطة المطلقة</li>
+        <li><strong>التعليم:</strong> أسس ديوان المدارس ١٨٣٧م، أرسل بعثات لفرنسا وإيطاليا وإنجلترا (١٨١٣–١٨٤٧م)، أسس مدرسة الألسن ١٨٣٦م، أنشأ مدارس الطب والمهندسخانة والزراعة والصنائع</li>
+        <li><strong>الاقتصاد:</strong> طبّق نظام الاحتكار على التجارة الداخلية والخارجية، سيطرت الدولة على توجيه الإنتاج</li>
+        <li><strong>الحروب:</strong> حروب الوهابية، حروب السودان (١٨٢٠–١٨٢٢م)، حروب اليونان (١٨٢١–١٨٢٨م)، حروب الشام (١٨٢٩–١٨٣٩م)</li>
+      </ul>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-icon">📚</div>
+      <h3>النهضة التعليمية في عهد محمد علي</h3>
+      <ul>
+        <li><strong>أهداف التعليم:</strong> تطبيق الاحتكار الاقتصادي، بناء القوة الذاتية والتنمية، دعم التوسع الخارجي والحروب</li>
+        <li><strong>البعثات (١٨١٣–١٨٤٧م):</strong> أُوفدت لفرنسا وإيطاليا وإنجلترا لاكتساب الخبرات في الفنون العسكرية وبناء السفن والملاحة والقانون</li>
+        <li><strong>رفاعة الطهطاوي:</strong> كان إماماً لأول بعثة كبيرة، تعلم الفرنسية، وأسس مدرسة الألسن ١٨٣٦م نفس دور المجمع العلمي</li>
+        <li><strong>المدارس (١٨١٦–١٨٣٩م):</strong> أُقيمت مدارس تخدم التنمية الاقتصادية والعسكرية، التحق بها تلاميذ الأزهر والكتاتيب</li>
+        <li><strong>ديوان المدارس ١٨٣٧م:</strong> أول وزارة للتعليم في مصر</li>
+        <li><strong>التراجع بعد عباس وسعيد:</strong> ساءت أحوال المدارس، تقلصت البعثات، ألغي ديوان المدارس، شجّع الأجانب على إنشاء مدارس خاصة</li>
+      </ul>
+    </div>
+
+    <div class="card card-orange">
+      <div class="card-icon">🌾</div>
+      <h3>الزراعة عبر العصور</h3>
+      <ul>
+        <li><strong>قبل الحملة الفرنسية:</strong> تدهورت الزراعة بسبب السياسة العثمانية، الأرض ملك للسلطان، لا اهتمام بالجسور، ضعف الأمن</li>
+        <li><strong>الزراعة في عهد الحملة الفرنسية:</strong> دراسة النيل والقنوات والجسور، تجارب زراعة البن وقصب السكر، إدخال النباتات المجلوبة من فرنسا كالخوخ والمشمش والكمثرى</li>
+        <li><strong>زراعة محمد علي:</strong> إحلال أساليب زراعية جديدة، الاهتمام بالتعليم الزراعي، القناطر الخيرية (ري دائم)، إدخال غلات جديدة كأشجار التوت والنيلة الهندية</li>
+        <li><strong>بعد سقوط الاحتكار:</strong> أصبح المزارعون أحراراً، في عهد سعيد أُلغيت ضريبة الدخولية ١٢٪، زادت زراعة القطن (احتياج السوق الأوروبية)</li>
+        <li><strong>قانون المقابلة ١٨٧١م (إسماعيل):</strong> أصبح للفلاح حق توريث الأرض أو وقفها أو هبتها، استقرار المزارعين والاهتمام بالإنتاج</li>
+      </ul>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-icon">🏭</div>
+      <h3>الصناعة عبر العصور</h3>
+      <ul>
+        <li><strong>قبل الحملة:</strong> صناعة يدوية بسيطة، الصناع والحرفيون في طوائف، شيخ الطائفة همزة الوصل بين الطائفة والحكومة</li>
+        <li><strong>أثناء الحملة الفرنسية:</strong> اقترح مينو إنشاء مصنع نسيج لا يضم عمالاً مصريين، إنشاء طواحين هواء وإصلاح دار الصناعة</li>
+        <li><strong>محمد علي (الاحتكار):</strong> الحكومة توجه الإنتاج، تمد الصناع بالمواد الخام، تشتري المنتجات بسعر تحدده</li>
+        <li><strong>بعد سقوط الاحتكار:</strong> قلّ إنتاج مصانع الدولة، تدهورت الصناعات الحرفية الصغيرة، انتعاش في الصناعات الحربية أواخر عهد عباس وسعيد</li>
+        <li><strong>عهد إسماعيل:</strong> زيادة الجيش، رفع القيود عن المعدات الحربية، إقامة مصانع جديدة (حلج القطن، دبغ الجلود، استخراج الزيوت، الغزل والنسيج، صناعة السكر)</li>
+      </ul>
+    </div>
+
+    <div class="card card-pink">
+      <div class="card-icon">🚢</div>
+      <h3>التجارة عبر العصور</h3>
+      <ul>
+        <li><strong>قبل الحملة:</strong> خسرت مصر طريق التجارة بسبب اكتشاف رأس الرجاء الصالح، تدهور التجارة الداخلية بسبب عدم الأمن والنزاعات العسكرية وغارات البدو، سيطرة الأجانب بسبب نظام الامتيازات</li>
+        <li><strong>أثناء الحملة:</strong> اهتم مينو بإحياء التجارة، ركدت بسبب حصار الإنجليز، استطاع مينو فتح أسواق في بلاد البحر الأحمر</li>
+        <li><strong>محمد علي (الاحتكار):</strong> احتكر تسويق الحاصلات الزراعية داخلياً، الدولة تتولى البيع للأجانب وفي الخارج بواسطة وكلاء</li>
+        <li><strong>التجارة في ظل سقوط الاحتكار:</strong> سمح للمنتجين الزراعيين ببيع إنتاجهم بالمزايدة، قام الأجانب بتوريد احتياجات السوق</li>
+      </ul>
+    </div>
+
+    <div class="card card-indigo">
+      <div class="card-icon">👑</div>
+      <h3>الخديوي إسماعيل (١٨٦٣–١٨٧٩)</h3>
+      <ul>
+        <li><strong>اللقب والفرمانات:</strong> حصل على لقب خديوي بفرمان ١٨٦٧م مما أدى لزيادة سلطة الحكومة المصرية، كما أصدر فرمانات ١٨٦٦، ١٨٧٢، ١٨٧٣م</li>
+        <li><strong>التعليم:</strong> عمل على محاربة التغلغل الفكري والثقافي الأجنبي من خلال الجمعية الخيرية الإسلامية لمحاربة طغيان المدارس الأجنبية</li>
+        <li><strong>المرأة:</strong> أكد العدالة والمساواة الاجتماعية بعمل تعليم للبنات</li>
+        <li><strong>قناة السويس ١٨٦٩م:</strong> أدت لازدياد الأزمة المالية، وهي دليل على ضعف الإرادة المصرية، جعلت أفريقيا جزيرة، دليل على السيطرة على البحر الأحمر</li>
+        <li><strong>المؤسسات:</strong> مجلس شورى النواب ١٨٦٦م، جمعية المعارف ١٨٦٨م، دار الكتب ١٨٧٠م، الجريدة العسكرية المصرية ١٨٧٣م، الجمعية الجغرافية ١٨٧٥م</li>
+        <li><strong>قانون المقابلة ١٨٧١م:</strong> أصدره لاستقرار المزارعين والفلاحين والاهتمام بالإنتاج</li>
+      </ul>
+    </div>
+
+    <div class="card card-red">
+      <div class="card-icon">🔥</div>
+      <h3>الحركات الانفصالية والثورات</h3>
+      <ul>
+        <li><strong>حركة علي بك الكبير (النصف الثاني من القرن ١٨):</strong> استغل حرب السلطان مع روسيا ليحاول الاستقلال بمصر، وتعد أول حركة انفصالية</li>
+        <li><strong>الحركة الوهابية (أوائل القرن ١٩):</strong> حركة للانفصال عن السلطان، نتجت عن مشاكل السلطان والحركات الانفصالية، بعدها زاد حاكم القطر المصري، أدت لاهتمام محمد علي بالخليج، ظهور بداية الرابطة العربية</li>
+        <li><strong>سكان المورة:</strong> حاولوا الانفصال عن السلطان في القرن الـ١٩</li>
+        <li><strong>حرب اليونان (الموره) ١٨٢١–١٨٢٨م:</strong> سبب في بداية التوتر مع الباب العالي، نمو فكرة الاستقلال عن الدولة العثمانية، اكتسب جيشنا خبرات ميدانية</li>
+        <li><strong>الثورة العرابية:</strong> من العوامل الإدارية والاجتماعية المرتبطة بالتجارة والعسكريين والأجانب</li>
+      </ul>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-icon">⚖️</div>
+      <h3>أنواع السلطات والدوافع والأسباب</h3>
+      <ul>
+        <li><strong>السلطة التشريعية:</strong> البرلمان ومجلس الشورى أو وضع القوانين (مثل: المجلس المخصوص)</li>
+        <li><strong>السلطة التنفيذية:</strong> الرئيس ورئيس الحكومة والوزراء والوالي (مثل: الوالي سلطة تنفيذية، المجلس العالي يشبه مجلس الوزراء)</li>
+        <li><strong>السلطة القضائية:</strong> المحاكم، مهمتها إنصاف جميع أفراد المجتمع (مثل: نابليون عيّن قضاة مصريين)</li>
+        <li><strong>الدوافع العسكرية:</strong> كل ما يتعلق بالحروب والجيش والسلاح</li>
+        <li><strong>الدوافع الاقتصادية:</strong> كل ما يتعلق بالزراعة والصناعة والتجارة والبنوك والقروض</li>
+        <li><strong>الدوافع السياسية:</strong> كل ما يتعلق بالحكم والإدارة والوزارات والثورات والاستعمار</li>
+        <li><strong>الدوافع الاجتماعية:</strong> كل ما يتعلق بالسكان والتعليم والصحة والقضاء</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 2: MIND MAP ===== -->
+<div class="panel" id="panel-mindmap">
+  <h2 class="section-title">🧠 الخريطة الذهنية</h2>
+  <div style="text-align:center; margin-bottom:30px;">
+    <div class="mm-center" style="margin:0 auto 30px;">تاريخ مصر<br>ق.١٨–١٩</div>
+  </div>
+  <div class="mm-branches">
+
+    <div class="mm-branch mm-b1">
+      <h4>🇫🇷 الحملة الفرنسية (١٧٩٨–١٨٠١)</h4>
+      <ul>
+        <li>أبحرت من طولون مرت بمالطه وكريت</li>
+        <li>منشور نابليون قبل الإسكندرية</li>
+        <li>المجمع العلمي وحجر رشيد</li>
+        <li>ثورتا القاهرة ١٧٩٨ و١٨٠٠م</li>
+        <li>خروج الحملة سبتمبر ١٨٠١م</li>
+        <li>معاهدة العريش ١٨٠٠م</li>
+      </ul>
+    </div>
+
+    <div class="mm-branch mm-b2">
+      <h4>👑 محمد علي (١٨٠٥–١٨٤٨)</h4>
+      <ul>
+        <li>مذبحة القلعة ١٨١١م</li>
+        <li>الاحتكار الاقتصادي</li>
+        <li>البعثات التعليمية ١٨١٣–١٨٤٧</li>
+        <li>حروب الوهابية واليونان والشام</li>
+        <li>معاهدة لندن ١٨٤٠م</li>
+        <li>ضم السودان والشام</li>
+      </ul>
+    </div>
+
+    <div class="mm-branch mm-b3">
+      <h4>📜 المعاهدات الكبرى</h4>
+      <ul>
+        <li>معاهدة العريش ١٨٠٠م</li>
+        <li>صلح أميان ١٨٠٢م</li>
+        <li>معاهدة يوليو ١٨٣٣م</li>
+        <li>صلح كيتاهيا ١٨٣٣م</li>
+        <li>معاهدة بلطة ليمان ١٨٣٨م</li>
+        <li>معاهدة لندن ١٨٤٠م</li>
+      </ul>
+    </div>
+
+    <div class="mm-branch mm-b4">
+      <h4>🏛️ عباس وسعيد (١٨٤٨–١٨٦٣)</h4>
+      <ul>
+        <li>تراجع النهضة التعليمية</li>
+        <li>سقوط نظام الاحتكار</li>
+        <li>حرب القرم ١٨٥٣–١٨٥٦</li>
+        <li>تأسيس كومسيون مصر ١٨٦١</li>
+        <li>سعيد بدأ الاستدانة</li>
+        <li>إلغاء ضريبة الدخولية ١٢٪</li>
+      </ul>
+    </div>
+
+    <div class="mm-branch mm-b5">
+      <h4>🌟 إسماعيل (١٨٦٣–١٨٧٩)</h4>
+      <ul>
+        <li>لقب خديوي فرمان ١٨٦٧</li>
+        <li>قناة السويس ١٨٦٩</li>
+        <li>مجلس شورى النواب ١٨٦٦</li>
+        <li>قانون المقابلة ١٨٧١</li>
+        <li>توسعات مصر في أفريقيا</li>
+        <li>الأزمة المالية والديون</li>
+      </ul>
+    </div>
+
+    <div class="mm-branch mm-b6">
+      <h4>⚡ الحركات الانفصالية والثورات</h4>
+      <ul>
+        <li>علي بك الكبير ١٧٦٨–١٧٧٠</li>
+        <li>الحركة الوهابية أوائل ق.١٩</li>
+        <li>ثورة مصر ضد الولاة ١٨٠٤</li>
+        <li>حرب اليونان (الموره) ١٨٢١–٢٨</li>
+        <li>محاولة استقلال ١٨٣٤</li>
+        <li>الثورة العرابية</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 3: TIMELINE ===== -->
+<div class="panel" id="panel-timeline">
+  <h2 class="section-title">📅 الخط الزمني الكامل</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٧٦٨م</div>
+      <div class="tl-content">
+        <h4>حرب روسيا مع تركيا + حركة علي بك الكبير</h4>
+        <p>بدأت الحرب بين روسيا والدولة العثمانية، واستغل علي بك الكبير انشغال السلطان ليحاول الاستقلال بمصر. تُعدّ هذه أول حركة انفصالية بارزة في النصف الثاني من القرن الثامن عشر.</p>
+        <span class="tl-who">علي بك الكبير</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٧٦٩م</div>
+      <div class="tl-content">
+        <h4>محاولة لويس الخامس عشر الاستيلاء على مصر</h4>
+        <p>حاول الملك الفرنسي لويس الخامس عشر التمدد نحو مصر عن طريق هولندا. تعكس هذه المحاولة الأطماع الأوروبية المتزايدة في المنطقة قبل الحملة الفرنسية.</p>
+        <span class="tl-who">لويس الخامس عشر - فرنسا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٧٩٨م</div>
+      <div class="tl-content">
+        <h4>الحملة الفرنسية على مصر + منشور نابليون</h4>
+        <p>أبحرت الحملة من ميناء طولون، مرّت بجزر المتوسط ودخلت الإسكندرية. أصدر نابليون منشوراً قبل الدخول يجامل فيه الدولة العثمانية ويعادي المماليك ويعد المصريين بالإصلاحات. ثارت القاهرة الأولى ضد الاحتلال.</p>
+        <span class="tl-who">نابليون بونابرت + الأزهر + المصريون</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٧٩٩م</div>
+      <div class="tl-content">
+        <h4>حملة نابليون على الشام</h4>
+        <p>توجّه نابليون للشام لتجنب الوقوع بين نارَي الأسطول الإنجليزي والقوات العثمانية. أدت التحالفات ضد الحملة إلى تغيير الاستراتيجية وعودته.</p>
+        <span class="tl-who">نابليون بونابرت</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠٠م (يناير)</div>
+      <div class="tl-content">
+        <h4>معاهدة العريش</h4>
+        <p>أُبرمت بين فرنسا وكليبر من جهة، والدولة العثمانية وإنجلترا من جهة أخرى. نصّت على خروج الفرنسيين من مصر على نفقة العثمانيين، لكن الاتفاقية فشلت بعد رفض الحكومة الإنجليزية لها.</p>
+        <span class="tl-who">كليبر - فرنسا / العثمانيون - إنجلترا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠٠م (مارس–أبريل)</div>
+      <div class="tl-content">
+        <h4>ثورة القاهرة الثانية + مقتل كليبر</h4>
+        <p>انتهز المصريون معاناة الفرنسيين وهاجموا معسكراتهم. قُتل كليبر في يونيو على يد سليمان الحلبي، وانطفأت الثورة بالقمع. تولّى مينو قيادة الحملة.</p>
+        <span class="tl-who">سليمان الحلبي + مينو</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠١م</div>
+      <div class="tl-content">
+        <h4>وصول الأسطول الإنجليزي + جلاء الحملة الفرنسية</h4>
+        <p>أرسلت إنجلترا أسطولها وانضم إليها العثمانيون والمماليك. استسلمت الحملة الفرنسية وخرجت في سبتمبر ١٨٠١م.</p>
+        <span class="tl-who">مينو + الإنجليز + العثمانيون + المماليك</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠٢م</div>
+      <div class="tl-content">
+        <h4>صلح أميان بين إنجلترا وفرنسا</h4>
+        <p>اتفاق بين إنجلترا وفرنسا أدى إلى خروج الإنجليز من مصر ١٨٠٣م. يُمثّل بداية التفاهم الأوروبي وتسوية مؤقتة للنزاعات.</p>
+        <span class="tl-who">إنجلترا + فرنسا + خوشيار باشا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠٤م</div>
+      <div class="tl-content">
+        <h4>ثورة المصريين ضد الولاة العثمانيين</h4>
+        <p>ثار المصريون بسبب سوء الأحوال الاقتصادية وفرض الضرائب. انضم محمد علي إلى العلماء والمشايخ وتعهّد برفع المعاناة عن الناس.</p>
+        <span class="tl-who">المصريون + محمد علي + العلماء + مراد بك</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠٥م</div>
+      <div class="tl-content">
+        <h4>تولّي محمد علي حكم مصر + ثورة رشيد</h4>
+        <p>ثورة على خورشيد باشا بسبب أعمال الدولة المتردية وفرض الضرائب، ما أدى لعزل خورشيد وتولية محمد علي في مايو ١٨٠٥م.</p>
+        <span class="tl-who">محمد علي + خورشيد باشا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٠٧م</div>
+      <div class="tl-content">
+        <h4>حملة فريزر الإنجليزية</h4>
+        <p>هاجمت إنجلترا رشيد وحماد (البحيرة) غرب الدلتا مستغلةً تفوقها البحري، لكن المقاومة المصرية ردّتها بفضل دعم أهالي الصعيد والإسكندرية.</p>
+        <span class="tl-who">محمد علي + المقاومة الشعبية + إنجلترا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨١١م</div>
+      <div class="tl-content">
+        <h4>مذبحة القلعة</h4>
+        <p>تزامنت مع مشاكل السلطان، ونفّذ محمد علي فكرة الإبادة الجماعية للمماليك. أدت لانفراده بالسلطة المطلقة وتوطيد حكمه.</p>
+        <span class="tl-who">محمد علي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨١٣–١٨١٨م</div>
+      <div class="tl-content">
+        <h4>الحروب الوهابية والقضاء على الدولة السعودية الأولى</h4>
+        <p>أرسل محمد علي حملات لإخماد الدعوة الوهابية بأمر السلطان. بعد القضاء عليها زادت سلطة حاكم القطر المصري وظهرت بدايات الرابطة العربية.</p>
+        <span class="tl-who">محمد علي + إبراهيم باشا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨١٣–١٨٤٧م</div>
+      <div class="tl-content">
+        <h4>بداية البعثات التعليمية للخارج</h4>
+        <p>أوفد محمد علي بعثات لفرنسا وإيطاليا وإنجلترا لاكتساب الخبرات في الفنون العسكرية وبناء السفن والقانون والسياسة. كان رفاعة الطهطاوي إماماً لأول بعثة كبيرة.</p>
+        <span class="tl-who">محمد علي + رفاعة الطهطاوي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٢٠–١٨٢٢م</div>
+      <div class="tl-content">
+        <h4>ضم السودان</h4>
+        <p>أرسل محمد علي حملات عسكرية وضمّ السودان للكيان المصري. نتج عنه اندماج السودان سياسياً، واستفادة السودان من النهضة المصرية، وتأمين المجال الحيوي الجنوبي والحفاظ على الأمن المائي.</p>
+        <span class="tl-who">محمد علي + إسماعيل باشا ابن محمد علي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٢١–١٨٢٨م</div>
+      <div class="tl-content">
+        <h4>حروب اليونان (الموره)</h4>
+        <p>شارك الجيش المصري لتنفيذ أوامر السلطان. أدت إلى بداية التوتر مع الباب العالي، ونمو فكرة الاستقلال، واكتساب الجيش خبرات ميدانية. انتهت بمعاهدة ١٨٢٨م.</p>
+        <span class="tl-who">محمد علي + إبراهيم باشا + السلطان</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٢٩–١٨٣٩م</div>
+      <div class="tl-content">
+        <h4>حروب الشام (الأولى والثانية)</h4>
+        <p>انطلقت الجيوش من مصر لتخوم سوريا الشمالية. انتهت الحرب الأولى بصلح كيتاهيا ١٨٣٣م، وانتهت الثانية بمعركة نزيب ١٨٣٩م التي انتصر فيها محمد علي ثم خضع لمعاهدة لندن.</p>
+        <span class="tl-who">محمد علي + إبراهيم باشا + السلطان محمود</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٣٣م</div>
+      <div class="tl-content">
+        <h4>صلح كيتاهيا + معاهدة يوليو مع روسيا</h4>
+        <p>بموجب صلح كيتاهيا تولّى محمد علي حكم مصر والشام وجزيرة كريت والحجاز. وفي معاهدة يوليو تحالفت روسيا والدولة العثمانية دفاعياً وهجومياً لمواجهة التوسع المصري.</p>
+        <span class="tl-who">محمد علي + السلطان العثماني + روسيا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٣٦م</div>
+      <div class="tl-content">
+        <h4>تأسيس مدرسة الألسن</h4>
+        <p>أسسها محمد علي لتدريس اللغات وأدّت نفس دور المجمع العلمي في نقل العلوم والمعارف الغربية إلى مصر. أشرف عليها رفاعة الطهطاوي.</p>
+        <span class="tl-who">محمد علي + رفاعة الطهطاوي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٣٧م</div>
+      <div class="tl-content">
+        <h4>تأسيس ديوان المدارس</h4>
+        <p>أنشأه محمد علي ليكون أول وزارة للتعليم في مصر. كان يشرف على جميع المدارس النظامية ويضع المناهج ويرعى البعثات العلمية.</p>
+        <span class="tl-who">محمد علي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٣٨م</div>
+      <div class="tl-content">
+        <h4>معاهدة بلطة ليمان التجارية</h4>
+        <p>أبرمتها إنجلترا مع الدولة العثمانية لإسقاط نظام الاحتكار. رفضها محمد علي في البداية ثم اضطر لتنفيذها، مما أدى لسقوط الاحتكار ودخول الاستثمارات الأجنبية وسيادة مناخ الحرية الاقتصادية.</p>
+        <span class="tl-who">إنجلترا + الدولة العثمانية (ضد مصالح محمد علي)</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٣٩م</div>
+      <div class="tl-content">
+        <h4>معركة نزيب</h4>
+        <p>انتصر فيها محمد علي وإبراهيم باشا على السلطان. تفوّق محمد علي برياً وبحرياً لكن الدول الأوروبية تدخلت لمنع انهيار الدولة العثمانية وفرضت معاهدة لندن.</p>
+        <span class="tl-who">محمد علي + إبراهيم باشا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٤٠م</div>
+      <div class="tl-content">
+        <h4>معاهدة لندن</h4>
+        <p>فرضتها الدول الأوروبية الكبرى على محمد علي. نصّت على إخلاء جزيرة كريت والشام، واحتفاظه بحكم مصر وراثياً طوال حياته، وعودة الأسطول للسلطان، ودفع جزية سنوية. حوّلت مصر من ولاية عثمانية متميزة إلى شخصية دولية ولكنها حرمتها من مكاسبها الخارجية.</p>
+        <span class="tl-who">إنجلترا + النمسا + روسيا + بروسيا + الدولة العثمانية (ضد محمد علي)</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٤٢م</div>
+      <div class="tl-content">
+        <h4>تأسيس الجمعية الحقانية</h4>
+        <p>أسسها محمد علي وهي من المؤسسات القانونية التي أعكست الاهتمام بتطوير منظومة القضاء وإدارة العدالة في مصر.</p>
+        <span class="tl-who">محمد علي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٥٣–١٨٥٦م</div>
+      <div class="tl-content">
+        <h4>حرب القرم</h4>
+        <p>دليل على أن العلاقة بين روسيا والسلطان لا تسير على وتيرة واحدة. كان اشتراك مصر فيها إجبارياً. أدى إلى انتعاش الصناعات الحربية في مصر وكانت من دواعي ظهور التوترات الدولية.</p>
+        <span class="tl-who">عباس باشا + سعيد باشا + روسيا + تركيا + فرنسا + إنجلترا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٦١م</div>
+      <div class="tl-content">
+        <h4>تأسيس كومسيون مصر</h4>
+        <p>أنشأه سعيد باشا وهو محاكم ذات طابع دولي للفصل بين المصريين والأجانب في مجال التجارة والقضاء. يعكس بداية التدخل الأجنبي في القضاء المصري.</p>
+        <span class="tl-who">سعيد باشا</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٦٣م</div>
+      <div class="tl-content">
+        <h4>تولّي إسماعيل حكم مصر</h4>
+        <p>تولّى إسماعيل حكم مصر خلفاً لسعيد باشا. زاده السلطان عبدالعزيز لقباً لبداية عهد جديد من الإصلاحات والتوسع.</p>
+        <span class="tl-who">إسماعيل الخديوي + السلطان عبدالعزيز</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٦٦م</div>
+      <div class="tl-content">
+        <h4>فرمان مايو ١٨٦٦ + مجلس شورى النواب</h4>
+        <p>منح الفرمان إسماعيل صلاحيات موسّعة وشهد نفس العام تأسيس مجلس شورى النواب كأول هيئة تشريعية تمثيلية في مصر الحديثة.</p>
+        <span class="tl-who">إسماعيل الخديوي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٦٧م</div>
+      <div class="tl-content">
+        <h4>فرمان ١٨٦٧ ومنح لقب خديوي</h4>
+        <p>حصل إسماعيل على لقب خديوي مما أدى لزيادة سلطة الحكومة المصرية واستقلالية أكبر عن الباب العالي العثماني.</p>
+        <span class="tl-who">إسماعيل الخديوي + السلطان العثماني</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٦٩م</div>
+      <div class="tl-content">
+        <h4>افتتاح قناة السويس</h4>
+        <p>أُفتتحت القناة في احتفال مهيب. أدت إلى ازدياد الأزمة المالية، وتعدّ دليلاً على ضعف الإرادة المصرية إذ كان الاشتراك فيها إجبارياً، كما جعلت أفريقيا جزيرة جغرافياً.</p>
+        <span class="tl-who">إسماعيل الخديوي + فرنسا + شركات أوروبية</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٧١م (أغسطس)</div>
+      <div class="tl-content">
+        <h4>قانون المقابلة</h4>
+        <p>أصدره إسماعيل لسداد الديون. أصبح بموجبه للفلاح حق توريث الأرض أو وقفها أو هبتها، مما أدى لاستقرار المزارعين والفلاحين والاهتمام بالإنتاج.</p>
+        <span class="tl-who">إسماعيل الخديوي</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">١٨٧٥م</div>
+      <div class="tl-content">
+        <h4>المحاكم المختلطة + توسعات مصر في أفريقيا + الجمعية الجغرافية</h4>
+        <p>شهد هذا العام تعدد الأحداث: إنشاء المحاكم المختلطة للفصل بين المصريين والأجانب، وحروب إسماعيل في الحبشة توسيعاً لمصر في أفريقيا، وتأسيس الجمعية الجغرافية.</p>
+        <span class="tl-who">إسماعيل الخديوي</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 4: TREATIES ===== -->
+<div class="panel" id="panel-treaties">
+  <h2 class="section-title">📜 المعاهدات والاتفاقيات الكاملة</h2>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٧٦٨م</span>
+      <span class="treaty-name">حلف روسيا والدولة العثمانية (حرب روسيا–تركيا)</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>روسيا × الدولة العثمانية</span></div>
+    <ul class="treaty-list">
+      <li>استغل علي بك الكبير انشغال السلطان بهذه الحرب لمحاولة الاستقلال بمصر</li>
+      <li>تُعدّ هذه الحرب المحفّز الأول للحركات الانفصالية في مصر في القرن الثامن عشر</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٠٠م (يناير)</span>
+      <span class="treaty-name">معاهدة العريش</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>فرنسا (كليبر) × الدولة العثمانية × إنجلترا</span></div>
+    <ul class="treaty-list">
+      <li>الأسباب: تناقص عدد الجيش الفرنسي، الحملة العثمانية، تجدد مقاومة المماليك، تجدد ثورات المصريين</li>
+      <li>نصّت على خروج الفرنسيين من مصر على نفقة العثمانيين</li>
+      <li>فشلت الاتفاقية لأن الحكومة الإنجليزية رفضتها</li>
+      <li>هاجم الفرنسيون القوات العثمانية وهزموها بعد فشل الاتفاقية</li>
+    </ul>
+    <div class="treaty-results">
+      <h5>⚡ النتائج:</h5>
+      <p>قامت المصريون بالثورة الثانية ١٨٠٠م، واستمر الاحتلال حتى خروج نهائي ١٨٠١م</p>
+    </div>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٠٢م</span>
+      <span class="treaty-name">صلح أميان</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>إنجلترا × فرنسا + خوشيار باشا</span></div>
+    <ul class="treaty-list">
+      <li>اتفاق سلام بين إنجلترا وفرنسا يُمثّل التفاهم الأوروبي بعد الحملة</li>
+      <li>أدى إلى خروج الإنجليز من مصر ١٨٠٣م</li>
+      <li>يُعدّ فكرة التوقيع التجاري للتفاهم الأوروبي</li>
+    </ul>
+    <div class="treaty-results">
+      <h5>⚡ النتائج:</h5>
+      <p>خروج إنجلترا من مصر ١٨٠٣م، نشوء فراغ سياسي ١٨٠٤م بعد ثورة محمد علي</p>
+    </div>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٣٣م (يوليو)</span>
+      <span class="treaty-name">معاهدة يوليو (التحالف الروسي–العثماني)</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>روسيا × الدولة العثمانية</span></div>
+    <ul class="treaty-list">
+      <li>الأسباب: توسع محمد علي على حساب الدولة العثمانية ورغبة السلطان في مواجهته وطرده</li>
+      <li>معاهدة دفاعية هجومية يلتزم كل طرف بمساعدة الآخر أمام الخطر الخارجي أو الداخلي</li>
+      <li>تعكس قلق الدول الكبرى من تمدد النفوذ المصري</li>
+    </ul>
+    <div class="treaty-results">
+      <h5>⚡ النتائج:</h5>
+      <p>تقييد نشاط محمد علي الخارجي وخلق تحالف دولي ضده</p>
+    </div>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٣٣م</span>
+      <span class="treaty-name">صلح كيتاهيا (السياسي)</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>محمد علي × السلطان العثماني</span></div>
+    <ul class="treaty-list">
+      <li>خُدعة سياسية: تنازل السلطان عن الشام ومصر والحجاز وكريت لمحمد علي</li>
+      <li>تولّى محمد علي حكم مصر والشام وسيطر على جزيرة كريت والحجاز والجزيرة العربية</li>
+      <li>كان تسوية مؤقتة لتجنب الصدام العسكري المباشر</li>
+    </ul>
+    <div class="treaty-results">
+      <h5>⚡ النتائج:</h5>
+      <p>توسع نفوذ محمد علي لأقصاه، وظهور بوادر الرابطة العربية، لكن الدول الأوروبية لم تقبل بذلك</p>
+    </div>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٣٨م</span>
+      <span class="treaty-name">معاهدة بلطة ليمان التجارية</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>إنجلترا × الدولة العثمانية (لإسقاط احتكار محمد علي)</span></div>
+    <ul class="treaty-list">
+      <li>الأسباب: محاولة إنجلترا إسقاط نظام الاحتكار لصالح التجارة الحرة الأوروبية</li>
+      <li>إلغاء نظام الاحتكار وفتح السوق المصرية أمام التجارة الأجنبية الحرة</li>
+      <li>رفضها محمد علي في البداية ثم اضطر لتنفيذها</li>
+    </ul>
+    <div class="treaty-results">
+      <h5>⚡ النتائج:</h5>
+      <p>سقوط الاحتكار وتضعضع الصناعة المصرية، دخول الاستثمارات الأجنبية، سيادة مناخ الحرية الاقتصادية</p>
+    </div>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٤٠م</span>
+      <span class="treaty-name">معاهدة لندن الكبرى</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>إنجلترا + النمسا + روسيا + بروسيا + الدولة العثمانية (ضد محمد علي)</span></div>
+    <ul class="treaty-list">
+      <li>الأسباب: توسع محمد علي وتهديده للسلطان، اختلال التوازن الدولي، تفوق محمد علي برياً وبحرياً بعد نزيب، رغبته بالاستقلال</li>
+      <li>يُعطى محمد علي حكم مصر وعكا طوال حياته فقط، وراثياً للأبناء</li>
+      <li>إخلاء جزيرة كريت والشام والحجاز</li>
+      <li>إعادة الأسطول العثماني</li>
+      <li>دفع جزية سنوية للسلطان</li>
+      <li>قوات محمد علي جزء من قوات السلطان</li>
+      <li>تطبيق كافة المعاهدات مع الدول الأوروبية وفي مقدمتها معاهدة بلطة ليمان</li>
+    </ul>
+    <div class="treaty-results">
+      <h5>⚡ النتائج الإيجابية:</h5>
+      <p>جعلت لمصر شخصية دولية، وأصبحت ولاية عثمانية متميزة</p>
+      <h5 style="margin-top:8px;">⚡ النتائج السلبية:</h5>
+      <p>حُرمت مصر من انتصاراتها الخارجية، وفُرض القيد الدولي على استقلالها</p>
+    </div>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٢٨م</span>
+      <span class="treaty-name">اتفاقية إنهاء حرب اليونان</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>محمد علي × الدول الأوروبية × السلطان</span></div>
+    <ul class="treaty-list">
+      <li>أنهت حرب اليونان بعد هزيمة الأسطول المصري-العثماني في معركة نافارينو</li>
+      <li>حُرمت مصر من الانتصار رغم مشاركتها في الحرب</li>
+      <li>أصبحت اليونان دولة مستقلة</li>
+    </ul>
+  </div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <span class="treaty-date">١٨٤١م</span>
+      <span class="treaty-name">فرمان ١٨٤١ (السلطان لمحمد علي)</span>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>السلطان العثماني → محمد علي</span></div>
+    <ul class="treaty-list">
+      <li>تثبيت حكم محمد علي على مصر وراثياً للأبناء من بعده</li>
+      <li>تحديد الحجم الأقصى للجيش المصري</li>
+      <li>التزام محمد علي بتنفيذ معاهدة لندن ١٨٤٠م بشروطها كاملة</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ===== TAB 5: FIGURES ===== -->
+<div class="panel" id="panel-figures">
+  <h2 class="section-title">👤 الشخصيات التاريخية الكاملة</h2>
+  <div class="figures-grid">
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">⚔️</div>
+        <div class="figure-name">علي بك الكبير</div>
+        <div class="figure-role">أمير مصر المملوكي</div>
+        <div class="figure-period">النصف الثاني من القرن ١٨</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٧٦٨م:</span> استغل حرب السلطان مع روسيا وحاول الاستقلال بمصر عن الدولة العثمانية</li>
+          <li><span>لماذا؟</span> انشغال السلطان بالحرب الروسية أتاح الفرصة للمماليك لتوسيع نفوذهم</li>
+          <li><span>النتيجة:</span> يُعدّ أول حركة انفصالية بارزة في مصر في العصر الحديث</li>
+          <li><span>الموقف العربي:</span> شبه الجزيرة العربية وأهالي الصعيد دعموا حركته</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🎖️</div>
+        <div class="figure-name">نابليون بونابرت</div>
+        <div class="figure-role">قائد الحملة الفرنسية على مصر والشام</div>
+        <div class="figure-period">١٧٩٨–١٧٩٩م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٧٩٨م:</span> أصدر منشوراً قبل دخول الإسكندرية لكسب المصريين باستخدام العواطف الدينية والوعود بالإصلاحات</li>
+          <li><span>مجمع علمي:</span> أنشأ المجمع العلمي لدراسة مصر علمياً وسياسياً</li>
+          <li><span>١٧٩٩م:</span> توجّه للشام لتجنب الحصار وهزم، فعاد لمصر ثم غادر إلى فرنسا</li>
+          <li><span>لماذا؟</span> طموحه لضرب التجارة البريطانية وبناء إمبراطورية شرقية</li>
+          <li><span>النتيجة:</span> ظهور المجمع العلمي وحجر رشيد والنعرة الفرعونية، وإثارة الوعي القومي المصري</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🗡️</div>
+        <div class="figure-name">كليبر</div>
+        <div class="figure-role">قائد الحملة الفرنسية بعد نابليون</div>
+        <div class="figure-period">١٧٩٩–١٨٠٠م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٨٠٠م:</span> أبرم معاهدة العريش لإخراج الجيش الفرنسي من مصر بشروط مشرّفة</li>
+          <li><span>لماذا؟</span> تناقص الجيش الفرنسي، تجدد المقاومة، رفض الإنجليز للمعاهدة</li>
+          <li><span>مقتله:</span> اغتاله سليمان الحلبي السوري وهو في القاهرة بعد رفضه الاتفاقية</li>
+          <li><span>النتيجة:</span> تولي مينو القيادة وانتهاء الحملة بالخروج في سبتمبر ١٨٠١م</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">⚖️</div>
+        <div class="figure-name">مينو</div>
+        <div class="figure-role">آخر قادة الحملة الفرنسية</div>
+        <div class="figure-period">١٨٠٠–١٨٠١م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>التمصير:</span> اهتم بإحياء التجارة ودراسة الحاجات المصرية، يُعدّ أول من بدأ التمصير</li>
+          <li><span>حقوق الأقليات:</span> أول من احترم حقوق الأقليات في مصر</li>
+          <li><span>الصناعة:</span> اقترح إنشاء مصنع نسيج لا يضم عمالاً مصريين (يُعكس دور الفرنسيين)</li>
+          <li><span>القضاء:</span> أسهم في تطوير منظومة القضاء</li>
+          <li><span>النتيجة:</span> استسلم للقوات الإنجليزية-العثمانية وخرج في سبتمبر ١٨٠١م</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🕌</div>
+        <div class="figure-name">سليمان الحلبي</div>
+        <div class="figure-role">القائد الثاني للمقاومة الشعبية ضد الحملة</div>
+        <div class="figure-period">١٨٠٠م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٨٠٠م:</span> اغتال الجنرال كليبر قائد الحملة الفرنسية في القاهرة</li>
+          <li><span>دور الأزهر:</span> للأزهر دور سياسي كبير في تفعيل دوره</li>
+          <li><span>الدلالة:</span> ظهور بوادر القومية العربية، وتفعيل دور الاغتيالات السياسية في المقاومة</li>
+          <li><span>النتيجة:</span> إعدامه من قِبل الفرنسيين، لكن عمله أثّر معنوياً في المقاومة</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">👑</div>
+        <div class="figure-name">محمد علي باشا</div>
+        <div class="figure-role">والي مصر ومؤسس مصر الحديثة</div>
+        <div class="figure-period">١٨٠٥–١٨٤٨م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٨٠٥م:</span> تولّى حكم مصر بعد ثورة على خورشيد باشا</li>
+          <li><span>١٨١١م:</span> نفّذ مذبحة القلعة للتخلص من المماليك وتوطيد سلطته المطلقة</li>
+          <li><span>الاحتكار:</span> طبّق نظام احتكار شامل للزراعة والصناعة والتجارة</li>
+          <li><span>التعليم:</span> أسس ديوان المدارس ١٨٣٧م وأرسل بعثات تعليمية</li>
+          <li><span>الحروب:</span> حروب الوهابية والسودان واليونان والشام لتوسيع النفوذ</li>
+          <li><span>النتيجة:</span> معاهدة لندن ١٨٤٠م حدّت من طموحاته، لكنه أسس مصر الحديثة</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">📚</div>
+        <div class="figure-name">رفاعة الطهطاوي</div>
+        <div class="figure-role">رائد النهضة التعليمية والفكرية</div>
+        <div class="figure-period">النصف الأول من القرن ١٩</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٨٢٦م:</span> كان إماماً لأول بعثة كبيرة لفرنسا</li>
+          <li><span>الفرنسية:</span> تعلّم اللغة الفرنسية وتعرّف على الواقع الاجتماعي والثقافي الغربي</li>
+          <li><span>١٨٣٦م:</span> أسّس مدرسة الألسن لتدريس اللغات ونقل العلوم الغربية</li>
+          <li><span>الدور:</span> نفس دور المجمع العلمي في نقل علوم ومعارف الغرب إلى مصر</li>
+          <li><span>النتيجة:</span> أسهم في إطلاق نهضة فكرية وتعليمية غيّرت وجه مصر</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🏛️</div>
+        <div class="figure-name">عباس باشا الأول</div>
+        <div class="figure-role">والي مصر خلف محمد علي</div>
+        <div class="figure-period">١٨٤٨–١٨٥٤م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>التعليم:</span> ساءت أحوال المدارس وتقلصت البعثات وأُلغي ديوان المدارس</li>
+          <li><span>الاقتصاد:</span> شهد عهده بداية سقوط الاحتكار التدريجي</li>
+          <li><span>حرب القرم:</span> شارك في حرب القرم (١٨٥٣–١٨٥٦م) بأوامر السلطان</li>
+          <li><span>النتيجة:</span> تراجع نسبي في المسيرة الحضارية مقارنة بمحمد علي</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🚂</div>
+        <div class="figure-name">سعيد باشا</div>
+        <div class="figure-role">والي مصر</div>
+        <div class="figure-period">١٨٥٤–١٨٦٣م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>الاحتكار:</span> ألغى ضريبة الدخولية ١٢٪ مما تشابه مع معاهدة بلطة ليمان</li>
+          <li><span>القطن:</span> زادت زراعة القطن بسبب احتياج السوق الأوروبية</li>
+          <li><span>كومسيون:</span> أسّس كومسيون مصر ١٨٦١م (محاكم دولية للتجارة)</li>
+          <li><span>الاستدانة:</span> أول من بدأ الاستدانة من الخارج وهو أول صك اجتماعي سلبي</li>
+          <li><span>العدالة:</span> أنشأ محاكم للفصل بين المصريين والأجانب في مجال القضاء</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🌟</div>
+        <div class="figure-name">إسماعيل الخديوي</div>
+        <div class="figure-role">خديوي مصر - مصر نهضت وانهارت ماليًا</div>
+        <div class="figure-period">١٨٦٣–١٨٧٩م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٨٦٦م:</span> أسّس مجلس شورى النواب أول هيئة تشريعية تمثيلية</li>
+          <li><span>١٨٦٧م:</span> حصل على لقب خديوي مما زاد سلطة الحكومة المصرية</li>
+          <li><span>١٨٦٩م:</span> افتتح قناة السويس في احتفال مهيب أدى لازدياد الأزمة المالية</li>
+          <li><span>التعليم:</span> عمل تعليماً للبنات دليلاً على العدالة الاجتماعية</li>
+          <li><span>١٨٧١م:</span> أصدر قانون المقابلة لسداد الديون ولاستقرار الفلاحين</li>
+          <li><span>أفريقيا:</span> وسّع نفوذ مصر في أفريقيا وأسّس الجمعية الجغرافية ١٨٧٥م</li>
+          <li><span>النتيجة:</span> أزمة مالية حادة أدت لتدخل الأجانب وعزله ١٨٧٩م</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">⛵</div>
+        <div class="figure-name">إبراهيم باشا</div>
+        <div class="figure-role">قائد الجيش المصري في عهد محمد علي</div>
+        <div class="figure-period">النصف الأول من القرن ١٩</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>الوهابية:</span> قاد الحملات ضد الوهابيين وأنهى الدولة السعودية الأولى ١٨١٨م</li>
+          <li><span>اليونان:</span> قاد الجيش في حرب اليونان ١٨٢١–١٨٢٨م</li>
+          <li><span>الشام:</span> انتصر في معارك الشام ووصل لتخوم سوريا الشمالية</li>
+          <li><span>نزيب ١٨٣٩م:</span> انتصر على الجيش العثماني لكن التدخل الأوروبي أوقف المسيرة</li>
+          <li><span>النتيجة:</span> اكتسب الجيش المصري خبرات ميدانية واسعة</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🏘️</div>
+        <div class="figure-name">عمر مكرم</div>
+        <div class="figure-role">زعيم شعبي ونقيب الأشراف</div>
+        <div class="figure-period">أوائل القرن ١٩</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٨٠٤م:</span> دعم ثورة المصريين ضد الولاة العثمانيين</li>
+          <li><span>١٨٠٥م:</span> دعم تولية محمد علي حكم مصر في اجتماع دار المحكمة</li>
+          <li><span>النتيجة:</span> تخلّص منه محمد علي بعد تسوية أزمة فيضان النيل وانتهت زعامته الشعبية</li>
+          <li><span>الدلالة:</span> رمز للزعامة الشعبية في مصر في بداية القرن التاسع عشر</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🗡️</div>
+        <div class="figure-name">أحمد باشا الجزار</div>
+        <div class="figure-role">حاكم عكا المدافع عنها ضد نابليون</div>
+        <div class="figure-period">١٧٩٩م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٧٩٩م:</span> دافع عن عكا بقوة ضد حملة نابليون على الشام</li>
+          <li><span>بدعم إنجليزي:</span> تعاون مع البحرية الإنجليزية لصدّ الهجوم الفرنسي</li>
+          <li><span>النتيجة:</span> فشل نابليون في الاستيلاء على عكا وكان ذلك نقطة تحوّل أجبرته على التراجع</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-header">
+        <div class="figure-emoji">🌾</div>
+        <div class="figure-name">محمد كريم</div>
+        <div class="figure-role">والي الإسكندرية وقائد المقاومة</div>
+        <div class="figure-period">١٧٩٨م</div>
+      </div>
+      <div class="figure-body">
+        <h5>ماذا فعل؟ متى؟ لماذا؟ وما النتيجة؟</h5>
+        <ul>
+          <li><span>١٧٩٨م:</span> قاد مقاومة الإسكندرية ضد الحملة الفرنسية</li>
+          <li><span>التضامن العربي:</span> نسّق مع أهالي الصعيد وأحمد باشا الجزار لمقاومة الحملة</li>
+          <li><span>الإعدام:</span> نفّذ الفرنسيون فيه حكم الإعدام بسبب مقاومته</li>
+          <li><span>الدلالة:</span> مثال على التضامن العربي ضد الاحتلال الأجنبي</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 6: COMPARISONS ===== -->
+<div class="panel" id="panel-compare">
+  <h2 class="section-title">⚖️ المقارنات الشاملة</h2>
+
+  <div class="comp-section">
+    <h3>🌾 مقارنة الزراعة عبر العصور</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>وجه المقارنة</th>
+          <th>قبل الحملة الفرنسية</th>
+          <th>في عهد الحملة الفرنسية</th>
+          <th>في عهد محمد علي</th>
+          <th>بعد سقوط الاحتكار (سعيد–إسماعيل)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">ملكية الأرض</td>
+          <td>ملك للسلطان (حق الانتفاع)</td>
+          <td>خصّص الفرنسيون جزءاً للإنتاج العام</td>
+          <td>الدولة تسيطر وتحتكر</td>
+          <td>الفلاح يرث ويبيع ويهب (قانون المقابلة ١٨٧١)</td>
+        </tr>
+        <tr>
+          <td class="highlight">الري والبنية</td>
+          <td>لا اهتمام بالجسور وحفظ الأمن</td>
+          <td>دراسة النيل والقنوات والجسور</td>
+          <td>القناطر الخيرية، تحسين طرق الري الدائم</td>
+          <td>استمرار المشاريع المائية</td>
+        </tr>
+        <tr>
+          <td class="highlight">المحاصيل</td>
+          <td>الغلات التقليدية (الأرز والذرة)</td>
+          <td>تجارب قصب السكر، إدخال النباتات المجلوبة</td>
+          <td>إدخال أشجار التوت والنيلة الهندية</td>
+          <td>ازدياد زراعة القطن (احتياج أوروبا)</td>
+        </tr>
+        <tr>
+          <td class="highlight">حال الفلاح</td>
+          <td>عبء الضرائب، عدم الاهتمام</td>
+          <td>الفلاح عنصر منتج، اهتمام نسبي</td>
+          <td>الاحتكار يُقيّد الفلاح</td>
+          <td>حرية الزراعة، استقرار الفلاح بعد قانون المقابلة</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>🏭 مقارنة الصناعة عبر العصور</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>وجه المقارنة</th>
+          <th>قبل الحملة</th>
+          <th>في عهد الحملة</th>
+          <th>محمد علي</th>
+          <th>إسماعيل</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">طبيعة الصناعة</td>
+          <td>يدوية بسيطة + نظام طوائف</td>
+          <td>محاولات إنشاء مصانع لكن بعمال فرنسيين</td>
+          <td>احتكار الدولة للصناعة والإنتاج</td>
+          <td>انتعاش الصناعات الحربية والتحويلية</td>
+        </tr>
+        <tr>
+          <td class="highlight">دور الدولة</td>
+          <td>شيخ الطائفة وسيط</td>
+          <td>الدولة تحاول التطوير بعمال أجانب</td>
+          <td>توجيه الإنتاج، توفير المواد الخام، شراء المنتج</td>
+          <td>رفع القيود، إقامة مصانع حديثة</td>
+        </tr>
+        <tr>
+          <td class="highlight">المخرجات</td>
+          <td>منتجات حرفية تقليدية</td>
+          <td>محدودة نظراً للاحتلال</td>
+          <td>ضخمة لكن بسبب الاحتكار</td>
+          <td>القطن، الجلود، الزيوت، السكر، الغزل والنسيج</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>👥 مقارنة الشخصيات الكبرى (أوجه الشبه والاختلاف)</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>وجه المقارنة</th>
+          <th>نابليون</th>
+          <th>محمد علي</th>
+          <th>إسماعيل</th>
+          <th>مينو</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">التمصير والقضاء</td>
+          <td>عيّن قضاة مصريين (أول تمصير)</td>
+          <td>إحلال المصريين بعد سقوط الاحتكار</td>
+          <td>المحاكم المختلطة والمحلية</td>
+          <td>أول من بدأ التمصير الفعلي</td>
+        </tr>
+        <tr>
+          <td class="highlight">الزراعة والصناعة</td>
+          <td>اهتم بالزراعة، لم يعلّم المصريين</td>
+          <td>الاحتكار الكامل، نقل الخبرات للأجانب</td>
+          <td>انتعاش الصناعات الحربية</td>
+          <td>أقام طواحين هواء، اهتم بالتجارة</td>
+        </tr>
+        <tr>
+          <td class="highlight">الموقف من المماليك</td>
+          <td>حاول استخدامهم</td>
+          <td>أبادهم في مذبحة القلعة</td>
+          <td>لم تعد قوة موجودة</td>
+          <td>تعامل معهم سياسياً</td>
+        </tr>
+        <tr>
+          <td class="highlight">النهضة التعليمية</td>
+          <td>المجمع العلمي</td>
+          <td>البعثات وديوان المدارس</td>
+          <td>تعليم البنات، الجمعية الخيرية الإسلامية</td>
+          <td>محدودة</td>
+        </tr>
+        <tr>
+          <td class="highlight">الاستعانة بالأجانب</td>
+          <td>ضمّن الحملة علماء وفنانين فرنسيين</td>
+          <td>استقدم خبرات فرنسية للجيش</td>
+          <td>استعان بخبرات فرنسية في مجالات عدة</td>
+          <td>استقدم عمالاً فرنسيين للمصانع</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>📊 أوجه الاختلاف الجوهرية بين الشخصيات (عكس)</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>الاختلاف</th>
+          <th>الشخصية الأولى</th>
+          <th>الشخصية الثانية</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>١</td><td class="highlight">التجارة: حماية أم حرية؟</td><td>محمد علي: الاحتكار الكامل</td><td>إسماعيل: الباب المفتوح، دور الأجانب</td></tr>
+        <tr><td>٢</td><td class="highlight">الصناعة: إدخال أم نقل؟</td><td>مينو: لم يعلّم المصريين، نقل بدلاً من التعليم</td><td>إسماعيل ومحمد علي: نقل الخبرات للأجانب</td></tr>
+        <tr><td>٣</td><td class="highlight">حملة فريزر عكس الحملة الفرنسية</td><td>الحملة الفرنسية: استغلت طريق الصعيد</td><td>فريزر: استغل التفوق البحري من الدلتا</td></tr>
+        <tr><td>٤</td><td class="highlight">نابليون عكس محمد علي في تمصير القضاء</td><td>نابليون: أول من عيّن قضاة مصريين</td><td>محمد علي: أعاد الاحتكار ثم إحلال المصريين تدريجياً</td></tr>
+        <tr><td>٥</td><td class="highlight">طريقة الاستقلال</td><td>محمد علي: الحروب والتوسع ثم المعاهدات</td><td>إسماعيل: الإصلاح الداخلي لكن بأزمة مالية</td></tr>
+        <tr><td>٦</td><td class="highlight">النهضة التعليمية</td><td>عباس وسعيد: تراجع وإغلاق المدارس</td><td>إسماعيل ومحمد علي: اهتمام كبير وتطوير</td></tr>
+        <tr><td>٧</td><td class="highlight">الفرمانات</td><td>فرمان ١٨٤١: تقييد محمد علي</td><td>فرمان ١٨٦٦–١٨٦٧: تمكين إسماعيل</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>🔗 أوجه الشبه بين الشخصيات والأحداث</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>القاسم المشترك</th>
+          <th>الأطراف</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>١</td><td class="highlight">وضع خطط بديلة وتغيير الاستراتيجيات</td><td>نابليون (لويس ١٤) + علي بك الكبير</td></tr>
+        <tr><td>٢</td><td class="highlight">ربط السياسة بالعلم وعلم المجامع العلمية</td><td>المجمع العلمي + ديوان المدارس</td></tr>
+        <tr><td>٣</td><td class="highlight">الاهتمام بالأمن المائي (المجال الحيوي الجنوبي)</td><td>محمد علي + إسماعيل</td></tr>
+        <tr><td>٤</td><td class="highlight">الاستعانة بالخبرات الفرنسية في الجيش</td><td>محمد علي + إسماعيل</td></tr>
+        <tr><td>٥</td><td class="highlight">الاهتمام بالتجارة ومجال البحر الأحمر وأفريقيا</td><td>مينو + إسماعيل</td></tr>
+        <tr><td>٦</td><td class="highlight">إنشاء الصحف</td><td>العثمانيون + الحملة الفرنسية + محمد علي + عباس + سعيد + إسماعيل</td></tr>
+        <tr><td>٧</td><td class="highlight">تفضيل الحلول السلمية والتفكير في الاستقلال</td><td>فريزر + محمد علي + علي بك الكبير</td></tr>
+        <tr><td>٨</td><td class="highlight">مقاومة الأجانب مع الزعامة الشعبية</td><td>مقاومة أهالي الإسكندرية + مقاومة رشيد وحماد</td></tr>
+        <tr><td>٩</td><td class="highlight">إدخال نباتات زراعية جديدة</td><td>محمد علي (الفرنسيون) + إسماعيل</td></tr>
+        <tr><td>١٠</td><td class="highlight">توسيع ممتلكات مصر</td><td>محمد علي + إسماعيل</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comp-section">
+    <h3>🔑 ربط التواريخ بين الفصول</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>التاريخ</th>
+          <th>الحدث في الفصل الأول</th>
+          <th>الحدث في الفصل الثاني</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">١٨٠٠م</td>
+          <td>معاهدة العريش (يناير) - الحملة الفرنسية</td>
+          <td>ثورة القاهرة الثانية (مارس–أبريل)</td>
+        </tr>
+        <tr>
+          <td class="highlight">١٨٠١م</td>
+          <td>وصول الأسطول الإنجليزي وانضمام العثمانيين والمماليك</td>
+          <td>جلاء الحملة الفرنسية (سبتمبر)</td>
+        </tr>
+        <tr>
+          <td class="highlight">١٨١١م</td>
+          <td>طلب محمد علي الشام من السلطان</td>
+          <td>مذبحة القلعة + بداية القضاء على الوهابية</td>
+        </tr>
+        <tr>
+          <td class="highlight">١٨٣٧م</td>
+          <td>تأسيس ديوان المدارس</td>
+          <td>القانون الأساسي + زيارة محمد علي للسودان</td>
+        </tr>
+        <tr>
+          <td class="highlight">١٨٣٨م</td>
+          <td>زيارة محمد علي للسودان</td>
+          <td>معاهدة بلطة ليمان</td>
+        </tr>
+        <tr>
+          <td class="highlight">١٨٦٦م</td>
+          <td>فرمان مايو لإسماعيل</td>
+          <td>تأسيس مجلس شورى النواب</td>
+        </tr>
+        <tr>
+          <td class="highlight">١٨٧٥م</td>
+          <td>المحاكم المختلطة</td>
+          <td>حروب إسماعيل في الحبشة + الجمعية الجغرافية</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+function showTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.tabs-bar').offsetTop - 10, behavior:'smooth'});
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card, .tl-item, .treaty-card, .figure-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

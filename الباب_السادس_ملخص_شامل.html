@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الباب السادس - التوسع الاستعماري في البلاد العربية</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070F;
+    --card: #111827;
+    --card2: #0f1720;
+    --gold: #C9A84C;
+    --gold2: #e8c46a;
+    --text: #e8e8f0;
+    --muted: #8892a4;
+    --red: #e05252;
+    --blue: #4a90d9;
+    --green: #4caf7d;
+    --purple: #9b59b6;
+    --orange: #e67e22;
+    --teal: #1abc9c;
+    --pink: #e91e8c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a0a1a 0%, #111830 40%, #0d1525 100%);
+    padding: 60px 20px 50px;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+  .hero h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-shadow: 0 0 30px rgba(201,168,76,0.4);
+    position: relative;
+  }
+  .hero h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 25px;
+    position: relative;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .stat {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 12px 22px;
+    text-align: center;
+  }
+  .stat-num { font-size: 1.6rem; font-weight: 900; color: var(--gold); display: block; }
+  .stat-lbl { font-size: 0.75rem; color: var(--muted); }
+  .cta-btn {
+    background: linear-gradient(135deg, var(--gold), #a07832);
+    color: #000;
+    border: none;
+    padding: 13px 35px;
+    border-radius: 50px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+  /* TABS */
+  .tab-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7,7,15,0.97);
+    border-bottom: 2px solid rgba(201,168,76,0.25);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    backdrop-filter: blur(10px);
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 16px 18px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--gold2); }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    background: rgba(201,168,76,0.07);
+  }
+
+  /* PANELS */
+  .panel { display: none; padding: 35px 20px; max-width: 1300px; margin: 0 auto; }
+  .panel.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(15px); } to { opacity:1; transform:translateY(0); } }
+
+  /* SECTION TITLE */
+  .sec-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.7rem;
+    color: var(--gold);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    border-top: 4px solid var(--gold);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; width: 80px; height: 80px;
+    border-radius: 0 0 0 80px;
+    opacity: 0.06;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+  .card-icon { font-size: 2rem; margin-bottom: 10px; }
+  .card h3 {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .card ul { list-style: none; padding: 0; }
+  .card ul li {
+    padding: 7px 0 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #c8d0e0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .card ul li:last-child { border-bottom: none; }
+  .card ul li::before { content: '◆'; color: var(--gold); font-size: 0.6rem; margin-top: 5px; flex-shrink: 0; }
+
+  .c-red { border-top-color: var(--red); } .c-red::before { background: var(--red); }
+  .c-blue { border-top-color: var(--blue); } .c-blue::before { background: var(--blue); }
+  .c-green { border-top-color: var(--green); } .c-green::before { background: var(--green); }
+  .c-purple { border-top-color: var(--purple); } .c-purple::before { background: var(--purple); }
+  .c-orange { border-top-color: var(--orange); } .c-orange::before { background: var(--orange); }
+  .c-teal { border-top-color: var(--teal); } .c-teal::before { background: var(--teal); }
+  .c-pink { border-top-color: var(--pink); } .c-pink::before { background: var(--pink); }
+
+  .tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    margin: 3px 2px;
+    font-weight: 600;
+  }
+  .tag.red { background: rgba(224,82,82,0.15); color: var(--red); border-color: rgba(224,82,82,0.3); }
+  .tag.blue { background: rgba(74,144,217,0.15); color: var(--blue); border-color: rgba(74,144,217,0.3); }
+  .tag.green { background: rgba(76,175,125,0.15); color: var(--green); border-color: rgba(76,175,125,0.3); }
+
+  /* MIND MAP */
+  .mindmap-wrap {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 30px 20px;
+    overflow-x: auto;
+  }
+  .mindmap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-width: 900px;
+    position: relative;
+  }
+  .mm-center {
+    background: linear-gradient(135deg, #b8860b, var(--gold));
+    color: #000;
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 22px 35px;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(201,168,76,0.5);
+    z-index: 2;
+    position: relative;
+  }
+  .mm-branches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 10px;
+  }
+  .mm-branch {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mm-branch-title {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 16px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.25s;
+  }
+  .mm-branch-title:hover { transform: scale(1.05); }
+  .mm-sub {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #b8c4d4;
+    border-right: 3px solid;
+    transition: transform 0.25s;
+  }
+  .mm-sub:hover { transform: scale(1.03); }
+
+  .b1 .mm-branch-title { background: rgba(224,82,82,0.2); color: #ff8080; border: 1px solid rgba(224,82,82,0.3); }
+  .b1 .mm-sub { border-color: var(--red); }
+  .b2 .mm-branch-title { background: rgba(74,144,217,0.2); color: #80b8ff; border: 1px solid rgba(74,144,217,0.3); }
+  .b2 .mm-sub { border-color: var(--blue); }
+  .b3 .mm-branch-title { background: rgba(76,175,125,0.2); color: #7de8ae; border: 1px solid rgba(76,175,125,0.3); }
+  .b3 .mm-sub { border-color: var(--green); }
+  .b4 .mm-branch-title { background: rgba(201,168,76,0.2); color: var(--gold2); border: 1px solid rgba(201,168,76,0.3); }
+  .b4 .mm-sub { border-color: var(--gold); }
+  .b5 .mm-branch-title { background: rgba(155,89,182,0.2); color: #c880ff; border: 1px solid rgba(155,89,182,0.3); }
+  .b5 .mm-sub { border-color: var(--purple); }
+  .b6 .mm-branch-title { background: rgba(230,126,34,0.2); color: #ffa04a; border: 1px solid rgba(230,126,34,0.3); }
+  .b6 .mm-sub { border-color: var(--orange); }
+  .b7 .mm-branch-title { background: rgba(26,188,156,0.2); color: #5effd9; border: 1px solid rgba(26,188,156,0.3); }
+  .b7 .mm-sub { border-color: var(--teal); }
+  .b8 .mm-branch-title { background: rgba(233,30,140,0.2); color: #ff70c0; border: 1px solid rgba(233,30,140,0.3); }
+  .b8 .mm-sub { border-color: var(--pink); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-right: 40px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 14px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 32px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: all 0.3s;
+  }
+  .tl-item:hover { transform: translateX(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+  .tl-dot {
+    position: absolute;
+    right: -32px;
+    top: 22px;
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(201,168,76,0.7);
+    border: 2px solid var(--bg);
+  }
+  .tl-year {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .tl-title {
+    font-family: 'Amiri', serif;
+    font-size: 1.15rem;
+    color: #e8e8f0;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .tl-desc {
+    font-size: 0.86rem;
+    color: #8892a4;
+    line-height: 1.8;
+  }
+
+  /* TREATIES */
+  .treaty-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 24px;
+    border-right: 5px solid var(--gold);
+    transition: all 0.3s;
+  }
+  .treaty-card:hover { transform: translateX(-5px); box-shadow: 0 10px 35px rgba(0,0,0,0.4); }
+  .treaty-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .treaty-name {
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .treaty-date {
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 5px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .treaty-parties {
+    font-size: 0.83rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .treaty-parties span { color: var(--text); font-weight: 600; }
+  .treaty-body ul { list-style: none; }
+  .treaty-body ul li {
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: #c0c8d8;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .treaty-body ul li:last-child { border-bottom: none; }
+  .treaty-body ul li::before { content: '▸'; color: var(--gold); flex-shrink: 0; }
+  .treaty-sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gold2);
+    margin: 12px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* FIGURES */
+  .figures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+  }
+  .fig-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s;
+    border-bottom: 3px solid var(--gold);
+  }
+  .fig-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+  .fig-avatar {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.05));
+    border: 2px solid rgba(201,168,76,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+  .fig-name {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .fig-role {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .fig-card ul { list-style: none; }
+  .fig-card ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: #b8c4d4;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .fig-card ul li:last-child { border-bottom: none; }
+  .fig-card ul li::before { content: '•'; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+  .fig-action { color: #e8c46a; font-weight: 600; }
+  .fig-when { color: var(--blue); }
+  .fig-why { color: var(--green); }
+  .fig-result { color: var(--red); }
+
+  /* COMPARISONS */
+  .comp-table-wrap {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+  }
+  .comp-table-wrap h3 {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+  }
+  .comp-table th {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    padding: 12px 16px;
+    text-align: right;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+    white-space: nowrap;
+  }
+  .comp-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #c0c8d8;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+  .comp-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .comp-table .aspect { color: var(--gold2); font-weight: 600; }
+
+  .cause-effect {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 15px;
+    align-items: start;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .cause-box {
+    background: rgba(224,82,82,0.1);
+    border: 1px solid rgba(224,82,82,0.3);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .effect-box {
+    background: rgba(76,175,125,0.1);
+    border: 1px solid rgba(76,175,125,0.3);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .cause-box h4 { color: var(--red); margin-bottom: 8px; font-size: 0.85rem; }
+  .effect-box h4 { color: var(--green); margin-bottom: 8px; font-size: 0.85rem; }
+  .cause-box p, .effect-box p { font-size: 0.83rem; line-height: 1.7; color: #c0c8d8; }
+  .arrow-mid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1.8rem;
+    padding-top: 20px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .mm-branches { grid-template-columns: repeat(2, 1fr); }
+    .cause-effect { grid-template-columns: 1fr; }
+    .arrow-mid { transform: rotate(90deg); }
+    .cards-grid { grid-template-columns: 1fr; }
+    .figures-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .mm-branches { grid-template-columns: 1fr; min-width: unset; }
+    .mindmap { min-width: unset; }
+  }
+
+  .highlight { color: var(--gold2); font-weight: 700; }
+  .note-box {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.85rem;
+    color: #c8d0e0;
+    line-height: 1.8;
+  }
+  .note-box strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>⚔️ الباب السادس والسابع</h1>
+  <h2>التوسع الاستعماري في البلاد العربية بعد الحرب العالمية الأولى حتى الاستقلال</h2>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">معاهدات واتفاقيات</span></div>
+    <div class="stat"><span class="stat-num">15+</span><span class="stat-lbl">شخصية تاريخية</span></div>
+    <div class="stat"><span class="stat-num">30+</span><span class="stat-lbl">حدث تاريخي</span></div>
+    <div class="stat"><span class="stat-num">1914-1958</span><span class="stat-lbl">الفترة الزمنية</span></div>
+  </div>
+  <button class="cta-btn" onclick="document.querySelector('.tab-bar').scrollIntoView({behavior:'smooth'})">📚 ابدأ المراجعة الآن</button>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('summary',this)">📋 ملخص تفصيلي</button>
+  <button class="tab-btn" onclick="showTab('mindmap',this)">🧠 خريطة ذهنية</button>
+  <button class="tab-btn" onclick="showTab('timeline',this)">⏳ الخط الزمني</button>
+  <button class="tab-btn" onclick="showTab('treaties',this)">📜 المعاهدات والاتفاقيات</button>
+  <button class="tab-btn" onclick="showTab('figures',this)">👤 الشخصيات</button>
+  <button class="tab-btn" onclick="showTab('compare',this)">⚖️ المقارنات</button>
+</div>
+
+<!-- ======= TAB 1: SUMMARY ======= -->
+<div id="tab-summary" class="panel active">
+
+  <div class="sec-title">📋 الملخص التفصيلي الشامل</div>
+
+  <div class="cards-grid">
+
+    <!-- Card 1 -->
+    <div class="card c-red">
+      <div class="card-icon">🔥</div>
+      <h3>الحرب العالمية الأولى (1914–1918)</h3>
+      <div class="tag">فريق الوسط</div><div class="tag blue">فريق الحلفاء</div>
+      <ul>
+        <li><strong>فريق الوسط:</strong> الدولة العثمانية (تركيا) + النمسا + ألمانيا + المجر</li>
+        <li><strong>فريق الحلفاء:</strong> إنجلترا + فرنسا + روسيا</li>
+        <li>دخلت الدولة العثمانية بجانب دول الوسط لاسترداد ما أخذته دول الوفاق منها</li>
+        <li>إنقاذ نفسها مما تبقى من ولايات عربية من مخططات دول الوفاق لاقتسام أملاكها</li>
+        <li>قصف ميناءين روسيين: <span class="highlight">أوديسا وسباستبول</span> بمدعمة بقطعتين حربيتين ألمانيتين</li>
+        <li>أعلنت الدولة العثمانية الجهاد المقدس في <span class="highlight">نوفمبر 1914</span></li>
+        <li>انزعجت إنجلترا لأنها كانت تحكم حوالي <span class="highlight">50 مليون مسلم</span> على الأقل</li>
+      </ul>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card c-orange">
+      <div class="card-icon">🕌</div>
+      <h3>موقف العرب من الجهاد المقدس</h3>
+      <div class="tag red">تردد</div><div class="tag">أسباب سياسية</div>
+      <ul>
+        <li>أثار نداء الجهاد حماساً في البداية ثم ساد الحذر بين زعماء العرب</li>
+        <li>فشل المؤتمر العربي الأول بباريس والتسوية العربية التركية بعده</li>
+        <li>استمرار الأزمة بين العرب والأتراك والعلاقة السيئة بينهم</li>
+        <li>نمى تيار فكري يدعو للتريث والاتصال بكافة الأطراف لمعرفة مواقفها</li>
+        <li>كان من الممكن أن يتغير موقف العرب لو لم تدخل الدولة العثمانية بجانب دول الوسط</li>
+      </ul>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card c-gold" style="border-top-color:#C9A84C">
+      <div class="card-icon">👑</div>
+      <h3>الثورة العربية 1916م</h3>
+      <div class="tag">الشريف حسين</div><div class="tag red">مكة المكرمة</div>
+      <ul>
+        <li>الشريف حسين بن علي: شريف مكة منذ انقلاب عسكري عام <span class="highlight">1908</span> ضد السلطان العثماني</li>
+        <li>أرسل ابنه الأمير عبد الله لمقابلة السير "رونالد ستورز" في القاهرة</li>
+        <li>فضّلت حكومة لندن التفاهم مع الشريف لحسبه ونسبه من الرسول (ص) وموقعه في مكة</li>
+        <li>حكومة الهند البريطانية كانت تفضل التفاهم مع عبد العزيز آل سعود في الرياض</li>
+        <li>أعلن الشريف ثورته في <span class="highlight">يونيو 1916</span> رغم صلابة موقف إنجلترا</li>
+        <li>أسباب الثورة: رغبته في إقامة دولة عربية كبرى، وتخوفه من إقصاء الأتراك له</li>
+        <li>أسند الأتراك ولاية جدة لـ"وهيب باشا" الذي عمل على إقصائه</li>
+      </ul>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card c-blue">
+      <div class="card-icon">✉️</div>
+      <h3>مراسلات الحسين – مكماهون (1915–1916)</h3>
+      <div class="tag blue">مطالب عربية</div><div class="tag red">رفض بريطاني</div>
+      <ul>
+        <li>أبلغ الشريف حسين مكماهون (المندوب السامي البريطاني في القاهرة) عن طموحاته</li>
+        <li>طالب بتولّيه الخلافة الإسلامية بدلاً من السلطان العثماني</li>
+        <li>طالب باستقلال البلاد العربية من مرسين وأطنة شمالاً حتى الخليج العربي</li>
+        <li>أي إقامة دولة عربية تضم: العراق + سوريا + شبه الجزيرة العربية</li>
+        <li>رفضت بريطانيا مطلب الخلافة وملك العرب بحجة العلاقات التعاهدية مع مشيخات الجزيرة</li>
+        <li>وجود مصالح فرنسية في الشام (غرب حماة وحلب وحمص ودمشق)</li>
+        <li>سيطرة بريطانيا على جنوب العراق "البصرة"</li>
+      </ul>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card c-green">
+      <div class="card-icon">⚔️</div>
+      <h3>نتائج الثورة العربية 1916</h3>
+      <div class="tag green">انتصارات</div><div class="tag red">خيانة الحلفاء</div>
+      <ul>
+        <li>تصفية الوجود العسكري العثماني في الحجاز ماعدا حامية المدينة المنورة</li>
+        <li>زحف الجيش شمالاً وسيطر على <span class="highlight">العقبة</span></li>
+        <li>الفيلق العربي بقيادة الأمير فيصل بن الحسين سيطر على <span class="highlight">القدس ودمشق وحمص وحماة وحلب</span></li>
+        <li>طردت قوات الإنجليز الدولة العثمانية من العراق والاستيلاء على <span class="highlight">بغداد</span></li>
+        <li>عقدت هدنة <span class="highlight">مدروس في نوفمبر 1918</span></li>
+        <li>استولت إنجلترا على الموصل في أعقاب هدنة مدروس</li>
+      </ul>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card c-purple">
+      <div class="card-icon">🗺️</div>
+      <h3>اتفاقية سايكس – بيكو 1916</h3>
+      <div class="tag red">سرية</div><div class="tag">تقسيم الهلال الخصيب</div>
+      <ul>
+        <li>مؤامرة ثلاثية بين روسيا القيصرية + إنجلترا + فرنسا لاقتسام أملاك الدولة العثمانية</li>
+        <li>سرّبتها روسيا البلشفية (الشيوعية) بعد الثورة رفضاً للمؤامرة</li>
+        <li><strong>فرنسا حصلت على:</strong> جنوب الأناضول (تركيا) + الساحل السوري + شمال العراق بما فيه الموصل</li>
+        <li><strong>إنجلترا حصلت على:</strong> العراق (البصرة وبغداد) + حيفا وعكا + أجزاء من جنوب الشام</li>
+        <li>إقامة نظام دولي في فلسطين</li>
+        <li>تقسيم المنطقة الصحراوية بين العراق والشام لمنطقتي نفوذ: بريطانية وفرنسية</li>
+        <li>تناقضت مع مراسلات الحسين – مكماهون تناقضاً صريحاً</li>
+      </ul>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card c-teal">
+      <div class="card-icon">🏰</div>
+      <h3>مؤتمر سان ريمو 1920</h3>
+      <div class="tag">إيطاليا</div><div class="tag blue">انتداب</div>
+      <ul>
+        <li>عُقد في إيطاليا بين دول الحلفاء لإعادة النظر في اتفاقية سايكس – بيكو</li>
+        <li>وضع <span class="highlight">العراق كله وفلسطين</span> تحت الانتداب البريطاني</li>
+        <li>وضع <span class="highlight">سوريا ولبنان</span> تحت الانتداب الفرنسي</li>
+        <li>منع العراق من التقسيم بين دولتين استعماريتين</li>
+        <li>تم تعديل نصوص سايكس بيكو ووُضعت فلسطين تحت الانتداب البريطاني تمهيداً لإعطائها لليهود</li>
+      </ul>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card c-orange">
+      <div class="card-icon">🏜️</div>
+      <h3>توسع آل سعود في الجزيرة العربية</h3>
+      <div class="tag green">انتصارات</div><div class="tag">الوهابية</div>
+      <ul>
+        <li><span class="highlight">1919 - تربة:</span> أباد قوات الشريف حسين في أول صدام بينهما</li>
+        <li><span class="highlight">1921 - حائل:</span> ضرب آل رشيد ضربة نهائية واستولى على حائل</li>
+        <li><span class="highlight">1924 - الطائف:</span> الاستيلاء على الطائف</li>
+        <li>اضطر الشريف حسين لترك الحجاز فضمّها عبد العزيز</li>
+        <li>أطلق على نفسه <span class="highlight">"ملك الحجاز وسلطان نجد وملحقاتها" في يناير 1926</span></li>
+        <li>أول حاكم عربي يحصل على لقب "سلطان وملك" في آن واحد</li>
+        <li><span class="highlight">1934 - معاهدة الطائف</span> بين السعودية واليمن وأصبحت عسير جزءاً من الدولة السعودية</li>
+      </ul>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card c-red">
+      <div class="card-icon">🦅</div>
+      <h3>سوريا ولبنان – من الانتداب للاستقلال</h3>
+      <div class="tag red">ثورة</div><div class="tag green">استقلال</div>
+      <ul>
+        <li><strong>الثورة السورية الكبرى 1925:</strong> مركزها جبل الدروز، قائدها سلطان باشا الأطرش</li>
+        <li>أسبابها: اقتطاع البقاع وطرابلس وصيدا وبيروت من سوريا لتشكيل لبنان الكبير</li>
+        <li>تمزيق سوريا لدويلات صغيرة (حلب – دمشق – الدروز – العلويين)</li>
+        <li>ربط العملة السورية واللبنانية بالفرنك الفرنسي</li>
+        <li>فشل مشروع معاهدة <span class="highlight">1936</span> بعد رفض البرلمان الفرنسي له</li>
+        <li>فصل لواء الإسكندرونة عن سوريا واستولت عليه تركيا عام <span class="highlight">1939</span></li>
+        <li>انعقد المجلس النيابي السوري عام 1943 واختار <span class="highlight">شكري القوتلي</span> رئيساً</li>
+        <li>جلاء فرنسا عن سوريا في <span class="highlight">أبريل 1946</span></li>
+      </ul>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card c-pink">
+      <div class="card-icon">🌹</div>
+      <h3>استقلال لبنان</h3>
+      <div class="tag green">استقلال</div>
+      <ul>
+        <li>انعقد المجلس النيابي في <span class="highlight">1943</span> وفاز <span class="highlight">بشارة الخورى</span> برئاسة الجمهورية</li>
+        <li>شكّل <span class="highlight">رياض الصلح</span> وزارة وطنية برئاسته</li>
+        <li>اعتقل الفرنسيون بشارة الخورى ورياض الصلح في راشيا مما أثار اضطراباً عاماً</li>
+        <li>تضامنت مصر والدول العربية وإنجلترا والولايات المتحدة مع لبنان</li>
+        <li>أطلق الفرنسيون سراح المعتقلين وأعادوا الحكم للبنانيين</li>
+        <li>جلاء فرنسا عن لبنان في <span class="highlight">آخر ديسمبر 1946</span></li>
+      </ul>
+    </div>
+
+    <!-- Card 11 -->
+    <div class="card c-blue">
+      <div class="card-icon">🌙</div>
+      <h3>سوريا ولبنان أثناء الحرب العالمية الثانية</h3>
+      <div class="tag">حكومة فيشي</div><div class="tag green">فرنسا الحرة</div>
+      <ul>
+        <li>سقطت فرنسا تحت الجيوش الألمانية وانقسمت لحكومتين</li>
+        <li><strong>حكومة فيشي</strong> بقيادة المارشال بيتان: استسلمت لألمانيا وعقدت هدنة معها</li>
+        <li><strong>فرنسا الحرة</strong> بقيادة شارل ديجول: رفض الهزيمة وأصرّ على المقاومة من إنجلترا</li>
+        <li>أعلنت القوات الفرنسية في سوريا ولبنان تأييدها لحكومة فيشي</li>
+        <li>دعمت إنجلترا فرنسا الحرة للسيطرة على سوريا ولبنان ومواجهة ثورة رشيد عالي الكيلاني بالعراق</li>
+      </ul>
+    </div>
+
+    <!-- Card 12 -->
+    <div class="card c-green">
+      <div class="card-icon">🏛️</div>
+      <h3>العراق من الانتداب حتى الاستقلال</h3>
+      <div class="tag">ثورة العشرين</div><div class="tag red">مقاومة</div>
+      <ul>
+        <li><strong>ثورة العشرين 1920:</strong> سببها إعلان الإنجليز انتدابهم على العراق وتأثير ثورة 1919 بمصر</li>
+        <li>نتائج الثورة: تكوين حكومة وطنية مؤقتة برئاسة عبد الرحمن الجيلاني في أكتوبر 1920</li>
+        <li>التمهيد لإسناد عرش العراق للأمير فيصل بن الحسين بإيعاز من إنجلترا</li>
+        <li><strong>معاهدة 1922:</strong> تخليص البلاد من الانتداب لكن أبقت لبريطانيا اليد العليا</li>
+        <li><strong>معاهدة يونيو 1930:</strong> استقلال العراق من دخولها عصبة الأمم + وجود قوات بريطانية</li>
+        <li>انقلاب بكر صدقي عام 1936 بسبب الاضطرابات وعدم الاستقرار</li>
+        <li><strong>ثورة رشيد عالي الكيلاني:</strong> ضد الوجود الإنجليزي وقُضي عليها في مايو 1941</li>
+        <li>دخول العراق في <span class="highlight">حلف بغداد 1955</span> بقيادة نوري السعيد</li>
+        <li><strong>ثورة يوليو 1958:</strong> أنهت النظام الملكي وأقامت النظام الجمهوري</li>
+      </ul>
+    </div>
+
+    <!-- Card 13 -->
+    <div class="card c-purple">
+      <div class="card-icon">🔮</div>
+      <h3>سياسات الاستعمار الأوروبي لإضعاف القومية العربية</h3>
+      <div class="tag red">تفريق</div><div class="tag">تمزيق</div>
+      <ul>
+        <li>تقسيم الوطن العربي إلى أجزاء منفصلة وإقامة حواجز جمركية للقضاء على حرية الانتقال</li>
+        <li>إثارة النزعة الفرعونية في مصر والنزعة الفينيقية في لبنان</li>
+        <li>إثارة روح العداء الطائفي: التفريق بين الدروز والموارنة، المسلمين والأقباط، الشيعة والسنة</li>
+        <li>إحداث التفرقة العنصرية: "البربر ليسوا عرباً"، "اللبنانيون من نسل الصليبيين"</li>
+        <li>خلق جنسيات متعددة: تسمية العرب بأسماء مختلفة (عراقيون، سوريون، لبنانيون...)</li>
+        <li>تشجيع الجزائريين على أخذ الجنسية الفرنسية بالتلويح بالامتيازات الطبقية</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======= TAB 2: MIND MAP ======= -->
+<div id="tab-mindmap" class="panel">
+  <div class="sec-title">🧠 الخريطة الذهنية</div>
+  <div class="mindmap-wrap">
+    <div class="mindmap">
+      <div class="mm-center">⚔️ التوسع الاستعماري في البلاد العربية<br>بعد الحرب العالمية الأولى</div>
+      <div class="mm-branches">
+
+        <div class="mm-branch b1">
+          <div class="mm-branch-title">🔥 الحرب العالمية الأولى (1914–1918)</div>
+          <div class="mm-sub">فريق الوسط: تركيا + ألمانيا + النمسا + المجر</div>
+          <div class="mm-sub">فريق الحلفاء: إنجلترا + فرنسا + روسيا</div>
+          <div class="mm-sub">دخول الدولة العثمانية للحفاظ على كيانها السياسي</div>
+          <div class="mm-sub">نداء الجهاد المقدس نوفمبر 1914</div>
+          <div class="mm-sub">هدنة مدروس نوفمبر 1918 – نهاية الحرب</div>
+        </div>
+
+        <div class="mm-branch b2">
+          <div class="mm-branch-title">👑 الثورة العربية 1916</div>
+          <div class="mm-sub">الشريف حسين بن علي – شريف مكة منذ 1908</div>
+          <div class="mm-sub">مراسلات الحسين – مكماهون 1915/1916</div>
+          <div class="mm-sub">يونيو 1916: إعلان الثورة لإقامة دولة عربية كبرى</div>
+          <div class="mm-sub">الفيلق العربي بقيادة فيصل يسيطر على دمشق وحلب</div>
+          <div class="mm-sub">تصفية الوجود العثماني من الحجاز</div>
+        </div>
+
+        <div class="mm-branch b3">
+          <div class="mm-branch-title">🗺️ اتفاقية سايكس بيكو 1916</div>
+          <div class="mm-sub">سرية بين إنجلترا + فرنسا + روسيا القيصرية</div>
+          <div class="mm-sub">تقسيم الهلال الخصيب (سوريا والعراق)</div>
+          <div class="mm-sub">فرنسا: الساحل السوري + الموصل</div>
+          <div class="mm-sub">إنجلترا: العراق + فلسطين + أجزاء من الشام</div>
+          <div class="mm-sub">سرّبتها روسيا البلشفية – خرجت للعلن</div>
+        </div>
+
+        <div class="mm-branch b4">
+          <div class="mm-branch-title">🏰 مؤتمر سان ريمو 1920</div>
+          <div class="mm-sub">إعادة النظر في اتفاقية سايكس بيكو</div>
+          <div class="mm-sub">العراق وفلسطين: انتداب بريطاني</div>
+          <div class="mm-sub">سوريا ولبنان: انتداب فرنسي</div>
+          <div class="mm-sub">بداية تنفيذ مشروع الوطن القومي اليهودي في فلسطين</div>
+        </div>
+
+        <div class="mm-branch b5">
+          <div class="mm-branch-title">🏜️ آل سعود والجزيرة العربية</div>
+          <div class="mm-sub">1919: هزيمة قوات الشريف في تربة</div>
+          <div class="mm-sub">1921: الاستيلاء على حائل (ضرب آل رشيد)</div>
+          <div class="mm-sub">1924: الاستيلاء على الطائف</div>
+          <div class="mm-sub">1926: إعلان ملك الحجاز وسلطان نجد</div>
+          <div class="mm-sub">1934: معاهدة الطائف مع اليمن</div>
+        </div>
+
+        <div class="mm-branch b6">
+          <div class="mm-branch-title">🦅 سوريا ولبنان</div>
+          <div class="mm-sub">1925: الثورة السورية الكبرى – سلطان باشا الأطرش</div>
+          <div class="mm-sub">1936: مشروع معاهدة – رُفضت من البرلمان الفرنسي</div>
+          <div class="mm-sub">1939: فصل لواء الإسكندرونة لتركيا</div>
+          <div class="mm-sub">1943: انتخاب شكري القوتلي في سوريا</div>
+          <div class="mm-sub">1946: جلاء فرنسا عن سوريا ولبنان</div>
+        </div>
+
+        <div class="mm-branch b7">
+          <div class="mm-branch-title">🌙 العراق</div>
+          <div class="mm-sub">1920: ثورة العشرين ضد الانتداب البريطاني</div>
+          <div class="mm-sub">1922: معاهدة + تولي فيصل العرش بإيعاز إنجليزي</div>
+          <div class="mm-sub">1930: معاهدة الاستقلال الشكلي</div>
+          <div class="mm-sub">1941: ثورة رشيد عالي الكيلاني – هُزمت</div>
+          <div class="mm-sub">1958: ثورة يوليو تُسقط الملكية</div>
+        </div>
+
+        <div class="mm-branch b8">
+          <div class="mm-branch-title">🔮 سياسات إضعاف العرب</div>
+          <div class="mm-sub">تقسيم الأراضي وإقامة حواجز جمركية</div>
+          <div class="mm-sub">إثارة النزعات المحلية (فرعونية، فينيقية)</div>
+          <div class="mm-sub">التفريق الطائفي بين المذاهب والأديان</div>
+          <div class="mm-sub">إحداث التفرقة العنصرية</div>
+          <div class="mm-sub">خلق جنسيات متعددة من الجنسية العربية</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= TAB 3: TIMELINE ======= -->
+<div id="tab-timeline" class="panel">
+  <div class="sec-title">⏳ الخط الزمني الكامل</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1908</div>
+      <div class="tl-title">انقلاب الشريف حسين</div>
+      <div class="tl-desc">قام الشريف حسين بن علي بانقلاب عسكري ضد السلطان العثماني وأصبح شريفاً لمكة. منذ هذا التاريخ بدأ يتطلع لتكوين دولة عربية كبرى.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1914 – يوليو</div>
+      <div class="tl-title">اندلاع الحرب العالمية الأولى</div>
+      <div class="tl-desc">انقسم العالم لفريقين: الوسط (تركيا + ألمانيا + النمسا + المجر) والحلفاء (إنجلترا + فرنسا + روسيا). دخلت الدولة العثمانية إلى جانب دول الوسط لاسترداد ما أخذه منها الحلفاء.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1914 – نوفمبر</div>
+      <div class="tl-title">إعلان الجهاد المقدس</div>
+      <div class="tl-desc">قصف الأسطول العثماني ميناءي أوديسا وسباستبول الروسيين ثم أعلنت الدولة العثمانية الجهاد المقدس. أزعج هذا الإعلان إنجلترا التي كانت تحكم 50 مليون مسلم.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1915</div>
+      <div class="tl-title">اتفاقية دارين بين إنجلترا وعبد العزيز آل سعود</div>
+      <div class="tl-desc">وقّعت إنجلترا اتفاقية دارين مع عبد العزيز آل سعود في الرياض. كانت هذه الاتفاقية من ضمن العلاقات التعاهدية التي احتجت بها بريطانيا لرفض مطالب الشريف حسين.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1915 – 1916</div>
+      <div class="tl-title">مراسلات الحسين – مكماهون</div>
+      <div class="tl-desc">أجرى الشريف حسين مراسلات مع هنري مكماهون (المندوب السامي البريطاني في القاهرة) يطالب فيها باستقلال البلاد العربية وتولّيه الخلافة الإسلامية. رفضت بريطانيا معظم مطالبه.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1916 – مايو</div>
+      <div class="tl-title">اتفاقية سايكس – بيكو السرية</div>
+      <div class="tl-desc">عُقدت اتفاقية سرية ثلاثية بين إنجلترا وفرنسا وروسيا لتقسيم الهلال الخصيب. قسّمت سوريا والعراق بين إنجلترا وفرنسا وتناقضت كلياً مع الوعود التي قُطعت للعرب.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1916 – يونيو</div>
+      <div class="tl-title">إعلان الثورة العربية الكبرى</div>
+      <div class="tl-desc">أعلن الشريف حسين بن علي ثورته ضد الدولة العثمانية دون أن يحصل على اعتراف إنجليزي بحق العرب في الاستقلال. تمكنت قواته من تصفية الوجود العثماني في الحجاز.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1918 – نوفمبر</div>
+      <div class="tl-title">هدنة مدروس ونهاية الحرب العالمية الأولى</div>
+      <div class="tl-desc">أعلنت الدولة العثمانية وقف القتال وعُقدت هدنة مدروس. استولت إنجلترا على الموصل في أعقاب الهدنة وطردت الأتراك من العراق وبغداد.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1919</div>
+      <div class="tl-title">معركة تربة – أول صدام بين آل سعود والشريف حسين</div>
+      <div class="tl-desc">أباد عبد العزيز آل سعود قوات الشريف حسين في معركة تربة. ساعده على تحقيق ذلك احتفاظه بقواته طوال الحرب العالمية الأولى وعدم مشاركتها فيها.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1920 – أبريل</div>
+      <div class="tl-title">مؤتمر سان ريمو</div>
+      <div class="tl-desc">عُقد في إيطاليا بين دول الحلفاء لإعادة النظر في اتفاقية سايكس بيكو. قُرر وضع العراق كله وفلسطين تحت الانتداب البريطاني وسوريا ولبنان تحت الانتداب الفرنسي.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1920 – أكتوبر</div>
+      <div class="tl-title">ثورة العشرين في العراق ونتائجها</div>
+      <div class="tl-desc">ثورة شعبية عراقية ضد الانتداب البريطاني، أشعلتها أيضاً ثورة 1919 في مصر. أسفرت عن تكوين حكومة وطنية مؤقتة برئاسة عبد الرحمن الجيلاني والتمهيد لتولي فيصل عرش العراق.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1921</div>
+      <div class="tl-title">عبد العزيز يستولي على حائل</div>
+      <div class="tl-desc">ضرب عبد العزيز آل سعود آل رشيد ضربة نهائية واستولى على حائل. استمرت مسيرة توسعه في الجزيرة العربية بخطوات متسارعة.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1922</div>
+      <div class="tl-title">معاهدة الحركة الوطنية العراقية مع بريطانيا</div>
+      <div class="tl-desc">خُلّصت البلاد من الانتداب البريطاني رسمياً لكن المعاهدة أبقت لبريطانيا اليد العليا في البلاد. تشابهت مع تصريح 28 فبراير في مصر كخطوة أولى نحو الاستقلال.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1924</div>
+      <div class="tl-title">عبد العزيز يستولي على الطائف</div>
+      <div class="tl-desc">استولى عبد العزيز آل سعود على الطائف وبدأت مدن الحجاز تتساقط في يده الواحدة بعد الأخرى، مما اضطر الشريف حسين لترك الحجاز.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1925</div>
+      <div class="tl-title">الثورة السورية الكبرى</div>
+      <div class="tl-desc">انطلقت الثورة من جبل الدروز بقيادة سلطان باشا الأطرش ضد الانتداب الفرنسي. استخدمت فرنسا قوتها المسلحة وحشياً لقمعها، لكنها اقتنعت بتغيير سياستها الاستعمارية.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1926 – يناير</div>
+      <div class="tl-title">إعلان عبد العزيز آل سعود ملكاً على الحجاز</div>
+      <div class="tl-desc">أطلق عبد العزيز على نفسه "ملك الحجاز وسلطان نجد وملحقاتها" وأصبح أول حاكم عربي يحصل على لقبي سلطان وملك في آن واحد.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1930 – يونيو</div>
+      <div class="tl-title">معاهدة يونيو 1930 بين العراق وبريطانيا</div>
+      <div class="tl-desc">نصّت على استقلال العراق ابتداءً من دخوله عصبة الأمم مع بقاء قوات بريطانية في مواقع محددة وحماية خطوط المواصلات. لم تؤدِّ إلى استقلال حقيقي.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1934</div>
+      <div class="tl-title">معاهدة الطائف بين السعودية واليمن</div>
+      <div class="tl-desc">عُقدت بعد حرب بين الطرفين حول عسير. بمقتضى المعاهدة أصبحت عسير جزءاً من الدولة السعودية. اعتُبر عبد العزيز آل سعود "بطل حرب وسلام".</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1936</div>
+      <div class="tl-title">مشروع معاهدة سوريا 1936 وفشلها</div>
+      <div class="tl-desc">اتفق الطرفان على وضع إمكانيات سوريا في خدمة الأهداف الفرنسية، لكن رفضته الجمعية الوطنية الفرنسية (البرلمان). نتج عنه تعطيل الدستور وفصل لواء الإسكندرونة.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1936 – انقلاب بكر صدقي</div>
+      <div class="tl-title">أول انقلاب عسكري في العراق</div>
+      <div class="tl-desc">بسبب الاضطرابات والصراعات الطائفية والتناحر بين الأحزاب. قُتل بكر صدقي بعدها وعادت الأمور إلى ما كانت عليه.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1939</div>
+      <div class="tl-title">تركيا تستولي على لواء الإسكندرونة</div>
+      <div class="tl-desc">استغلت تركيا فشل معاهدة 1936 وفصل الفرنسيين للواء الإسكندرونة عن سوريا بحجة أن أكثر سكانه أتراك. اعتُبرت تركيا أكثر دولة استفادت من فشل المعاهدة.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1941 – مايو</div>
+      <div class="tl-title">هزيمة ثورة رشيد عالي الكيلاني في العراق</div>
+      <div class="tl-desc">تحركت قوات إنجليزية من البصرة والأردن وهزمت القوات العراقية. ثق الضباط العراقيون في ألمانيا التي لم تساعدهم بشكل كافٍ. انتهت الثورة بهزيمة محققة.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1943</div>
+      <div class="tl-title">انتخاب شكري القوتلي رئيساً لسوريا وبشارة الخورى للبنان</div>
+      <div class="tl-desc">انعقد المجلس النيابي في سوريا ولبنان عام 1943 في خطوة نحو الاستقلال. في لبنان: فاز بشارة الخورى وشكّل رياض الصلح وزارة وطنية.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1945</div>
+      <div class="tl-title">فرنسا تقصف الشعب السوري بالدبابات والطائرات</div>
+      <div class="tl-desc">كشفت فرنسا نواياها الاستعمارية وحاولت السيطرة على السلطات في سوريا فتصدى لها الشعب. دعمت إنجلترا والولايات المتحدة الحركة الوطنية السورية مما أجبر فرنسا على التراجع.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1946 – أبريل</div>
+      <div class="tl-title">جلاء فرنسا عن سوريا</div>
+      <div class="tl-desc">بعد ضغط دولي من إنجلترا والولايات المتحدة ودول عربية، اضطرت فرنسا للجلاء عن سوريا في أبريل 1946 محققةً استقلالها التام.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1946 – ديسمبر</div>
+      <div class="tl-title">جلاء فرنسا عن لبنان</div>
+      <div class="tl-desc">بعد أزمة اعتقال بشارة الخورى ورياض الصلح وتضامن الدول العربية والغربية مع لبنان، اضطر الفرنسيون للجلاء في آخر ديسمبر 1946.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1955</div>
+      <div class="tl-title">دخول العراق في حلف بغداد</div>
+      <div class="tl-desc">دخل العراق بقيادة نوري السعيد في حلف بغداد الذي ضم إنجلترا وإيران وباكستان وتركيا. خالف ذلك توجه مصر بزعامة جمال عبد الناصر القائم على سياسة الحياد الإيجابي.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1958 – يوليو</div>
+      <div class="tl-title">ثورة يوليو 1958 في العراق</div>
+      <div class="tl-desc">أنهت النظام الملكي في العراق وأقامت النظام الجمهوري، تشابهت مع ثورة 1952 في مصر في إسقاط الملكية. دعمتها المبادئ المصرية التي أسهمت في تعزيز حركة المعارضة.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======= TAB 4: TREATIES ======= -->
+<div id="tab-treaties" class="panel">
+  <div class="sec-title">📜 المعاهدات والاتفاقيات الكاملة</div>
+
+  <div class="treaty-card">
+    <div class="treaty-header">
+      <div class="treaty-name">🤝 اتفاقية دارين</div>
+      <div class="treaty-date">1915م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>إنجلترا</span> ← ← → <span>عبد العزيز آل سعود (الرياض)</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 أهم النصوص والنتائج</div>
+      <ul>
+        <li>توطيد العلاقة بين بريطانيا ومشيخات الجزيرة العربية</li>
+        <li>استخدمتها بريطانيا حجةً لرفض مطالب الشريف حسين بالسيادة على الجزيرة العربية</li>
+        <li>كانت إحدى الاتفاقيات التعاهدية التي لم تستطع بريطانيا تغييرها</li>
+        <li>أضعفت موقف الشريف حسين التفاوضي مع الإنجليز بشكل كبير</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--blue)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--blue)">✉️ مراسلات الحسين – مكماهون</div>
+      <div class="treaty-date" style="background:var(--blue)">1915 – 1916م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>الشريف حسين بن علي (مكة)</span> ← ← → <span>هنري مكماهون (المندوب السامي البريطاني بالقاهرة)</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 المطالب العربية</div>
+      <ul>
+        <li>تولي الشريف حسين الخلافة الإسلامية بدلاً من السلطان العثماني</li>
+        <li>استقلال البلاد العربية من مرسين وأطنة شمالاً حتى الخليج العربي شرقاً</li>
+        <li>إقامة دولة عربية تضم: العراق + سوريا + شبه الجزيرة العربية</li>
+      </ul>
+      <div class="treaty-sub">📌 موقف بريطانيا (الرفض)</div>
+      <ul>
+        <li>رفضت مطلب الخلافة الإسلامية رفضاً قاطعاً</li>
+        <li>رفضت ملك العرب بحجة الاتفاقيات مع مشيخات الجزيرة العربية</li>
+        <li>وجود مصالح فرنسية في الشام (حلب + حمص + حماة + دمشق)</li>
+        <li>سيطرة بريطانيا على جنوب العراق (البصرة) مسبقاً</li>
+        <li>مرسين وأطنة: مدينتان غير عربيتين خارج نطاق الاتفاق</li>
+        <li>اليمن مستقلة ولم يتبقَّ للشريف سوى الحجاز</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--red)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--red)">🗺️ اتفاقية سايكس – بيكو السرية</div>
+      <div class="treaty-date" style="background:var(--red)">1916م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>إنجلترا</span> ← ← → <span>فرنسا</span> ← ← → <span>روسيا القيصرية (ثم انسحبت)</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 ما حصلت عليه فرنسا</div>
+      <ul>
+        <li>جنوب الأناضول (تركيا) بما فيه أطنة والإسكندرونة</li>
+        <li>الساحل السوري (غرب حلب وحمص ودمشق) حتى شمال العراق بما فيه الموصل</li>
+      </ul>
+      <div class="treaty-sub">📌 ما حصلت عليه إنجلترا</div>
+      <ul>
+        <li>العراق: ولاية البصرة وبغداد</li>
+        <li>حيفا وعكا</li>
+        <li>أجزاء من جنوب الشام حتى حدود شبه جزيرة سيناء الشرقية</li>
+      </ul>
+      <div class="treaty-sub">📌 البنود المشتركة</div>
+      <ul>
+        <li>إقامة نظام دولي في فلسطين</li>
+        <li>تقسيم المنطقة الصحراوية بين العراق والشام لمنطقتي نفوذ بريطانية وفرنسية</li>
+        <li>سرّبتها روسيا البلشفية عام 1917 فضيحةً للمؤامرة الغربية</li>
+        <li>تناقضت مع وعود مكماهون للشريف حسين تناقضاً صريحاً</li>
+      </ul>
+      <div class="treaty-sub">📌 النتائج المباشرة</div>
+      <ul>
+        <li>مُنع الأمير فيصل من دخول بيروت وأنزلت فرنسا العلم العربي هناك</li>
+        <li>فشل الشريف حسين في كسب مؤتمر الصلح بباريس لصالح قضية استقلال العرب</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--green)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--green)">🏰 مؤتمر سان ريمو</div>
+      <div class="treaty-date" style="background:var(--green); color:#000">1920م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>دول الحلفاء</span> ← في إيطاليا</div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 المقررات</div>
+      <ul>
+        <li>وضع العراق كله وفلسطين تحت الانتداب البريطاني</li>
+        <li>وضع سوريا ولبنان تحت الانتداب الفرنسي</li>
+        <li>تعديل نصوص اتفاقية سايكس بيكو (منع تقسيم العراق بين دولتين)</li>
+        <li>تمهيد لإعطاء فلسطين لليهود – اليهود أكثر المستفيدين من المؤتمر</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--purple)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--purple)">📋 معاهدة يونيو 1930 – العراق</div>
+      <div class="treaty-date" style="background:var(--purple)">1930م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>الحكومة البريطانية</span> ← ← → <span>الحركة الوطنية العراقية</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 النصوص</div>
+      <ul>
+        <li>استقلال العراق ابتداءً من دخوله عصبة الأمم</li>
+        <li>وجود قوات بريطانية في بعض المواقع المحددة في العراق</li>
+        <li>حماية خطوط المواصلات البريطانية (خاصة الجوية)</li>
+      </ul>
+      <div class="treaty-sub">📌 النتائج</div>
+      <ul>
+        <li>لم تؤدِّ إلى استقلال حقيقي للعراق</li>
+        <li>أول نجاح تحققه الحركة الوطنية العراقية</li>
+        <li>تشابهت مع معاهدة 1936 بمصر في بقاء قوات إنجلترا في بعض المواقع</li>
+        <li>سارت الحركة الوطنية ببطء بسبب الصراعات الطائفية والتناحر بين الأحزاب</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--orange)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--orange)">🌿 مشروع معاهدة سوريا 1936</div>
+      <div class="treaty-date" style="background:var(--orange); color:#000">1936م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>السلطة الفرنسية</span> ← ← → <span>الحركة الوطنية السورية</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 النصوص</div>
+      <ul>
+        <li>وضع إمكانيات سوريا في خدمة الأهداف السياسية والعسكرية والاقتصادية لفرنسا</li>
+        <li>كانت تهدف لتحديد طبيعة علاقة البلدين في حالة الحرب</li>
+      </ul>
+      <div class="treaty-sub">📌 النتائج</div>
+      <ul>
+        <li>رفضت الجمعية الوطنية في باريس (البرلمان الفرنسي) مشروع المعاهدة</li>
+        <li>استمرت فرنسا في حكم سوريا ولبنان بمقتضى صك الانتداب (طبقاً لقرارات سان ريمو)</li>
+        <li>عُطّل الدستور واستبد الفرنسيون بحكم البلاد</li>
+        <li>عملت فرنسا على فصل لواء الإسكندرونة عن سوريا ثم استولت عليه تركيا 1939</li>
+        <li>كسبت لبنان من وراء الكفاح السوري اعتزام فرنسا توقيع معاهدة مماثلة مع لبنان</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--teal)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--teal)">🏔️ معاهدة الطائف</div>
+      <div class="treaty-date" style="background:var(--teal); color:#000">1934م</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>المملكة العربية السعودية (عبد العزيز آل سعود)</span> ← ← → <span>اليمن (يحيى حميد الدين)</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 النتائج</div>
+      <ul>
+        <li>أصبحت عسير جزءاً من الدولة السعودية بموجب المعاهدة</li>
+        <li>أنهت الحرب بين الطرفين بعد فشل محاولات التسوية السلمية</li>
+        <li>اعتُبر عبد العزيز آل سعود "بطل حرب وسلام" مثل الرئيس محمد أنور السادات</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="treaty-card" style="border-right-color: var(--pink)">
+    <div class="treaty-header">
+      <div class="treaty-name" style="color:var(--pink)">⚓ معاهدة بورتسموث</div>
+      <div class="treaty-date" style="background:var(--pink)">ما بعد الحرب العالمية الثانية</div>
+    </div>
+    <div class="treaty-parties">الأطراف: <span>صالح جبر (رئيس وزراء العراق)</span> ← ← → <span>الإنجليز</span></div>
+    <div class="treaty-body">
+      <div class="treaty-sub">📌 أهم النصوص</div>
+      <ul>
+        <li>استمرار حق الإنجليز في الاحتفاظ بقواعد جوية في العراق</li>
+      </ul>
+      <div class="treaty-sub">📌 النتائج</div>
+      <ul>
+        <li>احتج الشعب العراقي وثار ضد المعاهدة بشكل عارم</li>
+        <li>فشلت المعاهدة وسقطت حكومة صالح جبر</li>
+        <li>تشابهت مع معاهدة 1936 بمصر في حق بريطانيا في الوجود ببعض المناطق</li>
+        <li>دليل على قدرة الشعب العراقي على التغيير ورفض الاستعمار</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======= TAB 5: FIGURES ======= -->
+<div id="tab-figures" class="panel">
+  <div class="sec-title">👤 الشخصيات التاريخية</div>
+  <div class="figures-grid">
+
+    <div class="fig-card">
+      <div class="fig-avatar">👑</div>
+      <div class="fig-name">الشريف حسين بن علي</div>
+      <div class="fig-role">شريف مكة | 1908 – 1924م | الحجاز والجزيرة العربية</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> قام بانقلاب عسكري ضد السلطان العثماني وأعلن الثورة العربية الكبرى</li>
+        <li><span class="fig-when">📅 متى:</span> انقلاب 1908 | الثورة العربية يونيو 1916</li>
+        <li><span class="fig-why">💡 لماذا:</span> طموحه لإقامة دولة عربية كبرى وتوليه الخلافة الإسلامية وتخوفه من إقصاء الأتراك له</li>
+        <li><span class="fig-result">📊 الترتب:</span> تصفية الوجود العثماني في الحجاز، لكن فشله في كسب مؤتمر الصلح بباريس</li>
+        <li><span class="fig-result">📊 النهاية:</span> اضطر لترك الحجاز عام 1924 بعد هزيمة قواته أمام عبد العزيز آل سعود</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--blue)">
+      <div class="fig-avatar">🗡️</div>
+      <div class="fig-name">الأمير فيصل بن الحسين</div>
+      <div class="fig-role">قائد الفيلق العربي | لاحقاً ملك العراق</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> قاد الفيلق العربي في الثورة العربية الكبرى</li>
+        <li><span class="fig-when">📅 متى:</span> 1916 – 1920م في حملاته العسكرية</li>
+        <li><span class="fig-why">💡 لماذا:</span> لتحرير البلاد العربية من الحكم العثماني</li>
+        <li><span class="fig-result">📊 الترتب:</span> سيطر على القدس ودمشق وحمص وحماة وحلب لكن مُنع من دخول بيروت</li>
+        <li>أُسند إليه عرش العراق بإيعاز من إنجلترا بعد ثورة العشرين 1920</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--green)">
+      <div class="fig-avatar">🏜️</div>
+      <div class="fig-name">عبد العزيز آل سعود</div>
+      <div class="fig-role">مؤسس المملكة العربية السعودية | الرياض</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> وحّد الجزيرة العربية وهزم الشريف حسين وآل رشيد وضم عسير</li>
+        <li><span class="fig-when">📅 متى:</span> 1919 (تربة) → 1921 (حائل) → 1924 (الطائف) → 1926 (الحجاز)</li>
+        <li><span class="fig-why">💡 لماذا:</span> توسيع حكمه وإحياء فكرة الحركة الوهابية وتوحيد الجزيرة العربية</li>
+        <li><span class="fig-result">📊 الترتب:</span> أصبح أول حاكم عربي بلقبي "سلطان وملك" في آن واحد عام 1926</li>
+        <li>اعتُبر بطلاً للحرب والسلام مثل الرئيس أنور السادات</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--purple)">
+      <div class="fig-avatar">⚔️</div>
+      <div class="fig-name">سلطان باشا الأطرش</div>
+      <div class="fig-role">قائد الثورة السورية الكبرى | جبل الدروز</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> قاد الثورة السورية الكبرى ضد الاستعمار الفرنسي</li>
+        <li><span class="fig-when">📅 متى:</span> 1925م</li>
+        <li><span class="fig-why">💡 لماذا:</span> رفض السياسات الفرنسية في تمزيق سوريا وربط اقتصادها بالفرنك وتسيطرهم على المناصب</li>
+        <li><span class="fig-result">📊 الترتب:</span> أقنع الثورة فرنسا بتغيير سياستها الاستعمارية وأفضى لإعلان الجمهورية السورية</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--orange)">
+      <div class="fig-avatar">🇫🇷</div>
+      <div class="fig-name">شارل ديجول</div>
+      <div class="fig-role">قائد حكومة فرنسا الحرة | إنجلترا خلال الحرب العالمية الثانية</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> رفض الهزيمة والهدنة مع ألمانيا وأصرّ على استمرار المقاومة</li>
+        <li><span class="fig-when">📅 متى:</span> خلال الحرب العالمية الثانية (1940 – 1945)</li>
+        <li><span class="fig-why">💡 لماذا:</span> رفضه الاستسلام لألمانيا النازية وإيمانه بحتمية انتصار الحلفاء</li>
+        <li><span class="fig-result">📊 الترتب:</span> دعمته إنجلترا فسيطر على سوريا ولبنان بعد هزيمة قوات فيشي</li>
+        <li>تشابهت حكومته مع حكومة مصطفى النحاس في دعم الحلفاء</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--teal)">
+      <div class="fig-avatar">🔑</div>
+      <div class="fig-name">هنري مكماهون</div>
+      <div class="fig-role">المندوب السامي البريطاني في القاهرة | 1915 – 1916م</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> أجرى مراسلات مع الشريف حسين حول مطالبه بالاستقلال العربي</li>
+        <li><span class="fig-when">📅 متى:</span> 1915 – 1916م</li>
+        <li><span class="fig-why">💡 لماذا:</span> محاولة الإنجليز استغلال الثورة العربية ضد الأتراك العثمانيين</li>
+        <li><span class="fig-result">📊 الترتب:</span> رفض معظم مطالب الشريف ومهّد لانفراد إنجلترا بثمار انتصاراتها</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--red)">
+      <div class="fig-avatar">🇮🇶</div>
+      <div class="fig-name">رشيد عالي الكيلاني</div>
+      <div class="fig-role">رئيس وزراء العراق | قائد الثورة ضد الوجود الإنجليزي</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> أعلن الثورة ضد الوجود الإنجليزي في العراق</li>
+        <li><span class="fig-when">📅 متى:</span> 1941م</li>
+        <li><span class="fig-why">💡 لماذا:</span> لطرد الوجود البريطاني من العراق معتمداً على وعود ألمانيا النازية بالمساعدة</li>
+        <li><span class="fig-result">📊 الترتب:</span> هُزمت ثورته في مايو 1941 لأن ألمانيا لم تستطع مساعدته بشكل كافٍ</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--pink)">
+      <div class="fig-avatar">🌹</div>
+      <div class="fig-name">بشارة الخورى</div>
+      <div class="fig-role">أول رئيس جمهورية لبنان المستقلة | 1943م</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> فاز برئاسة الجمهورية اللبنانية في أول انتخابات وطنية</li>
+        <li><span class="fig-when">📅 متى:</span> 1943م</li>
+        <li><span class="fig-why">💡 لماذا:</span> لتحقيق استقلال لبنان من الانتداب الفرنسي</li>
+        <li><span class="fig-result">📊 الترتب:</span> اعتُقل مع رياض الصلح في راشيا مما أثار موجة غضب عارمة أسفرت عن الاستقلال</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--gold)">
+      <div class="fig-avatar">⚖️</div>
+      <div class="fig-name">رياض الصلح</div>
+      <div class="fig-role">رئيس الوزراء اللبناني الوطني | 1943م</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> شكّل وزارة وطنية برئاسته بعد انتخاب بشارة الخورى</li>
+        <li><span class="fig-when">📅 متى:</span> 1943م</li>
+        <li><span class="fig-why">💡 لماذا:</span> إحكام السلطة الوطنية وتحقيق الاستقلال اللبناني</li>
+        <li><span class="fig-result">📊 الترتب:</span> اعتُقل في راشيا مما أشعل الثورة الشعبية التي أجبرت فرنسا على الانسحاب</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--orange)">
+      <div class="fig-avatar">🇸🇾</div>
+      <div class="fig-name">شكري القوتلي</div>
+      <div class="fig-role">أول رئيس جمهورية سوريا المستقلة | 1943م</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> انتُخب رئيساً للجمهورية في انعقاد المجلس النيابي</li>
+        <li><span class="fig-when">📅 متى:</span> 1943م</li>
+        <li><span class="fig-why">💡 لماذا:</span> تجسيداً للإرادة الوطنية السورية في الاستقلال</li>
+        <li><span class="fig-result">📊 الترتب:</span> جلت فرنسا عن سوريا في أبريل 1946 تحت ضغط شعبي ودولي</li>
+      </ul>
+    </div>
+
+    <div class="fig-card" style="border-bottom-color: var(--blue)">
+      <div class="fig-avatar">🇮🇶</div>
+      <div class="fig-name">نوري السعيد</div>
+      <div class="fig-role">رئيس وزراء ووصي على عرش العراق</div>
+      <ul>
+        <li><span class="fig-action">🔹 ما فعل:</span> اتجه للتفاهم مع إنجلترا بدلاً من الثورة عليها ودخل العراق في حلف بغداد</li>
+        <li><span class="fig-when">📅 متى:</span> 1955م (حلف بغداد)</li>
+        <li><span class="fig-why">💡 لماذا:</span> اعتقاده بأن التفاهم مع إنجلترا أجدى للعراق من الثورة</li>
+        <li><span class="fig-result">📊 الترتب:</span> توتر علاقة العراق مع محيطها العربي، ومهّد لقيام ثورة يوليو 1958</li>
+        <li>تشابه مع عباس فرحات في التفاهم مع الاستعمار</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======= TAB 6: COMPARISONS ======= -->
+<div id="tab-compare" class="panel">
+  <div class="sec-title">⚖️ المقارنات والعلاقات السببية</div>
+
+  <!-- Table 1 -->
+  <div class="comp-table-wrap">
+    <h3>📊 مقارنة بين الشريف حسين وعبد العزيز آل سعود</h3>
+    <table class="comp-table">
+      <tr>
+        <th>وجه المقارنة</th>
+        <th>الشريف حسين بن علي</th>
+        <th>عبد العزيز آل سعود</th>
+      </tr>
+      <tr>
+        <td class="aspect">الموقف من الدولة العثمانية</td>
+        <td>رفض تمثيلها للعالم الإسلامي + ثار عليها</td>
+        <td>رفض تمثيلها للعالم الإسلامي + حافظ على قواته</td>
+      </tr>
+      <tr>
+        <td class="aspect">العلاقة مع إنجلترا</td>
+        <td>تعاون معها ضد الأتراك وخُدع بوعودها</td>
+        <td>اتفاقية دارين 1915 معها مع احتفاظه بقواته</td>
+      </tr>
+      <tr>
+        <td class="aspect">المشاركة في الحرب</td>
+        <td>شارك بقواته في الحرب لجانب الحلفاء</td>
+        <td>لم يشارك بقواته مما أبقاها قوية</td>
+      </tr>
+      <tr>
+        <td class="aspect">النتيجة النهائية</td>
+        <td>خسر الحجاز وفشل في إقامة رابطة عربية</td>
+        <td>وحّد الجزيرة العربية وأسس المملكة العربية السعودية</td>
+      </tr>
+      <tr>
+        <td class="aspect">أول مواجهة بينهما</td>
+        <td>هُزم في معركة تربة 1919</td>
+        <td>انتصر في تربة 1919 وواصل توسعه</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Table 2 -->
+  <div class="comp-table-wrap">
+    <h3>📊 مقارنة بين المعاهدات الكبرى</h3>
+    <table class="comp-table">
+      <tr>
+        <th>المعاهدة</th>
+        <th>التاريخ</th>
+        <th>ما منحته</th>
+        <th>ما أبقته لإنجلترا</th>
+        <th>النتيجة</th>
+      </tr>
+      <tr>
+        <td class="aspect">معاهدة 1922 (العراق)</td>
+        <td>1922</td>
+        <td>استقلال شكلي</td>
+        <td>اليد العليا في البلاد</td>
+        <td>استقلال صوري</td>
+      </tr>
+      <tr>
+        <td class="aspect">معاهدة 1930 (العراق)</td>
+        <td>1930</td>
+        <td>عضوية عصبة الأمم</td>
+        <td>قواعد عسكرية + مواصلات جوية</td>
+        <td>لم تؤدِ لاستقلال حقيقي</td>
+      </tr>
+      <tr>
+        <td class="aspect">مشروع معاهدة 1936 (سوريا)</td>
+        <td>1936</td>
+        <td>محاولة تسوية</td>
+        <td>إمكانيات سوريا لفرنسا</td>
+        <td>رُفضت من البرلمان الفرنسي</td>
+      </tr>
+      <tr>
+        <td class="aspect">معاهدة بورتسموث (العراق)</td>
+        <td>بعد 1945</td>
+        <td>مفاوضات بين الطرفين</td>
+        <td>قواعد جوية إنجليزية</td>
+        <td>فشلت بسبب رفض الشعب</td>
+      </tr>
+      <tr>
+        <td class="aspect">معاهدة الطائف (السعودية/اليمن)</td>
+        <td>1934</td>
+        <td>إنهاء الحرب</td>
+        <td>عسير للسعودية</td>
+        <td>توحيد الجزيرة العربية</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Table 3 -->
+  <div class="comp-table-wrap">
+    <h3>📊 مقارنة بين سوريا ولبنان في مسيرة الاستقلال</h3>
+    <table class="comp-table">
+      <tr>
+        <th>وجه المقارنة</th>
+        <th>سوريا</th>
+        <th>لبنان</th>
+      </tr>
+      <tr>
+        <td class="aspect">المستعمر</td>
+        <td>فرنسا (انتداب)</td>
+        <td>فرنسا (انتداب)</td>
+      </tr>
+      <tr>
+        <td class="aspect">الثورة الكبرى</td>
+        <td>1925 – جبل الدروز – سلطان باشا الأطرش</td>
+        <td>لم يكن لها ثورة مسلحة كبيرة، استفادت من كفاح سوريا</td>
+      </tr>
+      <tr>
+        <td class="aspect">أول انتخابات وطنية</td>
+        <td>1943 – شكري القوتلي رئيساً</td>
+        <td>1943 – بشارة الخورى رئيساً</td>
+      </tr>
+      <tr>
+        <td class="aspect">تاريخ الجلاء</td>
+        <td>أبريل 1946</td>
+        <td>آخر ديسمبر 1946</td>
+      </tr>
+      <tr>
+        <td class="aspect">مشكلة خاصة</td>
+        <td>فصل لواء الإسكندرونة لتركيا 1939</td>
+        <td>الأسلوب الطائفي في الحكم (موارنة + سنة + شيعة)</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Cause & Effect -->
+  <div class="sec-title" style="margin-top:30px">🔗 العلاقات السببية (سبب ← نتيجة)</div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>إعلان الدولة العثمانية نداء الجهاد المقدس نوفمبر 1914</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>انزعاج إنجلترا لأنها تحكم 50 مليون مسلم، وتحرك الشريف حسين للتفاوض معها</p>
+    </div>
+  </div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>رفض الجمعية الوطنية الفرنسية مشروع معاهدة 1936 مع سوريا</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>تعطيل الدستور + استمرار الانتداب + فصل لواء الإسكندرونة وضمه لتركيا 1939</p>
+    </div>
+  </div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>الثورة السياسية في روسيا القيصرية وتغيير نظامها للبلشفية (الشيوعية)</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>تسريب نصوص اتفاقية سايكس بيكو السرية للرأي العام العالمي</p>
+    </div>
+  </div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>ثورة 1920 في العراق وتأثرها بثورة 1919 في مصر</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>تراجع إنجلترا عن سياستها المتشددة + حكومة وطنية مؤقتة + تمهيد لإسناد العرش لفيصل</p>
+    </div>
+  </div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>احتفاظ عبد العزيز آل سعود بقواته كاملةً وعدم مشاركتها في الحرب العالمية الأولى</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>هزيمة الشريف حسين في أول مواجهة (تربة 1919) ومواصلة التوسع حتى توحيد الجزيرة</p>
+    </div>
+  </div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>اعتقال فرنسا لبشارة الخورى ورياض الصلح في راشيا</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>اضطراب لبنان بالكامل + تضامن دولي + إطلاق سراح المعتقلين + جلاء فرنسا 1946</p>
+    </div>
+  </div>
+
+  <div class="cause-effect">
+    <div class="cause-box">
+      <h4>⚠️ السبب</h4>
+      <p>دخول العراق في حلف بغداد 1955 بتوجيه نوري السعيد</p>
+    </div>
+    <div class="arrow-mid">←</div>
+    <div class="effect-box">
+      <h4>✅ النتيجة</h4>
+      <p>توتر علاقة العراق بمحيطها العربي + دعم مصر لحركة المعارضة + ثورة يوليو 1958</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.tab-bar').offsetTop - 10, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>
