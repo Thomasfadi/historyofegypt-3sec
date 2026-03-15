@@ -224,77 +224,10 @@
 
   /* MIND MAP */
   .mindmap-wrap {
-    overflow-x: auto;
-    padding: 2rem 0;
-  }
-  .mindmap {
-    min-width: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem;
-  }
-  .mm-center {
-    background: linear-gradient(135deg, #a07c2a, var(--gold));
-    color: #07070F;
-    font-family: 'Amiri', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: 1.5rem 2rem;
     border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 0 40px rgba(201,168,76,0.3);
-    min-width: 160px;
-    flex-shrink: 0;
-    align-self: center;
-  }
-  .mm-branches {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-right: 2rem;
-  }
-  .mm-branch {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  .mm-branch-node {
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    min-width: 150px;
-    flex-shrink: 0;
-    cursor: pointer;
-    transition: transform 0.2s;
-    align-self: flex-start;
-    margin-top: 0.3rem;
-  }
-  .mm-branch-node:hover { transform: scale(1.05); }
-  .mm-subs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .mm-sub {
-    background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.35rem 0.8rem;
-    font-size: 0.8rem;
-    color: var(--text);
-    transition: all 0.2s;
+    overflow: hidden;
   }
-  .mm-sub:hover { border-color: var(--gold); color: var(--gold); transform: translateX(-3px); }
-
-  .mm-b1 { background: rgba(192,57,43,0.2); color: #e74c3c; border: 1px solid rgba(192,57,43,0.4); }
-  .mm-b2 { background: rgba(26,107,138,0.2); color: #3498db; border: 1px solid rgba(26,107,138,0.4); }
-  .mm-b3 { background: rgba(30,122,74,0.2); color: #2ecc71; border: 1px solid rgba(30,122,74,0.4); }
-  .mm-b4 { background: rgba(108,52,131,0.2); color: #9b59b6; border: 1px solid rgba(108,52,131,0.4); }
-  .mm-b5 { background: rgba(211,84,0,0.2); color: #e67e22; border: 1px solid rgba(211,84,0,0.4); }
-  .mm-b6 { background: rgba(14,102,85,0.2); color: #1abc9c; border: 1px solid rgba(14,102,85,0.4); }
-  .mm-b7 { background: rgba(201,168,76,0.2); color: var(--gold); border: 1px solid rgba(201,168,76,0.4); }
 
   /* TIMELINE */
   .timeline { position: relative; padding: 1rem 0; }
@@ -659,84 +592,131 @@
 <!-- ===== TAB 2: MIND MAP ===== -->
 <div class="panel" id="panel-mindmap">
   <div class="section-title">🧠 الخريطة الذهنية</div>
-  <div class="mindmap-wrap">
-    <div class="mindmap">
-      <div class="mm-branches">
 
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b1">🇫🇷 محاولات الاحتلال</div>
-          <div class="mm-subs">
-            <div class="mm-sub">لويس ١٤ — ضرب التجارة الهولندية</div>
-            <div class="mm-sub">لويس ١٥ — طلب دبلوماسي من العثمانيين</div>
-            <div class="mm-sub">لويس ١٦ — إحياء طريق التجارة القديم</div>
-            <div class="mm-sub">الهدف الرئيسي: اقتصادي</div>
-          </div>
-        </div>
-
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b2">⚖️ الأحوال قبل الحملة</div>
-          <div class="mm-subs">
-            <div class="mm-sub">زراعة متدهورة — نظام الالتزام</div>
-            <div class="mm-sub">صناعة يدوية — طوائف الحرف</div>
-            <div class="mm-sub">تجارة منكمشة — رأس الرجاء الصالح</div>
-            <div class="mm-sub">مجتمع طبقي: حكام ومحكومون</div>
-          </div>
-        </div>
-
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b3">⚔️ الحملة (١٧٩٨)</div>
-          <div class="mm-subs">
-            <div class="mm-sub">طولون ← مالطة ← الإسكندرية</div>
-            <div class="mm-sub">منشور نابليون: ترغيب وترهيب</div>
-            <div class="mm-sub">شبراخيت ← إمبابة ← القاهرة</div>
-            <div class="mm-sub">أبو قير البحرية: تحطيم الأسطول</div>
-          </div>
-        </div>
-
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b4">🔥 المقاومة المصرية</div>
-          <div class="mm-subs">
-            <div class="mm-sub">محمد كريم — الإسكندرية</div>
-            <div class="mm-sub">الأزهر — ثورة القاهرة الأولى</div>
-            <div class="mm-sub">الصعيد — ١٠ أشهر مناوشات</div>
-            <div class="mm-sub">سليمان الحلبي — اغتيال كليبر</div>
-          </div>
-        </div>
-
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b5">🌍 السياق الدولي</div>
-          <div class="mm-subs">
-            <div class="mm-sub">تنافس إنجلترا-فرنسا الاستعماري</div>
-            <div class="mm-sub">الثورة الفرنسية ١٧٨٩</div>
-            <div class="mm-sub">التحالف العثماني-الروسي-الإنجليزي</div>
-            <div class="mm-sub">نلسون وأبو قير البحرية</div>
-          </div>
-        </div>
-
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b6">🏛️ آثار الحملة</div>
-          <div class="mm-subs">
-            <div class="mm-sub">الدواوين — أول تجربة شبه ديمقراطية</div>
-            <div class="mm-sub">المجمع العلمي — ١٤٦ عالماً</div>
-            <div class="mm-sub">كتاب وصف مصر + حجر رشيد</div>
-            <div class="mm-sub">صدمة حضارية وانفتاح على أوروبا</div>
-          </div>
-        </div>
-
-        <div class="mm-branch">
-          <div class="mm-branch-node mm-b7">🚪 الجلاء (١٨٠١)</div>
-          <div class="mm-subs">
-            <div class="mm-sub">معاهدة العريش (يناير ١٨٠٠) — فشلت</div>
-            <div class="mm-sub">مينو: خطة تحويل مصر لمستعمرة</div>
-            <div class="mm-sub">قوات إنجليزية-عثمانية مشتركة</div>
-            <div class="mm-sub">الجلاء ١٨ سبتمبر ١٨٠١</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="mm-center">الحملة<br>الفرنسية<br>على مصر<br>١٧٩٨–١٨٠١</div>
+  <!-- Center node -->
+  <div style="display:flex;justify-content:center;margin-bottom:2rem;">
+    <div style="background:linear-gradient(135deg,#a07c2a,#e8c76a);color:#07070F;font-family:'Amiri',serif;font-size:1.25rem;font-weight:700;padding:1rem 2.2rem;border-radius:50px;text-align:center;box-shadow:0 0 30px rgba(201,168,76,0.45);line-height:1.5;">
+      الحملة الفرنسية على مصر<br>
+      <span style="font-size:0.9rem;font-family:'Cairo',sans-serif;">١٧٩٨ – ١٨٠١</span>
     </div>
   </div>
+
+  <!-- 7 branch rows -->
+  <div style="display:flex;flex-direction:column;gap:1rem;max-width:980px;margin:0 auto;">
+
+    <!-- Branch 1 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(231,76,60,0.35);">
+      <div style="background:rgba(231,76,60,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #e74c3c;flex-shrink:0;">
+        <span style="color:#e74c3c;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">🇫🇷 محاولات<br>الاحتلال</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#e74c3c">لويس ١٤ — ضرب التجارة الهولندية</span>
+        <span class="mm-pill" style="--c:#e74c3c">لويس ١٥ — طلب دبلوماسي ١٧٦٩</span>
+        <span class="mm-pill" style="--c:#e74c3c">لويس ١٦ — إحياء طريق التجارة</span>
+        <span class="mm-pill" style="--c:#e74c3c">الهدف: اقتصادي بالدرجة الأولى</span>
+      </div>
+    </div>
+
+    <!-- Branch 2 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(52,152,219,0.35);">
+      <div style="background:rgba(52,152,219,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #3498db;flex-shrink:0;">
+        <span style="color:#3498db;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">⚖️ الأحوال<br>قبل الحملة</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#3498db">زراعة متدهورة — نظام الالتزام</span>
+        <span class="mm-pill" style="--c:#3498db">صناعة يدوية — طوائف الحرف</span>
+        <span class="mm-pill" style="--c:#3498db">تجارة منكمشة — رأس الرجاء الصالح</span>
+        <span class="mm-pill" style="--c:#3498db">مجتمع طبقي — حكام ومحكومون</span>
+      </div>
+    </div>
+
+    <!-- Branch 3 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(230,126,34,0.35);">
+      <div style="background:rgba(230,126,34,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #e67e22;flex-shrink:0;">
+        <span style="color:#e67e22;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">⚡ الثورة<br>الفرنسية</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#e67e22">١٧٨٩ — إعلان الجمهورية</span>
+        <span class="mm-pill" style="--c:#e67e22">إعدام لويس ١٦ عام ١٧٩٣</span>
+        <span class="mm-pill" style="--c:#e67e22">تحالف أوروبي ضد فرنسا</span>
+        <span class="mm-pill" style="--c:#e67e22">فرنسا تنتصر — ما عدا إنجلترا</span>
+      </div>
+    </div>
+
+    <!-- Branch 4 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(46,204,113,0.35);">
+      <div style="background:rgba(46,204,113,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #2ecc71;flex-shrink:0;">
+        <span style="color:#2ecc71;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">⚔️ الحملة<br>الفرنسية ١٧٩٨</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#2ecc71">طولون ← مالطة ← الإسكندرية</span>
+        <span class="mm-pill" style="--c:#2ecc71">منشور نابليون — ترغيب وترهيب</span>
+        <span class="mm-pill" style="--c:#2ecc71">شبراخيت ← إمبابة ← القاهرة</span>
+        <span class="mm-pill" style="--c:#2ecc71">أبو قير البحرية — بداية النهاية</span>
+      </div>
+    </div>
+
+    <!-- Branch 5 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(155,89,182,0.35);">
+      <div style="background:rgba(155,89,182,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #9b59b6;flex-shrink:0;">
+        <span style="color:#9b59b6;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">🔥 المقاومة<br>المصرية</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#9b59b6">محمد كريم — الإسكندرية</span>
+        <span class="mm-pill" style="--c:#9b59b6">ثورة القاهرة الأولى — الأزهر</span>
+        <span class="mm-pill" style="--c:#9b59b6">الصعيد — ١٠ أشهر مناوشات</span>
+        <span class="mm-pill" style="--c:#9b59b6">سليمان الحلبي — اغتيال كليبر</span>
+      </div>
+    </div>
+
+    <!-- Branch 6 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(26,188,156,0.35);">
+      <div style="background:rgba(26,188,156,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #1abc9c;flex-shrink:0;">
+        <span style="color:#1abc9c;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">🏛️ آثار<br>الحملة</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#1abc9c">الدواوين — أول تجربة ديمقراطية</span>
+        <span class="mm-pill" style="--c:#1abc9c">المجمع العلمي — ١٤٦ عالماً</span>
+        <span class="mm-pill" style="--c:#1abc9c">وصف مصر + حجر رشيد</span>
+        <span class="mm-pill" style="--c:#1abc9c">صدمة حضارية وانفتاح على أوروبا</span>
+      </div>
+    </div>
+
+    <!-- Branch 7 -->
+    <div style="display:flex;align-items:stretch;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,0.35);">
+      <div style="background:rgba(201,168,76,0.18);min-width:160px;max-width:160px;display:flex;align-items:center;justify-content:center;padding:0.8rem;border-left:3px solid #C9A84C;flex-shrink:0;">
+        <span style="color:#C9A84C;font-weight:700;font-size:0.95rem;text-align:center;line-height:1.4;">🚪 الجلاء<br>١٨٠١</span>
+      </div>
+      <div style="background:#0e0c14;display:flex;flex-wrap:wrap;gap:0.5rem;padding:0.75rem;align-items:center;flex:1;">
+        <span class="mm-pill" style="--c:#C9A84C">معاهدة العريش — يناير ١٨٠٠</span>
+        <span class="mm-pill" style="--c:#C9A84C">مينو — أراد البقاء والاستعمار</span>
+        <span class="mm-pill" style="--c:#C9A84C">قوات إنجليزية-عثمانية مشتركة</span>
+        <span class="mm-pill" style="--c:#C9A84C">الجلاء ١٨ سبتمبر ١٨٠١</span>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    .mm-pill {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid var(--c);
+      color: var(--c);
+      font-size: 0.82rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: all 0.2s;
+      cursor: default;
+      filter: brightness(1.1);
+    }
+    .mm-pill:hover {
+      background: var(--c);
+      color: #07070F;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+  </style>
 </div>
 
 <!-- ===== TAB 3: TIMELINE ===== -->
@@ -1096,22 +1076,54 @@
       </ul>
     </div>
 
-    <div class="person-card accent-green">
+    <div class="person-card accent-green" style="grid-column: 1 / -1;">
       <div class="person-header">
-        <div class="person-avatar" style="background:rgba(30,122,74,0.15);">📜</div>
+        <div class="person-avatar" style="background:rgba(30,122,74,0.15); font-size:1.8rem;">📜</div>
         <div>
-          <div class="person-name">الجنرال مينو</div>
-          <div class="person-role">قائد الحملة الأخير (١٨٠٠–١٨٠١)</div>
+          <div class="person-name">الجنرال مينو — هل نجح أم فشل؟</div>
+          <div class="person-role">قائد الحملة الأخير (يونيه ١٨٠٠ – سبتمبر ١٨٠١)</div>
         </div>
       </div>
-      <ul>
-        <li>كان من أنصار البقاء في مصر وتحويلها لمستعمرة فرنسية دائمة</li>
-        <li>وضع خطة إصلاحية شاملة في الزراعة والصناعة والتجارة والصحة والقضاء</li>
-        <li>اقترح إنشاء مصانع لا تضم مصريين حتى لا تتسرب أسرار الصناعة إليهم</li>
-        <li>أصدر جريدة باللغة العربية لنشر الأوامر وتوضيح أغراض الحكومة</li>
-        <li>فتح أسواقاً جديدة في بلاد البحر الأحمر (جدة، ينبع، السويس)</li>
-        <li>استسلم للقوات الإنجليزية-العثمانية وغادر مصر في سبتمبر ١٨٠١</li>
-      </ul>
+
+      <!-- Two column breakdown -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+
+        <!-- ما فعله مينو -->
+        <div style="background:#0a1a0e; border:1px solid rgba(46,204,113,0.3); border-radius:10px; padding:1rem;">
+          <div style="color:#2ecc71; font-weight:700; font-size:0.95rem; margin-bottom:0.7rem; display:flex; align-items:center; gap:0.4rem;">✅ ما فعله مينو (محاولاته)</div>
+          <ul style="list-style:none;">
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#2ecc71;flex-shrink:0;">◆</span>أراد تحويل مصر إلى مستعمرة فرنسية دائمة — لم يفكر في الرحيل أبداً</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#2ecc71;flex-shrink:0;">◆</span>وضع خطة إصلاحية شاملة: زراعة + صناعة + تجارة + صحة + قضاء</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#2ecc71;flex-shrink:0;">◆</span>أنشأ مصانع (نسيج، حدادة، ساعات، دباغة) لكن بدون عمال مصريين حتى لا تتسرب أسرار الصناعة</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#2ecc71;flex-shrink:0;">◆</span>فتح أسواق جديدة في البحر الأحمر: جدة، ينبع، السويس — لإنعاش التجارة</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#2ecc71;flex-shrink:0;">◆</span>أصدر جريدة عربية لنشر قرارات الحكومة وتحذير الناس من أعداء فرنسا</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#2ecc71;flex-shrink:0;">◆</span>أبدى مرونة في القضاء: أنشأ محكمة لكل طائفة (قبط، شوام، يهود) ورفض مبدأ الدية</li>
+          </ul>
+        </div>
+
+        <!-- لماذا فشل -->
+        <div style="background:#1a0a0a; border:1px solid rgba(231,76,60,0.3); border-radius:10px; padding:1rem;">
+          <div style="color:#e74c3c; font-weight:700; font-size:0.95rem; margin-bottom:0.7rem; display:flex; align-items:center; gap:0.4rem;">❌ لماذا فشل في النهاية؟</div>
+          <ul style="list-style:none;">
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#e74c3c;flex-shrink:0;">◆</span><strong style="color:#ffaaaa;">السبب الجوهري:</strong> وصل الأسطول الإنجليزي الضخم إلى أبي قير في فبراير ١٨٠١ وانضم إليه جيش عثماني</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#e74c3c;flex-shrink:0;">◆</span>الجيش الفرنسي كان منهكاً بسبب سنوات من الحروب والأوبئة والحصار البحري</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#e74c3c;flex-shrink:0;">◆</span>المصريون رفضوا الاستعمار من البداية — الثورات لم تتوقف طوال فترة الحملة</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#e74c3c;flex-shrink:0;">◆</span>مصانعه بدون مصريين = لا أيدي عاملة كافية = مشروع غير قابل للاستمرار</li>
+            <li style="padding:0.35rem 0; font-size:0.87rem; color:#c8c0b8; display:flex; gap:0.5rem; line-height:1.5;"><span style="color:#e74c3c;flex-shrink:0;">◆</span>استسلم في سبتمبر ١٨٠١ وغادر مصر — كل خططه الاستعمارية ذهبت أدراج الرياح</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Verdict -->
+      <div style="background:linear-gradient(135deg,#1a1005,#0f180e); border:1px solid rgba(201,168,76,0.35); border-radius:10px; padding:1rem; display:flex; gap:1rem; align-items:flex-start;">
+        <div style="font-size:2rem; flex-shrink:0;">⚖️</div>
+        <div>
+          <div style="color:#C9A84C; font-weight:700; font-size:1rem; margin-bottom:0.4rem;">الحكم النهائي على مينو</div>
+          <div style="color:#c8c0b8; font-size:0.88rem; line-height:1.7;">
+            مينو <strong style="color:#e8c76a;">نجح جزئياً على المستوى الإداري والاقتصادي</strong> — خططه كانت طموحة وبعض إصلاحاته أثمرت. لكنه <strong style="color:#e74c3c;">فشل فشلاً تاماً في هدفه الأساسي</strong> وهو تحويل مصر لمستعمرة فرنسية، لأن الظروف كانت أكبر منه: <span style="color:#ffaaaa;">ضعف الجيش + الحصار البريطاني + المقاومة الشعبية المستمرة + التدخل العثماني</span>. كان الفرق بينه وبين كليبر أن كليبر كان واقعياً ويعرف أن الحملة محكوم عليها بالفشل، أما مينو فكان يحلم باستحالة.
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="person-card accent-teal">
